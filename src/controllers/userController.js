@@ -30,6 +30,5 @@ let userController = {
   }
 }
 
-
 // Exportar modulo
 module.exports = userController;

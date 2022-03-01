@@ -6,6 +6,12 @@ var logger = require('morgan');
 
 var app = express();
 
+// activacion del sever en port 3000 y configurando opciones de Heroku
+app.listen(process.env.PORT || 3000, () =>
+  console.log("servidor corriendo en puerto 3000")
+);
+
+
 // view engine setup
 app.set('views', path.join(__dirname, '../src/views'));
 app.set('view engine', 'ejs');
