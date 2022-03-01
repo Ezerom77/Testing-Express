@@ -4,6 +4,7 @@
   "name": "Campera de cuero con Collar",
   "price": "7500",
   "color": "Negro",
+  "categories": "Mujeres",
   "talle": "M",
   "stock": "2",
   "description": "Campera de cuero con Collar",
@@ -13,6 +14,7 @@
   "id": 2,
   "name": "Remera Sub-urban",
   "price": 2000,
+  "categories": "Mujeres",
   "color": "Rojo",
   "talle": "S",
   "stock": 10,
@@ -24,6 +26,7 @@
   "name": "Jean Recto Tiro Alto",
   "price": 5000,
   "color": "Azul",
+  "categories": "Mujeres",
   "talle": "L",
   "stock": 12,
   "description": "Descripcion Jean Recto Tiro Alto.",
@@ -32,10 +35,11 @@
  {
   "id": 4,
   "name": "Buzo Canguro con capucha",
-  "price": 4000,
+  "price": "4500",
   "color": "Negro",
   "talle": "M",
-  "stock": 23,
+  "categories": "Hombres",
+  "stock": "23",
   "description": "Descripcion Buzo Canguro con capucha.",
   "image": "Buzo.jpg"
  },
@@ -44,6 +48,7 @@
   "name": "Zapatos con Plataforma",
   "price": 12000,
   "color": "Rojo",
+  "categories": "Mujeres",
   "talle": "38",
   "stock": 8,
   "description": "Descripcion Zapatos con Plataforma.",
@@ -53,10 +58,22 @@
   "id": 6,
   "name": "Camisa Lisa Elastizada ",
   "price": 6000,
+  "categories": "Mujeres",
   "color": "Bordo",
   "talle": "L",
   "stock": 9,
   "description": "Descripcion Camisa Lisa Elastizada.",
   "image": "Camisa.jpg"
+ },
+ {
+  "id": 7,
+  "name": "Pantalon Blanco",
+  "description": "Pantalon de vestir",
+  "categories": "Hombres",
+  "price": "6700",
+  "color": "blanco",
+  "talle": "M",
+  "stock": "5",
+  "image": "1646166234473PantalonBL.webp"
  }
 ]

@@ -12,7 +12,7 @@
             <div class="detail-left-side">
               <!-- breadcrums -->
               <div class="woman">
-                <h5>Mujeres</h5>
+                <h5><%= productDetail.categories %></h5>
                 <i class="fa fa-angle-right"></i>
                 <p><%=productDetail.name%></p>
               </div>
@@ -33,7 +33,7 @@
               <div class="indexing">
                 <span><i class="fa fa-angle-left"></i> Prev</span>
                 <small>2 of 10</small>
-                <span>Sig <i class="fa fa-angle-right"></i></span>
+                <span>Sig<i class="fa fa-angle-right"></i></span>
               </div>
               <h3><%=productDetail.name%></h3>
               <h4>AR$ <%=productDetail.price%></h4>
@@ -52,10 +52,10 @@
               <div class="options">
                 <div class="size">
                   <select>
-                    <option>Talle : S</option>
-                    <option>Talle : M</option>
+                    <option><%="Talle: "+productDetail.talle%></option>
+                    <!-- <option>Talle : M</option>
                     <option>Talle : L</option>
-                    <option>Talle : XL</option>
+                    <option>Talle : XL</option> -->
                   </select>
                 </div>
                 <div class="quantity">
@@ -74,17 +74,16 @@
               <div class="description">
                 <h4>Descripción</h4>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Temporibus commodi quibusdam rem voluptate quae debitis.
+                  <%=productDetail.description%>
                 </p>
-                <ul class="features">
+                <!-- <ul class="features">
                   <li>Rem voluptate</li>
                   <li>Amet consectetur</li>
-                   <!-- <li>Temporibus commodi</li>
-                  <li>Adipisicing elit</li>  -->
-                </ul>
-                <p>Largo lateral 31.5cm</p>
-                <p class="1">Espalda 56.5cm</p>
+                   <li>Temporibus commodi</li>
+                  <li>Adipisicing elit</li> 
+                </ul> -->
+                <!-- <p>Largo lateral 31.5cm</p>
+                <p class="1">Espalda 56.5cm</p> -->
               </div>
               <div class="share">
                 <h4>Compartir</h4>
