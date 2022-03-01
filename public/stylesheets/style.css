@@ -567,7 +567,7 @@ a.logo{
   display: flex;
 }
 
-.detail-container .detail-card .left-side {
+.detail-container .detail-card .detail-left-side {
   width: 50%;
   background-color: #fff;
   height: 100%;
