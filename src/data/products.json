@@ -3,7 +3,7 @@
   "id": 1,
   "name": "Campera de cuero con Collar",
   "price": "7500",
-  "color": "negro",
+  "color": "Negro",
   "talle": "M",
   "stock": "2",
   "description": "Campera de cuero con Collar",
@@ -44,7 +44,7 @@
   "name": "Zapatos con Plataforma",
   "price": 12000,
   "color": "Rojo",
-  "talle": "34",
+  "talle": "38",
   "stock": 8,
   "description": "Descripcion Zapatos con Plataforma.",
   "image": "Zapatos.jpg"
