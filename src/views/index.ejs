@@ -3,21 +3,17 @@
     <head>
         <%- include('./partials/head') %>
     </head>
-    
     <body>
     <%- include('./partials/header') %>
         <main class="main">
             <h3 class="title"><%= title %></h3>
-
             <p class="howto">
                 El siguiente carrusel te mostrará los productos más relevantes de acuerdo a tus gustos y preferencias indicados al momento de crear tu perfil.<br>
             </p>
-            
             <div class="carousel">
                 <button class="carousel__button carousel__button--left">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-
                 <div class="carousel__track-container">
                     <ul class="carousel__track">
                         <li class="carousel__slide">
@@ -47,9 +43,7 @@
                 </div>
             </div>
         </main>
-
         <%- include('./partials/footer') %>
-
     </body>
 </html>
 
