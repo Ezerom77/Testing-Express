@@ -45,7 +45,7 @@ const productController = {
 
 				fs.writeFileSync(productsFilePath, JSON.stringify(products,null,' '));
 
-				res.redirect('/');
+				res.redirect('/products');
 
 			},
 		detail: (req, res) => {
@@ -87,7 +87,7 @@ const productController = {
 
 		fs.writeFileSync(productsFilePath, JSON.stringify(products,null,' '));
 
-		res.redirect('/');
+		res.redirect('/products');
   //res.send('Llegue al controlador de update via PUT')
 
 	},
@@ -109,7 +109,7 @@ const productController = {
 
 		fs.writeFileSync(productsFilePath, JSON.stringify(Nproducts,null,' '));
 
-		res.redirect('/');
+		res.redirect('/products');
 	}
   
 };
