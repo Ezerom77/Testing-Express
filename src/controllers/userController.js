@@ -1,6 +1,7 @@
 // Requires
 const fs = require('fs');
 const path = require('path');
+const {validator} = require('express-validator'); 
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
@@ -23,8 +24,16 @@ let userController = {
     res.render('registro', { title: 'Registro' })
   },
   registered: (req, res) => {
-    res.send('Te registraste')
-  },
+    let errors = validations.req ;
+    if(errors.isEmpty()) {
+      let users = req.body
+      userId = UserModel.create(users)
+  } else {
+    res.render('registro', {errors : errors.array() , old: req.body})
+  }
+  
+}
+  ,
   carrito: (req, res) => {
     res.render('carrito', { title: 'Carrito de compras' });
   }

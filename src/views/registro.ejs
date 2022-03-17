@@ -15,9 +15,11 @@
         action="/users/registro"
         enctype="multipart/form-data"
       >
+      
         <h1 class="form-title h3 mb-3 fw-normal">
           Bienvenido/a!<br />Por favor registrate con tus datos:
         </h1>
+       
         <div class="form-floating">
           <input
             type="text"
@@ -27,6 +29,9 @@
             placeholder="Juan"
           />
           <label for="nombre">Nombre</label>
+          <% if(locals.errors && errors.userName){ %> 
+         <p class="errorText"> <%= errors.userName.msg  %> </p>
+         <% } %> 
         </div>
         <div class="form-floating">
           <input
@@ -37,6 +42,9 @@
             placeholder="Perez"
           />
           <label for="apellido">Apellido</label>
+          <% if(locals.errors && errors.userLastName){ %> 
+            <p class="errorText"> <%= errors.userLastName.msg  %> </p>
+            <% } %> 
         </div>
         <div class="form-floating">
           <input
@@ -47,6 +55,9 @@
             placeholder="name@example.com"
           />
           <label for="email">Correo electrónico</label>
+          <% if(locals.errors && errors.userEmail){ %> 
+            <p class="errorText"> <%= errors.userEmail.msg  %> </p>
+            <% } %> 
         </div>
         <div class="form-floating">
           <input
@@ -67,6 +78,9 @@
             placeholder="Contraseña"
           />
           <label for="password">Elegir contraseña</label>
+          <% if(locals.errors && errors.userPassword){ %> 
+            <p class="errorText"> <%= errors.userPassword.msg  %> </p>
+            <% } %> 
         </div>
         <div class="form-floating">
           <input
@@ -83,9 +97,13 @@
           <label>
             <input type="checkbox" value="acceptterms" name="userTermsAccept" />
             Acepto los <a href="#!">Términos y Condiciones</a>
+            <% if(locals.errors && errors.userTermsAccept){ %> 
+              <p class="errorText"> <%= errors.userTermsAccept.msg  %> </p>
+              <% } %> 
           </label>
         </div>
         <button class="btn-enviar w-100" type="submit">Registrarme</button>
+        <% } %> 
       </form>
     </main>
 
