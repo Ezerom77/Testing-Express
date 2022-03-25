@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const {validator} = require('express-validator'); 
+const bcrypt = require('bcryptjs')
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
@@ -23,7 +24,38 @@ let userController = {
   registro: (req, res) => {
     res.render('registro', { title: 'Registro' })
   },
-  registered: (req, res) => {
+  carrito: (req, res) => {
+    res.render('carrito', { title: 'Carrito de compras' });
+  }, 
+  store: (req, res) =>{
+    idNuevo=0;
+
+      for (let s of users){
+        if (idNuevo<s.id){
+          idNuevo=s.id;
+        }
+      }
+
+      idNuevo++;
+
+      let newUser =  {
+        id:   idNuevo,
+        first_name: req.body.userName ,
+        last_name: req.body.userLastName,
+        email: req.body.userEmail,
+        password: bcrypt.hashSync((req.body.userPassword), 10),
+        image: req.file.filename
+      };
+
+      users.push(newUser);
+
+      fs.writeFileSync(usersFilePath, JSON.stringify(users,null,' '));
+
+      res.render('login', { title: 'Login' });
+
+    }
+}
+ /* store: (req, res) => {
     let errors = validations.req ;
     if(errors.isEmpty()) {
       let users = req.body
@@ -32,12 +64,11 @@ let userController = {
     res.render('registro', {errors : errors.array() , old: req.body})
   }
   
-}
-  ,
-  carrito: (req, res) => {
-    res.render('carrito', { title: 'Carrito de compras' });
-  }
-}
+} */
+
+  
+ 
+
 
 // Exportar modulo
 module.exports = userController;

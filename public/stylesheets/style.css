@@ -427,7 +427,34 @@ a.logo{
 .form-control-file {
   margin-top: 5px;
 }
+.form-floating-img{
+  padding-top: -1px ;
+  position: relative; 
+  
+}
+.uploadFile {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 7px;
+  background-color: #ee964b;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  color: white;
+  
+}
 
+
+.form-floating-img  #profilePic {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 100%;
+  opacity: 0;
+}
 .btn-primary {
   cursor: pointer;
   -webkit-transition: all ease-in .3s;
