@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head') %>
+    </head>
+    <body>
+    <%- include('./partials/header') %>
+        <main>
+            <h3><%= title %></h3>
+            <div class="userList">
+                <div class="user">
+                    <P class="id">ID: <%=loggedUser.id%></P>
+                    <P>Nombre: <%=loggedUser.first_name%></P>
+                    <P>Apellidos: <%=loggedUser.last_name%></P>
+                    <P>email: <%=loggedUser.email%></P>
+                    <P>Contraseña: <%=loggedUser.password%></P>
+                    <P>Categoria: <%=loggedUser.category%></P>
+                    <P>Avatar: <%=loggedUser.image%></P>
+                </div>
+            </div>
+        </main>
+        <%- include('./partials/footer') %> 
+
+    </body>
+</html>
+

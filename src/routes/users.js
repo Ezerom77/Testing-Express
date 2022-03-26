@@ -5,6 +5,8 @@ var router = express.Router();
 const path  = require('path');
 const {body} = require('express-validator');
 const multer = require('multer');
+let guestMiddleware = require('../middlewares/guestMiddleware');
+let loggedMiddleware = require('../middlewares/loggedMiddleware');
 
 //configuracion de multer
 const storage = multer.diskStorage({
@@ -34,9 +36,10 @@ const uploadFile = multer({storage});
 
 // Routes
 router.get('/', userController.usuarios);
-router.get('/login',userController.login);
+router.get('/perfil', loggedMiddleware, userController.perfil);
+router.get('/login', guestMiddleware, userController.login);
 router.post('/login', userController.logged);
-router.get('/registro', userController.registro);
+router.get('/registro', guestMiddleware, userController.registro);
 router.post('/registro',  uploadFile.single('profilePic'), userController.store); 
 router.get('/carrito', userController.carrito);
 

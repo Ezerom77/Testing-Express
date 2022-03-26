@@ -13,7 +13,13 @@ let userController = {
     res.render("usersList", { title: "Todos los usuarios", users: users });
   },
   perfil: (req, res) => {
-    res.render("perfil", { title: "Editar Perfil" });
+    if(req.session.user) {
+      const loggedUser = req.session.user;
+      res.render("perfil", { title: "Perfil", loggedUser: loggedUser });
+    }
+    else {
+      res.redirect('/users/login');
+    }
   },
   login: (req, res) => {
     res.render("login", { title: "Login" });
@@ -24,7 +30,7 @@ let userController = {
         if (bcrypt.compareSync(req.body.password, users[i].password)) {
           req.session.user = users[i];
           console.log(req.session.user)
-          res.redirect("/users");
+          res.redirect("/users/perfil");
         } else {
           res.render("login", {
             title: "Login",
