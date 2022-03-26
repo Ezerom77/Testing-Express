@@ -3,7 +3,7 @@ let loggedMiddleware = (req, res, next) => {
         next();
     }
     else {
-        res.send("Debes estar logueado/a para acceder a esta página");
+        res.redirect('/users/login');
     }
 }
 

@@ -15,7 +15,7 @@ let userController = {
   perfil: (req, res) => {
     if(req.session.user) {
       const loggedUser = req.session.user;
-      res.render("perfil", { title: "Perfil", loggedUser: loggedUser });
+      res.render("perfil", { title: "Ya ingresaste! Éstos son tus datos:", loggedUser: loggedUser });
     }
     else {
       res.redirect('/users/login');

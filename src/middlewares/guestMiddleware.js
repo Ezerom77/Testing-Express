@@ -3,7 +3,7 @@ let guestMiddleware = (req, res, next) => {
         next();
     }
     else {
-        res.send("No puedes acceder a esta página porque ya estás logueado/a")
+        res.redirect('/users/perfil');
     }
 }
 
