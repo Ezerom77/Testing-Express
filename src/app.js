@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 
 
 var app = express();
@@ -22,8 +23,12 @@ const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
 app.use(logger('dev'));
-app.use(express.json());
+
+app.use(session({secret: 'ClessidraSecret!'}));
+
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './../public')));
 

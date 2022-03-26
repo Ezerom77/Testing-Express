@@ -1,50 +1,18 @@
 [
  {
   "id": 1,
-  "first_name": "Valentina",
-  "last_name": "De Sousa",
-  "email": "valentina0@clessidra.com",
-  "password": "UdwhxQ2",
-  "image": "user_1.jpg"
- },
- {
-  "id": 2,
-  "first_name": "Federico",
-  "last_name": "Alvarez",
-  "email": "federico@clessidra.com",
-  "password": "UfvZSeG",
-  "image": "user_2.jpg"
- },
- {
-  "id": 3,
-  "first_name": "Ezequiel",
-  "last_name": "Romera",
-  "email": "ezequiel@clessidra.com",
-  "password": "YrOsWZJ8cv",
-  "image": "user_3.jpg"
- },
- {
-  "id": 4,
-  "first_name": "Ariel",
-  "last_name": "Muslera",
-  "email": "ariel@clessidra.com",
-  "password": "OnkRpXY0MuI5",
-  "image": "user_4.jpg"
- },
- {
-  "id": 5,
-  "first_name": "mariana",
-  "last_name": "lombardi",
-  "email": "mlombardi@juju.com",
-  "password": "123456789",
-  "image": "1648238740746.jpg"
- },
- {
-  "id": 6,
   "first_name": "Mariana",
   "last_name": "lombardi",
   "email": "mlombardi@juju.com",
   "password": "$2a$10$EpQuyrfEtXJyG18Wm66kYOp1FiHpqw4U/EXQJv6/b5YDQyxbRGNwG",
   "image": "1648239913091.jpg"
+ },
+ {
+  "id": 2,
+  "first_name": "Eze",
+  "last_name": "Rom",
+  "email": "eze@ezerom.com.ar",
+  "password": "$2a$10$oKYcFuZg86IDz/Zk4TT/DeYjAsCjEFGK3N/LDT3dSbD.lSzrO70Re",
+  "image": "1648243528407.jpeg"
  }
 ]
