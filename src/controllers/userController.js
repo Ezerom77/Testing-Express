@@ -1,7 +1,7 @@
 // Requires
 const fs = require("fs");
 const path = require("path");
-const { validator } = require("express-validator");
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const usersFilePath = path.join(__dirname, "../data/users.json");
@@ -48,8 +48,35 @@ let userController = {
   },
   store: (req, res) => {
     idNuevo = 0;
-
-    for (let s of users) {
+    let errors = validationResult(req); 
+    if(errors.isEmpty()) { 
+      for (let s of users) {
+        if (idNuevo < s.id) {
+          idNuevo = s.id;
+        }
+      }
+  
+      idNuevo++;
+  
+      let newUser = {
+        id: idNuevo,
+        first_name: req.body.userName,
+        last_name: req.body.userLastName,
+        email: req.body.userEmail,
+        password: bcrypt.hashSync(req.body.userPassword, 10),
+        image: req.file.filename,
+      };
+  
+      users.push(newUser);
+  
+      fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
+  
+      res.render("login", { title: "Login" });
+    } else {
+    res.render("wrongForm")
+  }}
+};
+  /*  for (let s of users) {
       if (idNuevo < s.id) {
         idNuevo = s.id;
       }
@@ -82,7 +109,7 @@ let userController = {
     res.render('registro', {errors : errors.array() , old: req.body})
   }
   
-} */
+} */ 
 
 // Exportar modulo
-module.exports = userController;
+module.exports = userController ;

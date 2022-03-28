@@ -563,7 +563,13 @@ a.logo{
   margin: none;
 }
 
+.msgError {
+  text-align: center;
 
+}
+div .msgError {
+  padding: 20px;
+}
 
 
 /*////////////// DETALLE DE PRODUCTO /////////////*/
