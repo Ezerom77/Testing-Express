@@ -18,6 +18,9 @@
         <h1 class="form-title h3 mb-3 fw-normal">
           Bienvenido/a!<br />Por favor registrate con tus datos:
         </h1>
+        <p> Los campos con * son obligatorios.
+            La contraseña debe tener al menos 10 caracteres. 
+        </p>
         <div class="form-floating">
           <input
             type="text"
@@ -26,7 +29,7 @@
             name="userName"
             placeholder="Juan"
           />
-          <label for="nombre">Nombre</label>
+          <label for="nombre">Nombre *</label>
           
         </div>
         <div class="form-floating">
@@ -37,7 +40,7 @@
             name="userLastName"
             placeholder="Perez"
           />
-          <label for="apellido">Apellido</label>
+          <label for="apellido">Apellido *</label>
           
         </div>
         <div class="form-floating">
@@ -48,7 +51,7 @@
             name="userEmail"
             placeholder="name@example.com"
           />
-          <label for="email">Correo electrónico</label>
+          <label for="email">Correo electrónico *</label>
       
         </div>
         
@@ -60,12 +63,12 @@
             name="userPassword"
             placeholder="Contraseña"
           />
-          <label for="password">Elegir contraseña</label>
+          <label for="password">Elegir contraseña *</label> 
          
         </div>
         <br> 
         <div class="form-floating-img">
-         <label class="uploadFile" for="profilePic">Elegir foto de perfil</label> 
+         <label class="uploadFile" for="profilePic">Elegir foto de perfil *</label> 
           <input
             type="file" name="profilePic" id="profilePic"  accept=".jpg, .jpeg, .png"/>
           
@@ -74,7 +77,7 @@
         <div class="checkbox mb-3">
           <label>
             <input type="checkbox" value="acceptterms" name="userTermsAccept" />
-            Acepto los <a href="#!">Términos y Condiciones</a>
+            Acepto los <a href="#!">Términos y Condiciones *</a>
                
               
           </label>

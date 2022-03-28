@@ -38,5 +38,13 @@
   "email": "marcelomou@hotmail.com",
   "password": "$2a$10$P6z5Zrvw8rXKq6pErkhsKOpKaV02g9Ojkft29uv0hPMcsovMB.Cz.",
   "image": "1648491431705.jpg"
+ },
+ {
+  "id": 6,
+  "first_name": "Lola",
+  "last_name": "terra",
+  "email": "lola2109@gmail.com",
+  "password": "$2a$10$3/fbUf.azcD0XwoRweoFbunjtRbT50G04ywxR4SHBocHMHpBaFQlq",
+  "image": "1648498689750.jpg"
  }
 ]
