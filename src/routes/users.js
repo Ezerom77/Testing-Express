@@ -40,7 +40,7 @@ router.get('/perfil', loggedMiddleware, userController.perfil);
 router.get('/login', guestMiddleware, userController.login);
 router.post('/login', userController.logged);
 router.get('/registro', guestMiddleware, userController.registro);
-router.post('/registro', uploadFile.single('profilePic'), validations , userController.store); 
+router.post('/registro', uploadFile.single('profilePic'), validations , userController.store);
 router.get('/carrito', userController.carrito);
 
 

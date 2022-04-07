@@ -1,11 +1,12 @@
 // Requires
-const fs = require("fs");
+// const fs = require("fs");
+const db = require("../../models");
 const path = require("path");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
-const usersFilePath = path.join(__dirname, "../data/users.json");
-const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
+// const usersFilePath = path.join(__dirname, "../data/users.json");
+// const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
 
 // Controladores
 let userController = {
@@ -24,12 +25,26 @@ let userController = {
   login: (req, res) => {
     res.render("login", { title: "Login" });
   },
+
+  -const project = await Project.findOne({ where: { title: 'My Title' } });
+  if (project === null) {
+    console.log('Not found!');
+  } else {
+    console.log(project instanceof Project); // true
+    console.log(project.title); // 'My Title'
+
+
   logged: (req, res) => {
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].email == req.body.email) {
-        if (bcrypt.compareSync(req.body.password, users[i].password)) {
-          req.session.user = users[i];
-          console.log(req.session.user)
+    // for (let i = 0; i < users.length; i++) {
+      // if (users[i].email == req.body.email) {
+   let userToLogin = db.Users.findOne({
+      where: {email: req.body.email}
+   })
+   console.log(userToLogin);
+   if (userToLogin) {
+      if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
+          // req.session.user = users[i];
+          // console.log(req.session.user)
           res.redirect("/users/perfil");
         } else {
           res.render("login", {
@@ -37,8 +52,10 @@ let userController = {
             error: "Contraseña incorrecta",
           });
         }
+      } else {
+        res.send("Usuario no encontrado");
       }
-    }
+    
   },
   registro: (req, res) => {
     res.render("registro", { title: "Registro" });
@@ -47,29 +64,30 @@ let userController = {
     res.render("carrito", { title: "Carrito de compras" });
   },
   store: (req, res) => {
-    idNuevo = 0;
+    // idNuevo = 0;
     let errors = validationResult(req); 
     if(errors.isEmpty()) { 
-      for (let s of users) {
-        if (idNuevo < s.id) {
-          idNuevo = s.id;
-        }
-      }
+      // for (let s of users) {
+      //   if (idNuevo < s.id) {
+      //     idNuevo = s.id;
+      //   }
+      // }
   
-      idNuevo++;
+      // idNuevo++;
   
       let newUser = {
-        id: idNuevo,
-        first_name: req.body.userName,
-        last_name: req.body.userLastName,
+        // id: idNuevo,
+        nombre: req.body.userName,
+        apellido: req.body.userLastName,
         email: req.body.userEmail,
         password: bcrypt.hashSync(req.body.userPassword, 10),
-        image: req.file.filename,
+        avatar: req.file.filename,
+        fecha_creacion: new Date()
       };
   
-      users.push(newUser);
+      db.Users.create(newUser);
   
-      fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
+      // fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
   
       res.render("login", { title: "Login" });
     } else {
