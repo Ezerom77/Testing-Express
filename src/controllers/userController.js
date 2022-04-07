@@ -26,14 +26,6 @@ let userController = {
     res.render("login", { title: "Login" });
   },
 
-  -const project = await Project.findOne({ where: { title: 'My Title' } });
-  if (project === null) {
-    console.log('Not found!');
-  } else {
-    console.log(project instanceof Project); // true
-    console.log(project.title); // 'My Title'
-
-
   logged: (req, res) => {
     // for (let i = 0; i < users.length; i++) {
       // if (users[i].email == req.body.email) {
