@@ -42,6 +42,7 @@ router.post('/login', userController.logged);
 router.get('/registro', guestMiddleware, userController.registro);
 router.post('/registro', uploadFile.single('profilePic'), validations , userController.store);
 router.get('/carrito', userController.carrito);
+router.post('/logout', userController.logOut)
 
 
 // Module export

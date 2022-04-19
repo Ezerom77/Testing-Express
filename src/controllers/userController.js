@@ -1,18 +1,19 @@
 // Requires
-// const fs = require("fs");
+
 const db = require("../../models");
 const path = require("path");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
-// const usersFilePath = path.join(__dirname, "../data/users.json");
-// const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
-
 // Controladores
 let userController = {
   usuarios: (req, res) => {
-    res.render("usersList", { title: "Todos los usuarios", users: users });
+    db.Users.findAll()
+    .then((users) => {
+      res.render("usersList", { title: "Todos los usuarios", users: users });
+    })
   },
+
   perfil: (req, res) => {
     if(req.session.user) {
       const loggedUser = req.session.user;
@@ -27,16 +28,18 @@ let userController = {
   },
 
   logged: (req, res) => {
-    // for (let i = 0; i < users.length; i++) {
-      // if (users[i].email == req.body.email) {
-   let userToLogin = db.Users.findOne({
-      where: {email: req.body.email}
-   })
-   console.log(userToLogin);
-   if (userToLogin) {
-      if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
-          // req.session.user = users[i];
-          // console.log(req.session.user)
+    db.Users.findOne({
+      where: { email: req.body.email },
+    }).then((users) => {
+      if (users) {
+        if (bcrypt.compareSync(req.body.password, users.password)) {
+          req.session.user = users;
+          // cookies
+          if (req.body.recordame != undefined) {
+            res.cookie("recordame",
+            users.email,
+            { maxAge: 60000 });
+          } 
           res.redirect("/users/perfil");
         } else {
           res.render("login", {
@@ -45,10 +48,17 @@ let userController = {
           });
         }
       } else {
-        res.send("Usuario no encontrado");
+        res.render("login", {
+          title: "Login",
+          error: "Credenciales invalidas",
+        });
       }
-    
+    });
   },
+      
+    
+  
+  
   registro: (req, res) => {
     res.render("registro", { title: "Registro" });
   },
@@ -56,19 +66,11 @@ let userController = {
     res.render("carrito", { title: "Carrito de compras" });
   },
   store: (req, res) => {
-    // idNuevo = 0;
     let errors = validationResult(req); 
     if(errors.isEmpty()) { 
-      // for (let s of users) {
-      //   if (idNuevo < s.id) {
-      //     idNuevo = s.id;
-      //   }
-      // }
-  
-      // idNuevo++;
-  
+
       let newUser = {
-        // id: idNuevo,
+        
         nombre: req.body.userName,
         apellido: req.body.userLastName,
         email: req.body.userEmail,
@@ -79,47 +81,21 @@ let userController = {
   
       db.Users.create(newUser);
   
-      // fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
-  
       res.render("login", { title: "Login" });
     } else {
     res.render("wrongForm")
-  }}
-};
-  /*  for (let s of users) {
-      if (idNuevo < s.id) {
-        idNuevo = s.id;
-      }
-    }
-
-    idNuevo++;
-
-    let newUser = {
-      id: idNuevo,
-      first_name: req.body.userName,
-      last_name: req.body.userLastName,
-      email: req.body.userEmail,
-      password: bcrypt.hashSync(req.body.userPassword, 10),
-      image: req.file.filename,
-    };
-
-    users.push(newUser);
-
-    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
-
-    res.render("login", { title: "Login" });
-  },
-};
-/* store: (req, res) => {
-    let errors = validations.req ;
-    if(errors.isEmpty()) {
-      let users = req.body
-      userId = UserModel.create(users)
-  } else {
-    res.render('registro', {errors : errors.array() , old: req.body})
+  }}, 
+  logOut: function(req, res){
+    req.session.destroy(); 
+    res.clearCookie('recordame'); 
+    res.redirect('/users/login')
   }
+};
+
+ 
   
-} */ 
+
+ 
 
 // Exportar modulo
 module.exports = userController ;
