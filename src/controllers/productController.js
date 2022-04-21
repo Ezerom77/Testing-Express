@@ -1,23 +1,54 @@
 // Requires
 const fs = require('fs');
 const path = require('path');
-
-const productsFilePath = path.join(__dirname, '../data/products.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
-
+const db = require('../../models');
 
 
 // Controllers
 const productController = {
-  list: (req, res) => {
-    res.render('productList', {title: 'Todos los productos', products: products});
-  },
-  add: (req, res) => {
-    res.render('productCreate', {title: 'Crear Producto Nuevo'});
-  },
-		store: (req, res) =>{
-			idNuevo=0;
+  	list: (req, res) => {
+		db.Products.findAll({
+		include: [
+			{association: 'color'},
+			{association: 'talle'}
+//			{association: 'categoria'},
+//			{association: 'productoCategoria'},
+		]})
+		.then(products => {
+		res.render('productList', {title: 'Listado de productos', products});
+		})
+	},
+
+  	add: (req, res) => {
+		db.Colores.findAll()
+		.then(colores => {
+			db.Talles.findAll()
+			.then(talles => {
+				db.Categorias.findAll()
+				.then(categorias => {
+					res.render('productCreate', {title: 'Crear producto nuevo', colores, talles, categorias});
+				});
+			});
+		});
+	},
+
+	// LLEGAMOS HASTA ACA - 20 DE ABRIL
+	store: (req, res) =>{
+		let nombreImagen = req.file.filename;
+		let productoNuevo =  {
+			id:   idNuevo,
+			nombre: req.body.productName,
+			descripcion: req.body.productDescription,
+			//categorias: req.body.categorias,
+			precio: req.body.productPrice,
+			color: req.body.color,
+			talle: req.body.talle,
+			imagen: nombreImagen
+		};
+	
+	
+	
+				idNuevo=0;
 
 				for (let s of products){
 					if (idNuevo<s.id){
@@ -27,19 +58,8 @@ const productController = {
 
 				idNuevo++;
 
-				let nombreImagen = req.file.filename;
 
-				let productoNuevo =  {
-					id:   idNuevo,
-					name: req.body.productName ,
-					description: req.body.productDescription,
-					categories: req.body.categorias,
-					price: req.body.productPrice,
-					color: req.body.color,
-					talle: req.body.talle,
-					stock: req.body.productStock,
-					image: nombreImagen
-				};
+				
 
 				products.push(productoNuevo);
 

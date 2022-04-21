@@ -15,12 +15,13 @@
                         <ul class="carousel__track">
                             <li class="carousel__slide">
                                 <a href="/products/detail/<%=products[i].id%>">
-                                <img class="carousel__image" src="/images/products/<%=products[i].image%>" alt="">
+                                <img class="carousel__image" src="/images/products/<%=products[i].imagen%>" alt="">
                                 <ul class="product-detail">
-                                    <li><%=products[i].name%></li>
-                                    <li>AR$ <%=products[i].price%></li>
-                                    <li>Stock: <%=products[i].stock%></li>
-                                    <li>Tiempo restante: 04:12:07</li>
+                                    <li><%=products[i].nombre%></li>
+                                    <li>AR$ <%=products[i].precio%></li>
+                                    <li>Color: <%=products[i].color.descripcion%></li>
+                                    <li>Talle: <%=products[i].talle.descripcion%></li>
+                                    <li>Descripción: <%=products[i].descripcion%></li>
                                 </ul>
                                 </a>
                                 <a href="/users/carrito"><i class="far fa-thumbs-up"></i></a>
