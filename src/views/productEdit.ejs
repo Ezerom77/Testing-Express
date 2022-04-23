@@ -7,15 +7,15 @@
 <body>
   <%- include('./partials/header') %>
   <main class="form-signin">
-    <h1 class="form-title h3 mb-3 fw-normal">Estás editando:<br><i><%=ProductoaEditar.name %></i></h1>
+    <h1 class="form-title h3 mb-3 fw-normal">Estás editando:<br><i><%=ProductoaEditar.nombre %></i></h1>
     <form method="post" action="/products/edit/<%=ProductoaEditar.id%>?_method=PUT" >
       <div class="form-group">
         <label for="productName">Nombre de producto</label>
-        <input value="<%=ProductoaEditar.name %>" type="text" class="form-control" id="productName" name="productName" >
+        <input value="<%=ProductoaEditar.nombre %>" type="text" class="form-control" id="productName" name="productName" >
       </div>
       <div class="form-group">
         <label for="productDescription">Descripción del producto</label>
-        <input type="textarea" value="<%=ProductoaEditar.description %>" class="form-control" id="productDescription" name="productDescription" rows="3"></input>
+        <input type="textarea" value="<%=ProductoaEditar.descripcion %>" class="form-control" id="productDescription" name="productDescription" rows="3"></input>
       </div>
       <div class="form-group">
         <label for="Categorias">Categorías de productos</label>
@@ -36,45 +36,31 @@
       </div>
       <div class="form-group">
         <label for="talle">Seleccionar Talle</label>
-        <select class="form-select" id="talle" name="talle">
-            <%
-            let talles = ["XS", "S", "M", "L","XL","XXL" ,"38"];
-            for ( let i = 0; i < talles.length; i++ )
-            {
-                let isSelected = ( ProductoaEditar.talle == talles[i] ) ? "selected" : "";
-            %> 
-                <option value="<%=talles[i]%>" <%=isSelected %>>
-                    <%= talles[i] %>
-                </option>
-            <%
-            }
-            %>
+        <select class="form-select" name="talle" id="talle">
+          <% for( let i = 0; i < talles.length; i++ ) { %>
+            <%if ( talles[i].id == ProductoaEditar.id_talle) { %>
+              <option value="<%= talles[i].id %>" selected><%= talles[i].descripcion %></option>
+              <% } else { %>
+                <option value="<%= talles[i].id %>"><%= talles[i].descripcion %></option>
+                <% } %>
+          <% } %>
         </select>
       </div>
       <div class="form-group">
         <label for="color">Colores disponibles</label>
         <select class="form-select" id="color" name="color">
-          <%
-            let colores = ["Negro", "Blanco", "Azul", "Verde","Marron","Rojo","Bordo"];
-            for ( let i = 0; i < colores.length; i++ )
-            {
-                let isSelected = ( ProductoaEditar.color == colores[i] ) ? "selected" : "";
-            %>
-                <option value="<%=colores[i]%>" <%=isSelected %>>
-                    <%= colores[i] %>
-                </option>
-            <%
-            }
-            %>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="productStock">Stock disponible (unidades)</label>
-        <input value="<%=ProductoaEditar.stock %>"type="number" class="form-control" id="productStock" name="productStock">
+          <%for ( let i = 0; i < colores.length; i++ ) { %>
+            <%if ( colores[i].id == ProductoaEditar.id_color) { %>
+              <option value="<%= colores[i].id %>" selected><%= colores[i].descripcion   %></option>
+              <% } else { %>
+                <option value="<%= colores[i].id %>"><%= colores[i].descripcion   %></option>
+                <% } %>
+          <% } %>
+          </select>
       </div>
       <div class="form-group">
         <label for="productPrice">Precio de venta $</label>
-        <input value="<%=ProductoaEditar.price %>" type="number" class="form-control" id="productPrice" name="productPrice" >
+        <input value="<%=ProductoaEditar.precio %>" type="number" class="form-control" id="productPrice" name="productPrice" >
       </div>
        <div class="form-group">
         <label for="productImage">Imagen del producto</label>

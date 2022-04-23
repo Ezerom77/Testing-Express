@@ -12,21 +12,21 @@
             <div class="detail-left-side">
               <!-- breadcrums -->
               <div class="woman">
-                <h5><%= productDetail.categories %></h5>
+                <h5><%= productDetail.categorias %></h5>
                 <i class="fa fa-angle-right"></i>
-                <p><%=productDetail.name%></p>
+                <p><%=productDetail.nombre%></p>
               </div>
               <div class="images">
                 <div class="img_girl_left">
                   <i class="fa fa-angle-up"></i>
                   <!-- Imagenes secundarias -->
-                  <span><img src="/images/products/<%=productDetail.image%>" /></span>
-                  <span><img src="/images/products/<%=productDetail.image%>" /></span>
-                  <span><img src="/images/products/<%=productDetail.image%>" /></span>
+                  <span><img src="/images/products/<%=productDetail.imagen%>" /></span>
+                  <span><img src="/images/products/<%=productDetail.imagen%>" /></span>
+                  <span><img src="/images/products/<%=productDetail.imagen%>" /></span>
                   <i class="fa fa-angle-down"></i>
                 </div>
                 <!-- Imagen principal -->
-                <span><img src="/images/products/<%=productDetail.image%>" /></span>
+                <span><img src="/images/products/<%=productDetail.imagen%>" /></span>
               </div>
             </div>
             <div class="detail-right-side">
@@ -35,14 +35,14 @@
                 <small>2 of 10</small>
                 <span>Sig<i class="fa fa-angle-right"></i></span>
               </div>
-              <h3><%=productDetail.name%></h3>
-              <h4>AR$ <%=productDetail.price%></h4>
+              <h3><%=productDetail.nombre%></h3>
+              <h4>AR$ <%=productDetail.precio%></h4>
               <div class="designer">
                 <h5>Vendedor: Mademoiselle Tambour</h5>
               </div>
               
               <div class="designer">
-                <h5>Color: <%=productDetail.color%></h5>
+                <h5>Color: <%=productDetail.color.descripcion%></h5>
               </div>
               <div class="color">
                 <span></span>
@@ -52,7 +52,7 @@
               <div class="options">
                 <div class="size">
                   <select>
-                    <option><%="Talle: "+productDetail.talle%></option>
+                    <option><%="Talle: "+productDetail.talle.descripcion%></option>
                     <!-- <option>Talle : M</option>
                     <option>Talle : L</option>
                     <option>Talle : XL</option> -->
@@ -74,7 +74,7 @@
               <div class="description">
                 <h4>Descripción</h4>
                 <p>
-                  <%=productDetail.description%>
+                  <%=productDetail.descripcion%>
                 </p>
                 <!-- <ul class="features">
                   <li>Rem voluptate</li>

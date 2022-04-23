@@ -1,4 +1,5 @@
 // Requires
+const { promiseImpl } = require('ejs');
 const fs = require('fs');
 const path = require('path');
 const db = require('../../models');
@@ -20,120 +21,99 @@ const productController = {
 	},
 
   	add: (req, res) => {
-		db.Colores.findAll()
-		.then(colores => {
-			db.Talles.findAll()
-			.then(talles => {
-				db.Categorias.findAll()
-				.then(categorias => {
-					res.render('productCreate', {title: 'Crear producto nuevo', colores, talles, categorias});
-				});
-			});
-		});
+		let colores = db.Colores.findAll();
+		let talles = db.Talles.findAll();
+		let categorias = db.Categorias.findAll();
+
+		Promise.all([colores, talles, categorias])
+		.then (function([colores, talles, categorias]) {
+			res.render('productCreate', {title: 'Crear producto nuevo', colores: colores, talles: talles, categorias: categorias});
+		})
 	},
 
-	// LLEGAMOS HASTA ACA - 20 DE ABRIL
-	store: (req, res) =>{
-		let nombreImagen = req.file.filename;
+	store: async (req, res) =>{
+
 		let productoNuevo =  {
-			id:   idNuevo,
 			nombre: req.body.productName,
 			descripcion: req.body.productDescription,
-			//categorias: req.body.categorias,
 			precio: req.body.productPrice,
-			color: req.body.color,
-			talle: req.body.talle,
-			imagen: nombreImagen
+			id_color: req.body.color,
+			id_talle: req.body.talle,
+			imagen: req.file.filename
 		};
-	
-	
-	
-				idNuevo=0;
+		let x = await db.Products.create(productoNuevo);
+		
+		let idP = x.dataValues.id;
 
-				for (let s of products){
-					if (idNuevo<s.id){
-						idNuevo=s.id;
-					}
-				}
-
-				idNuevo++;
-
-
-				
-
-				products.push(productoNuevo);
-
-				fs.writeFileSync(productsFilePath, JSON.stringify(products,null,' '));
-
-				res.redirect('/products');
-
-			},
-		detail: (req, res) => {
-			let productoSeleccionado = null;
-			for (i=0;i<products.length;i++) {
-			if(req.params.id == products[i].id) {
-			productoSeleccionado = products[i];
-					}
-				}
-				res.render('productDetail', {title: 'Detalle de producto', productDetail: productoSeleccionado});
-		},
-		edit: (req, res) => {
-      let id = req.params.id;
-      let productoEncontrado = null;
-      for (let s of products){
-        if (id==s.id){
-          productoEncontrado=s;
-        }
-      };
-      res.render('productEdit',{title: 'Editar Producto', ProductoaEditar: productoEncontrado});
-    },
-  update: (req, res) =>{
-    let id = req.params.id;
-
-		for (let s of products){
-			if (id==s.id){
-			s.name = req.body.productName;
-			s.description = req.body.productDescription;
-			s.categories = req.body.categorias;
-			s.price = req.body.productPrice;
-      		s.color = req.body.color;
-      		s.talle = req.body.talle;
-      		s.stock = req.body.productStock;
-			//s.image = req.file.filename;
-      // no se si se puede actualizar la imagen asi porque deberia uploadear via multer!
-      break;
-			}
+		for (let i = 0; i < req.body.categorias.length; i++) {
+			let objeto = {
+				id_Producto: idP,
+				id_Categoria: req.body.categorias[i]
+			};
+			await db.Producto_Categoria.create(objeto);
 		};
-
-		fs.writeFileSync(productsFilePath, JSON.stringify(products,null,' '));
-
 		res.redirect('/products');
-  //res.send('Llegue al controlador de update via PUT')
-
 	},
-  delete: (req, res) => {
-    let id = req.params.id;
-		let ProductoEncontrado=null;
 
-		let Nproducts = products.filter(function(e){
-			return id!=e.id;
+	detail: (req, res) => {
+		db.Products.findByPk(req.params.id, {
+			include: [
+				{association: 'color'},
+				{association: 'talle'}
+	// DEFINIR COMO ARREGLAR LAS MULTIPLES CATEGORIAS			{association: 'categoria'}
+			],
 		})
+		.then(producto => {
+			res.render('productDetail', {title: 'Detalle del producto', productDetail: producto});
+		})
+	},
 
-		for (let producto of products){
-			if (producto.id == id){
-			    ProductoEncontrado=producto;
+	edit: (req, res) => {
+		let pedidoProducto = db.Products.findByPk(req.params.id)
+		let pedidoTalles = db.Talles.findAll()
+		let pedidoColores = db.Colores.findAll()
+	//	let pedidoCategorias = db.Categorias.findAll()
+
+		Promise.all([pedidoProducto, pedidoTalles, pedidoColores])
+		.then(function([ProductoaEditar, talles, colores]) {
+			res.render('productEdit', {title: 'Editar producto', ProductoaEditar: ProductoaEditar, talles: talles, colores: colores});
+		}) 
+    },
+
+  	update: async (req, res) =>{
+    	let productoEditado = {
+			nombre: req.body.productName,
+			descripcion: req.body.productDescription,
+			precio: req.body.productPrice,
+			id_color: req.body.color,
+			id_talle: req.body.talle,
+		};
+		await db.Products.update(productoEditado, {
+			where: {
+				id: req.params.id
 			}
-		}
+			})
+		res.redirect('/products/detail/' + req.params.id); 	
+	},
 
-		fs.unlinkSync(path.join(__dirname, '../../public/images/products/', ProductoEncontrado.image));
-
-		fs.writeFileSync(productsFilePath, JSON.stringify(Nproducts,null,' '));
-
-		res.redirect('/products');
-	}
-  
-};
-
+	delete: (req, res) => {
+		db.Products.findByPk(req.params.id)
+			.then(function (producto) {
+				fs.unlinkSync(
+					  path.join(__dirname, "../../public/images/products/", producto.imagen)
+					);
+				  })
+			.then(db.Producto_Categoria.destroy({
+				where: {
+					id_Producto: req.params.id
+				}}))
+			.then(db.Products.destroy({
+				where: { id: req.params.id },
+					})
+				  );
+				res.redirect("/products");
+	},
+}
 
 // Module export
 module.exports = productController;

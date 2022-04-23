@@ -39,7 +39,7 @@ module.exports = (sequelize, dataTypes) => {
         allowNull: true,
       },
       imagen: {
-        type: dataTypes.STRING(50),
+        type: dataTypes.STRING(150),
       }
     };
     let config = {
