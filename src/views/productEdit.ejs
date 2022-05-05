@@ -11,7 +11,7 @@
     <form method="post" action="/products/edit/<%=ProductoaEditar.id%>?_method=PUT" >
       <div class="form-group">
         <label for="productName">Nombre de producto</label>
-        <input value="<%=ProductoaEditar.nombre %>" type="text" class="form-control" id="productName" name="productName" >
+        <input value="<%=ProductoaEditar.nombre%>" type="text" class="form-control" id="productName" name="productName" >
       </div>
       <div class="form-group">
         <label for="productDescription">Descripción del producto</label>
@@ -58,6 +58,7 @@
           <% } %>
           </select>
       </div>
+
       <div class="form-group">
         <label for="productPrice">Precio de venta $</label>
         <input value="<%=ProductoaEditar.precio %>" type="number" class="form-control" id="productPrice" name="productPrice" >
@@ -69,10 +70,10 @@
       <br>
       <button class="btn-enviar w-100 " type="submit">Actualizar</button>
     </form>
-    <form method="post" action="/products/edit/<%=ProductoaEditar.id%>?_method=DELETE" >      
+    <form method="post" action="/products/edit/<%=ProductoaEditar.id%>?_method=DELETE" >
     <button class="btn-borrar w-100 " type="submit">Eliminar</button>
     </form>
-  </main> 
+  </main>
 
 <%- include('./partials/footer') %>
 </body>

@@ -6,12 +6,12 @@
 
 <body>
   <%- include('./partials/header') %>
-  <main class="form-signin">  
+  <main class="form-signin">
     <div>
       <a class="logo" href="/">CLESSIDRA</a>
     </div>
     <form method="post" action="/users/login" enctype="application/json">
-      <h1 class="form-title h3 mb-3 fw-normal">Bienvenido/a!<br>Por favor ingresá tus datos:</h1>    
+      <h1 class="form-title h3 mb-3 fw-normal">Bienvenido/a!<br>Por favor ingresá tus datos:</h1>
       <div class="form-floating">
         <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
         <label for="email">Correo electrónico</label>
@@ -23,12 +23,12 @@
       <br>
       <div class="checkbox mb-3">
         <label>
-        <input type="checkbox" value="remember-me"> Recordarme
+        <input type="checkbox" value="remember-me" name='recordame' > Recordarme
         </label>
       </div>
       <button class="btn-enviar w-100" type="submit">Entrar</button>
     </form>
-    <!-- <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>     
+    <!-- <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <div class="or-container">
       <div class="line-separator text-secondary"></div>
       <div class="or-label">o</div>
@@ -39,7 +39,7 @@
     </div>
       <br>
     <div class="form-floating">
-      <button type="button" class="btn-outline-secondary facebook-btn"> <img src="https://img.icons8.com/fluency/48/000000/facebook-new.png"> Entrar con Facebook</button>       
+      <button type="button" class="btn-outline-secondary facebook-btn"> <img src="https://img.icons8.com/fluency/48/000000/facebook-new.png"> Entrar con Facebook</button>
     </div>  -->
     <br>
     <p class="text-inverse text-center">No tenés cuenta aún? <a href="/users/registro" data-abc="true">Registrate</a></p>

@@ -1,22 +1,22 @@
 module.exports = (sequelize, dataTypes) => {
-  let alias = "imagenProducto";
+  let alias = "Producto_Categoria";
   let cols = {
     id: {
       type: dataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    nombreArchivo: {
-      type: dataTypes.STRING(45),
-    },
     id_Producto: {
+      type: dataTypes.INTEGER,
+     },
+    id_Categoria: {
       type: dataTypes.INTEGER,
     }
   };
   let config = {
-    tableName: "imagenProducto",
+    tableName: "Producto_Categoria",
     timestamps: false,
   };
-  const imagenProducto = sequelize.define(alias, cols, config);
-  return imagenProducto;
+  const Producto_Categoria = sequelize.define(alias, cols, config);
+  return Producto_Categoria;
 };

@@ -3,12 +3,10 @@
     <head>
         <%- include('./partials/head') %>
     </head>
-    
     <body>
     <%- include('./partials/header') %>
         <main class="main">
             <h3 class="title"><%= title %></h3>
-            
             <% for(i=0;i<products.length;i++) { %>
                 <div class="carousel">
                     <div class="carousel__track-container">
@@ -19,8 +17,8 @@
                                 <ul class="product-detail">
                                     <li><%=products[i].nombre%></li>
                                     <li>AR$ <%=products[i].precio%></li>
-                                    <li>Color: <%=products[i].color.descripcion%></li>
                                     <li>Talle: <%=products[i].talle.descripcion%></li>
+                                    <li>Color: <%=products[i].color.descripcion%></li>
                                     <li>Descripción: <%=products[i].descripcion%></li>
                                 </ul>
                                 </a>

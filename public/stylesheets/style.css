@@ -521,7 +521,18 @@ a.logo{
   background-color: orangered;
   margin-top: 10px;
 }
-.btn-borrar:hover{
+.btn-editar{
+  width: 50px;
+  height: 40px;
+  border: 1px solid #ee964b;
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0s;
+  background-color: rgb(0, 0, 255);
+  margin-top: 10px;
+}
+.btn-borrar:hover, .btn-editar:hover{
   background-color: #000000;
 
 }
@@ -1206,11 +1217,15 @@ div.user {
   border: solid 2px black;
   padding: 5px;
   margin: 20px;
+  align-items: center;
 }
 p.id {
   font-weight: bold;
   font-size: 1.5rem;
 }
+ div.user img {
+   width: 100%;
+ }
 
 
 
