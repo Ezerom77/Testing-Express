@@ -9,7 +9,6 @@ const productController = {
       include: [{ association: "color" }, { association: "talle" }],
     }).then(function (products) {
       res.render("productList", {
-        title: "Todos los productos",
         products: products,
       });
     });
@@ -19,7 +18,6 @@ const productController = {
       db.Talles.findAll().then(function (talles) {
         db.Categorias.findAll().then(function (categorias) {
           res.render("productCreate", {
-            title: "Crear Producto Nuevo",
             colores: colores,
             talles: talles,
             categorias: categorias,
@@ -53,7 +51,6 @@ const productController = {
       include: [{ association: "color" }, { association: "talle" }],
     }).then(function (producto) {
       res.render("productDetail", {
-        title: "Detalle de producto",
         productDetail: producto,
       });
     });
@@ -70,7 +67,6 @@ const productController = {
       colores,
     ]) {
       res.render("productEdit", {
-        title: "Editar Producto",
         ProductoaEditar: ProductoaEditar,
         talles: talles,
         colores: colores,

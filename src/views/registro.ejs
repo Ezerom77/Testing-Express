@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <%- include('./partials/head') %>
+    <title>Registro</title>
   </head>
 
   <body>
@@ -21,6 +22,13 @@
         <p> Los campos con * son obligatorios.
             La contraseña debe tener al menos 10 caracteres. 
         </p>
+        <div class="errorBox">
+        <% if(locals.errors && errors) {  %>
+           <% for(let oneError in errors) {  %>
+            <p> <%= errors[oneError].msg %></p>
+        <%  } %> 
+          <% } %>
+        </div>
         <div class="form-floating">
           <input
             type="text"

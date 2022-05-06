@@ -326,6 +326,10 @@ li.carousel__slide i.fa-thumbs-down:hover {
 
 }
 
+.errorBox{
+  color: red
+
+}
 
 main div a.logo:hover {
   color: #d65780;
