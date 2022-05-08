@@ -8,7 +8,7 @@ const productController = {
     db.Products.findAll({
       include: [{ association: "color" }, { association: "talle" }],
     }).then(function (products) {
-      res.render("productList", {
+      res.render("productList", {title: 'Todos los productos',
         products: products,
       });
     });
