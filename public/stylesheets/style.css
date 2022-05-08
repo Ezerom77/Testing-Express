@@ -325,10 +325,27 @@ li.carousel__slide i.fa-thumbs-down:hover {
   margin: auto;
 
 }
-
+div .errorBox {
+  display: flex;
+  position: absolute;
+  border: 1px black;
+  
+  
+  
+}
 .errorBox{
-  color: red
-
+  color: red;
+  border:rgb(0, 0, 0) 1px ; 
+  display: inline-flex;
+  flex-flow: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 13px;
+}
+.errorBox ul.errorList {
+  margin: 5px;
+  padding: 5px;
 }
 
 main div a.logo:hover {
@@ -387,23 +404,23 @@ a.logo{
 }
 
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
+ 
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
 .form-signin input[type="password"] {
-  margin-bottom: -1px;
+  
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
 .form-signin input[type="text"] {
-  margin-bottom: -1px;
+  
   border-top-left-radius: 5;
   border-top-right-radius: 5;
   border: 1px solid #ccc;
-  padding-left: 12px;
+ 
 
 }
 
@@ -415,13 +432,13 @@ a.logo{
 
 .form-material .form-control {
   display: inline-block;
-  height: 43px;
+  height: 23px;
   width: 100%;
   border: 1px;
   border-radius: 0;
   font-size: 16px;
   font-weight: 400;
-  padding: 9px;
+  
   background-color: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
