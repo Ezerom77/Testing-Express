@@ -10,13 +10,11 @@ window.addEventListener('load', function() {
     let emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ;
 
     
-      
-    
     formulario.addEventListener('submit', function(e){
         let errors = [];
         if(campoName.value == ""){
             errors.push("Debes completar tu nombre")
-            
+        }    
         if(campoApellido.value == ""){
             errors.push("Debes completar tu apellido")
            
@@ -39,17 +37,15 @@ window.addEventListener('load', function() {
             errors.push("Debes aceptar los términos y condiciones para continuar")
             
         }
-        let ulErrores = document.querySelector('div.errorBox');
+        let ulErrores = document.querySelector('div.errorBox ul');
         if(errors.length > 0){
             e.preventDefault()
-            for(let i = 0 ; i<errors.length ; i++){
-                ulErrores.innerHTML += "<p>"+errors[i] + "</p>"
+            for(let i = 0 ; i < errors.length ; i++){
+                ulErrores.innerHTML += "<li>"+ errors[i] + "</li>"
             }
         } 
 
-    }
-
-
     })
 
-})
+
+});
