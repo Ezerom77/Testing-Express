@@ -25,9 +25,9 @@ const uploadFile = multer({storage});
 const validations = [
     body('userName').notEmpty().withMessage("Debes completar tu nombre"),
     body('userLastName').notEmpty().withMessage("Debes completar tu apellido"),
-    body('userEmail').isEmail().withMessage("Debes ingresar un email valido"),
-    body('userPassword').isLength({min: 10}).withMessage('La contraseña debe ser al menos de 10 caracteres'),
-    body('userTermsAccept').notEmpty().withMessage("Debes aceptar los terminos y condiciones para continuar")
+    body('userEmail').isEmail().withMessage("Debes ingresar un email válido"),
+    body('userPassword').isLength({min: 10}).withMessage('La contraseña debe tener al menos 10 caracteres'),
+    body('userTermsAccept').notEmpty().withMessage("Debes aceptar los términos y condiciones para continuar")
 ] ; 
 
 

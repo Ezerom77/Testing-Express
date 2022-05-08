@@ -2,26 +2,35 @@
 <html lang="en">
   <head>
     <%- include('./partials/head') %>
+    <script src="/js/registro.js"></script>
+    <script src="https://kit.fontawesome.com/3c9eeab8c1.js" crossorigin="anonymous"></script>
+    <title>Registro</title>
   </head>
 
   <body>
+   
     <%- include('./partials/header') %>
+   
     <main class="form-signin">
-      <div>
-        <a class="logo" href="/">CLESSIDRA</a>
-      </div>
+        <div>
+          <a class="logo" href="/">CLESSIDRA</a>
+        </div>
       <form
         method="post"
         action="/users/registro"
         enctype="multipart/form-data"
+        class="registerForm"
       >
         <h1 class="form-title h3 mb-3 fw-normal">
           Bienvenido/a!<br />Por favor registrate con tus datos:
         </h1>
-        <p> Los campos con * son obligatorios.
-            La contraseña debe tener al menos 10 caracteres. 
-        </p>
-        <div class="form-floating">
+       
+        <div class="errorBox">
+          <ul class="errorList">
+         
+              <li class="errorMsg"></li>
+          </ul></div>
+        <div class="form-floating" id="nameInput">
           <input
             type="text"
             class="form-control"
@@ -29,10 +38,12 @@
             name="userName"
             placeholder="Juan"
           />
+          <i class="fa-solid fa-circle-xmark"></i>
           <label for="nombre">Nombre *</label>
+          <li class="errorMsg"></li>
           
         </div>
-        <div class="form-floating">
+        <div class="form-floating" id="surnameInput">
           <input
             type="text"
             class="form-control"
@@ -40,10 +51,12 @@
             name="userLastName"
             placeholder="Perez"
           />
+          <i class="fa-solid fa-circle-xmark"></i>
           <label for="apellido">Apellido *</label>
+          <p class="errorMsg"></p>
           
         </div>
-        <div class="form-floating">
+        <div class="form-floating" id="emailInput">
           <input
             type="email"
             class="form-control"
@@ -51,11 +64,12 @@
             name="userEmail"
             placeholder="name@example.com"
           />
+          <i class="fa-solid fa-circle-xmark"></i>
           <label for="email">Correo electrónico *</label>
-      
+          <p class="errorMsg"></p>
         </div>
         
-        <div class="form-floating">
+        <div class="form-floating" id="passwordInput">
           <input
             type="password"
             class="form-control"
@@ -63,11 +77,12 @@
             name="userPassword"
             placeholder="Contraseña"
           />
+          <i class="fa-solid fa-circle-xmark"></i>
           <label for="password">Elegir contraseña *</label> 
-         
+          <p class="errorMsg"></p>
         </div>
         <br> 
-        <div class="form-floating-img">
+        <div class="form-floating-img" id="imageInput">
          <label class="uploadFile" for="profilePic">Elegir foto de perfil *</label> 
           <input
             type="file" name="profilePic" id="profilePic"  accept=".jpg, .jpeg, .png"/>
@@ -76,13 +91,13 @@
         <br />
         <div class="checkbox mb-3">
           <label>
-            <input type="checkbox" value="acceptterms" name="userTermsAccept" />
+            <input type="checkbox" value="acceptterms" name="userTermsAccept" id="terminosCondiciones"/>
             Acepto los <a href="#!">Términos y Condiciones *</a>
                
               
           </label>
         </div>
-        <button class="btn-enviar w-100" type="submit">Registrarme</button>
+        <button class="btn-enviar w-100" type="submit" id="submit">Registrarme</button>
      
       </form>
     </main>

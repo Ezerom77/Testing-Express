@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 let userController = {
   usuarios: (req, res) => {
     db.Users.findAll().then(function (users) {
-      res.render("usersList", { title: "Todos los usuarios", users: users });
+      res.render("usersList", { users: users });
     });
   },
   perfil: (req, res) => {
@@ -20,10 +20,10 @@ let userController = {
     }
   },
   login: (req, res) => {
-    res.render("login", { title: "Login" });
+    res.render("login");
   },
   edit: (req, res) => {
-    res.render("edit", { title: "Editar Perfil", user: req.session.user });
+    res.render("edit", { user: req.session.user });
   },
 
   update: (req, res) => {
@@ -60,20 +60,18 @@ let userController = {
           res.redirect("/users/perfil");
         } else {
           res.render("login", {
-            title: "Login",
             error: "Contraseña incorrecta",
           });
         }
       } else {
         res.render("login", {
-          title: "Login",
           error: "Credenciales invalidas",
         });
       }
     });
   },
   registro: (req, res) => {
-    res.render("registro", { title: "Registro" });
+    res.render("registro");
   },
   store: (req, res) => {
     let errors = validationResult(req);
@@ -87,9 +85,9 @@ let userController = {
         fecha_creacion: new Date(),
       };
       db.Users.create(newUser);
-      res.render("login", { title: "Login" });
+      res.render("login")
     } else {
-      res.render("wrongForm");
+      res.render("registro", {errors: errors.mapped()});
     }
   },
   logout: (req, res) => {
@@ -100,7 +98,7 @@ let userController = {
 
   // este metodo vamos a tener que moverlo a otro lado...
   carrito: (req, res) => {
-    res.render("carrito", { title: "Carrito de compras" });
+    res.render("carrito");
   },
 };
 
