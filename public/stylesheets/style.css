@@ -354,7 +354,7 @@ div .errorBox {
 }
 
 .errortext {
-  color: #d65780;
+  color: red;
 }
 
 main div a.logo:hover {
