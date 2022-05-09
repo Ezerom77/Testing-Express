@@ -49,6 +49,7 @@ const productValidations = [
 
 // Get all products
 router.get("/", productController.list);
+router.get("/slider", productController.slider);
 
 // Create a new product
 router.get("/create", productController.add);
