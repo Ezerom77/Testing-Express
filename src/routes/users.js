@@ -31,9 +31,11 @@ const validations = [
 ] ;
 
 const loginValidations = [
-    body('email').notEmpty().withMessage("* Por favor ingresa tu correo electrónico"),
+    body('email')
+        .notEmpty().withMessage("* Por favor ingresa tu correo electrónico").bail()
+        .isEmail().withMessage("No es un formato de email válido"),
     body('password').notEmpty().withMessage("* Por favor ingresa tu contraseña")
-] ;
+]
 
 // Routes
 router.get('/', userController.usuarios);
