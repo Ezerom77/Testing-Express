@@ -352,6 +352,11 @@ div .errorBox {
   margin: 5px;
   padding: 5px;
 }
+
+.errortext {
+  color: #d65780;
+}
+
 main div a.logo:hover {
   color: #d65780;
 }

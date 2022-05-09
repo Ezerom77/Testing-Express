@@ -42,34 +42,36 @@ let userController = {
             req.session.user = users;
             res.cookie("recordame", users.email, { maxAge: 6000000  });
             res.redirect("/users/perfil");
-    });
-  })
-},
+      });
+    })
+  },
 
   logged: (req, res) => {
-    db.Users.findOne({
-      where: { email: req.body.email },
-    }).then((users) => {
-      if (users) {
-        if (bcrypt.compareSync(req.body.password, users.password)) {
-          req.session.user = users;
-          // cookies
-          if (req.body.recordame != undefined) {
-            res.cookie("recordame", users.email, { maxAge: 6000000  });
+    let errors = validationResult(req);
+    if (errors.isEmpty()) {
+      db.Users.findOne({
+        where: { email: req.body.email },
+      }).then((users) => {
+        if (users) {
+          if (bcrypt.compareSync(req.body.password, users.password)) {
+            req.session.user = users;
+            // cookies
+            if (req.body.recordame != undefined) {
+              res.cookie("recordame", users.email, { maxAge: 6000000  });
+            }
+            res.redirect("/users/perfil");
+          } else {
+            res.render("login" , { errorPassword : "* Contraseña incorrecta" , oldData: req.body });
           }
-          res.redirect("/users/perfil");
-        } else {
-          res.render("login", {
-            error: "Contraseña incorrecta",
-          });
         }
-      } else {
-        res.render("login", {
-          error: "Credenciales invalidas",
-        });
-      }
-    });
-  },
+        else {
+          res.render("login" , { errorUser : "* Usuario inexistente" , oldData: req.body });
+        } 
+      });
+    } else {
+      res.render("login", { errors: errors.mapped() , oldData: req.body }); // Error hay campos vacíos
+    }
+},
   registro: (req, res) => {
     res.render("registro");
   },
