@@ -61,7 +61,6 @@ const productController = {
       res.redirect("/products");
     }
   },
-  
   detail: (req, res) => {
     db.Products.findByPk(req.params.id, {
       include: [

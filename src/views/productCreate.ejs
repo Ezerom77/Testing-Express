@@ -28,7 +28,7 @@
         <label for="Categorias">Categorías de productos</label>
         <select multiple class="form-control" id="categorias" name="categorias">
           <% for( let i = 0; i < categorias.length; i++ ) { %>
-            <option value="<%= categorias[i].id %>"><%= categorias[i].descripcion   %></option>
+            <option value="<%= categorias[i].id %>"><%= categorias[i].descripcion %></option>
           <% } %>
         </select>
       </div>
