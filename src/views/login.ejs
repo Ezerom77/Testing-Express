@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <%- include('./partials/head') %>
-  <script src="/js/login.js"></script>
   <title>Ingresar</title>
 </head>
 
@@ -28,7 +27,6 @@
         <% if (locals.errorUser) { %>
           <p class="errortext"> <%= errorUser %> </p>
         <% } %>
-        <p id="emailError" class="errortext"></p>
       </div>
       <div class="form-floating">
         <input
@@ -43,7 +41,6 @@
         <% if (locals.errorPassword) { %>
           <p class="errortext"> <%= errorPassword %> </p>
         <% } %>
-        <p id="passError" class="errortext"></p>
       </div>
       <br>
       <div class="checkbox mb-3">
@@ -75,8 +72,3 @@
   
 </body>
 </html>
-
-
-
-
-

@@ -11,40 +11,51 @@ window.addEventListener('load', function() {
 
     
     formulario.addEventListener('submit', function(e){
-        let errors = [];
-        if(campoName.value == ""){
-            errors.push("Debes completar tu nombre")
-        }    
-        if(campoApellido.value == ""){
-            errors.push("Debes completar tu apellido")
-           
-        }
-        if(emailRegex.test(campoEmail.value)){
-            
-        } else {
-            errors.push("Por favor ingresa un email válido")
-            
-        }
-        if(campoContrasena.value.length < 10){
-            errors.push("La contraseña debe tener al menos 10 caracteres")
-            
-        }
-        if(campoImg.value == ""){
-            errors.push("Debes elegir una foto de perfil")
-            
-        }
-        if(!campoTerms.value.checked){
-            errors.push("Debes aceptar los términos y condiciones para continuar")
-            
-        }
-        let ulErrores = document.querySelector('div.errorBox ul');
-        if(errors.length > 0){
-            e.preventDefault()
-            for(let i = 0 ; i < errors.length ; i++){
-                ulErrores.innerHTML += "<li>"+ errors[i] + "</li>"
-            }
-        } 
+            campoName.classList.remove('is-invalid');
+            nameError.innerHTML = "";
+            campoApellido.classList.remove('is-invalid');
+            apellidoError.innerHTML = "";
+            campoEmail.classList.remove('is-invalid');
+            emailError.innerHTML = "";
+            campoContrasena.classList.remove('is-invalid');
+            contrasenaError.innerHTML = "";
+            imgError.innerHTML = "";
+            termsError.innerHTML = "";
 
+        if(campoName.value == ""){
+            e.preventDefault();
+            let nameError = document.querySelector("#nameError")
+            campoName.classList.add('is-invalid');
+            nameError.innerHTML = "* Debes completar tu nombre";
+        }    
+        else if(campoApellido.value == ""){
+            e.preventDefault();
+            let apellidoError = document.querySelector("#apellidoError")
+            campoApellido.classList.add('is-invalid');
+            apellidoError.innerHTML = "* Debes completar tu apellido";
+        }
+        else if(!emailRegex.test(campoEmail.value)) {
+            e.preventDefault();
+            let emailError = document.querySelector("#emailError")
+            campoEmail.classList.add('is-invalid');
+            emailError.innerHTML = "* Por favor ingresa un email válido";
+        }
+        else if(campoContrasena.value.length < 10){
+            e.preventDefault();
+            let contrasenaError = document.querySelector("#contrasenaError")
+            campoContrasena.classList.add('is-invalid');
+            contrasenaError.innerHTML = "* La contraseña debe tener al menos 10 caracteres";
+        }
+        else if(campoImg.value == ""){
+            e.preventDefault();
+            let imgError = document.querySelector("#imgError")
+            imgError.innerHTML = "* Debes elegir una foto de perfil";            
+        }
+        else if (campoTerms.checked == false){
+            e.preventDefault();
+            let termsError = document.querySelector("#termsError")
+            termsError.innerHTML = "* Debes aceptar los términos y condiciones para continuar";
+        }
     })
 
 

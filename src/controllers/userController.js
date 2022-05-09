@@ -89,7 +89,7 @@ let userController = {
       db.Users.create(newUser);
       res.render("login")
     } else {
-      res.render("registro", {errors: errors.mapped()});
+      res.render("registro", {errors: errors.mapped() , oldData: req.body });
     }
   },
   logout: (req, res) => {
