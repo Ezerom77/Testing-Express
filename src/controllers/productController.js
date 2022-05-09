@@ -12,7 +12,7 @@ const productController = {
       include: [
         { association: "color" },
         { association: "talle" },
-        { association: "imagenes" },
+        { association: "categorias" },
         { association: "imagenes" },
       ],
     }).then(function (products) {
@@ -96,11 +96,10 @@ const productController = {
     let productoAEditar = {
       nombre: req.body.productName,
       descripcion: req.body.productDescription,
-      // id_categories: req.body.categorias,
       precio: req.body.productPrice,
       id_color: req.body.color,
       id_talle: req.body.talle,
-      // imagen: nombreImagen,
+
     };
 
     await db.Products.update(productoAEditar, { where: { id: req.params.id } });
@@ -118,14 +117,17 @@ const productController = {
     res.redirect("/products/detail/" + req.params.id);
   },
   delete: (req, res) => {
-    db.Products.findByPk(req.params.id)
-      .then(function (producto) {
-        console.log(producto.imagen);
+    db.imagenProducto
+      .findAll({ where: { id_Producto: req.params.id } })
+      .then(function (imagenes) {
+        for (let i = 0; i < imagenes.length; i++) {
         fs.unlinkSync(
-          path.join(__dirname, "../../public/images/products/", producto.imagen)
-        );
+          path.join(
+            __dirname,
+            "../../public/images/products/" + imagenes[i].nombreArchivo
+          )
+        );}
       })
-
       .then(
         db.Products.destroy({
           where: { id: req.params.id },
@@ -135,5 +137,22 @@ const productController = {
         res.redirect("/products");
       });
   },
+  // delete: (req, res) => {
+  //   db.Products.findByPk(req.params.id)
+  //     .then(function (producto) {
+  //       fs.unlinkSync(
+  //         path.join(__dirname, "../../public/images/products/", producto.imagen)
+  //       );
+  //     })
+
+  //     .then(
+  //       db.Products.destroy({
+  //         where: { id: req.params.id },
+  //       })
+  //     )
+  //     .then(function () {
+  //       res.redirect("/products");
+  //     });
+  // },
 };
 module.exports = productController;
