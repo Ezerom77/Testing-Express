@@ -348,6 +348,10 @@ div .errorBox {
   padding: 5px;
 }
 
+.errorBox ul.errorList li {
+  margin: 5px;
+  padding: 5px;
+}
 main div a.logo:hover {
   color: #d65780;
 }
