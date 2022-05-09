@@ -48,9 +48,9 @@ const productController = {
     });
   },
 
-  store: (req, res) => {
-    const errors = validationResult(req);
-    res.render(errors)
+  //store: (req, res) => {
+    //const errors = validationResult(req);
+    //res.send(errors)
     /* if (!errors.isEmpty()) {
       return res.render("productCreate", { errors: errors.mapped() });
     } else {
@@ -74,16 +74,27 @@ const productController = {
       }
       );
     } */
-  },
+ // },
 
   
 
 
 
-  /* store: async (req, res) => {
+  store: async (req, res) => {
    const errors = validationResult(req);   
     if (!errors.isEmpty()) {
-      return res.render("productCreate", {errors: errors.mapped() });
+      db.Colores.findAll().then(function (colores) {
+        db.Talles.findAll().then(function (talles) {
+          db.Categorias.findAll().then(function (categorias) {
+            res.render("productCreate", {
+              colores: colores,
+              talles: talles,
+              categorias: categorias,
+              errors: errors.mapped(),
+            });
+          });
+        });
+      });
       } else {
       let productoNuevo = {
         nombre: req.body.productName,
@@ -104,7 +115,7 @@ const productController = {
        }
         res.redirect("/products")
       }
-  }, */
+  },
 
   detail: (req, res) => {
     db.Products.findByPk(req.params.id, {
