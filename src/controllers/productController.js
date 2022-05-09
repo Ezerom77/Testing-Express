@@ -4,11 +4,21 @@ const path = require("path");
 
 // Controllers
 const productController = {
+  // list: (req, res) => {
+
+  // },
   list: (req, res) => {
     db.Products.findAll({
-      include: [{ association: "color" }, { association: "talle" }],
+      include: [
+        { association: "color" },
+        { association: "talle" },
+        { association: "imagenes" },
+        { association: "imagenes" },
+      ],
     }).then(function (products) {
-      res.render("productList", {title: 'Todos los productos',
+      // res.send(products[0].imagenes[0].nombreArchivo);
+      res.render("productList", {
+        title: "Todos los productos",
         products: products,
       });
     });
@@ -28,27 +38,33 @@ const productController = {
   },
 
   store: async (req, res) => {
-    let nombreImagen = req.file.filename;
-
     let productoNuevo = {
       nombre: req.body.productName,
       descripcion: req.body.productDescription,
       precio: req.body.productPrice,
       id_color: req.body.color,
       id_talle: req.body.talle,
-      imagen: nombreImagen,
     };
     let x = await db.Products.create(productoNuevo);
     let idP = x.dataValues.id;
+    for (let i = 0; i < req.files.length; i++) {
+      let objeto = { id_Producto: idP, nombreArchivo: req.files[i].filename };
+      await db.imagenProducto.create(objeto);
+    }
     for (let i = 0; i < req.body.categorias.length; i++) {
-      let objeto = { id_Producto: idP, id_Categoria: req.body.categorias[i] };
-      await db.Producto_Categoria.create(objeto);
+      let objeto2 = { id_Producto: idP, id_Categoria: req.body.categorias[i] };
+      await db.Producto_Categoria.create(objeto2);
     }
     res.redirect("/products");
   },
   detail: (req, res) => {
     db.Products.findByPk(req.params.id, {
-      include: [{ association: "color" }, { association: "talle" },{association: "categorias"}],
+      include: [
+        { association: "color" },
+        { association: "talle" },
+        { association: "categorias" },
+        { association: "imagenes" },
+      ],
     }).then(function (producto) {
       res.render("productDetail", {
         productDetail: producto,
@@ -62,12 +78,12 @@ const productController = {
     let pedidoColores = db.Colores.findAll();
     let pedidoCategorias = db.Categorias.findAll();
 
-    Promise.all([pedidoProducto, pedidoTalles, pedidoColores,pedidoCategorias]).then(function ([
-      ProductoaEditar,
-      talles,
-      colores,
-      categorias,
-    ]) {
+    Promise.all([
+      pedidoProducto,
+      pedidoTalles,
+      pedidoColores,
+      pedidoCategorias,
+    ]).then(function ([ProductoaEditar, talles, colores, categorias]) {
       res.render("productEdit", {
         ProductoaEditar: ProductoaEditar,
         talles: talles,
@@ -77,7 +93,6 @@ const productController = {
     });
   },
   update: async (req, res) => {
-
     let productoAEditar = {
       nombre: req.body.productName,
       descripcion: req.body.productDescription,
@@ -89,9 +104,14 @@ const productController = {
     };
 
     await db.Products.update(productoAEditar, { where: { id: req.params.id } });
-    await db.Producto_Categoria.destroy({ where: { id_Producto: req.params.id } });
+    await db.Producto_Categoria.destroy({
+      where: { id_Producto: req.params.id },
+    });
     for (let i = 0; i < req.body.categorias.length; i++) {
-      let objeto = { id_Producto: req.params.id, id_Categoria: req.body.categorias[i] };
+      let objeto = {
+        id_Producto: req.params.id,
+        id_Categoria: req.body.categorias[i],
+      };
       await db.Producto_Categoria.create(objeto);
     }
 
@@ -100,17 +120,12 @@ const productController = {
   delete: (req, res) => {
     db.Products.findByPk(req.params.id)
       .then(function (producto) {
+        console.log(producto.imagen);
         fs.unlinkSync(
           path.join(__dirname, "../../public/images/products/", producto.imagen)
         );
       })
-      // .then(
-      //   db.Producto_Categoria.destroy({
-      //     where: {
-      //       id_Producto: req.params.id,
-      //     },
-      //   })
-      // )
+
       .then(
         db.Products.destroy({
           where: { id: req.params.id },

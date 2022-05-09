@@ -14,8 +14,10 @@
                         <ul class="carousel__track">
                             <li class="carousel__slide">
                                 <a href="/products/detail/<%=products[i].id%>">
-                                <img class="carousel__image" src="/images/products/<%=products[i].imagen%>" alt="">
-                                <ul class="product-detail">
+
+                                    <img class="carousel__image" src="/images/products/<%=products[i].imagenes[0].nombreArchivo%>" alt="">
+
+                                    <ul class="product-detail">
                                     <li><%=products[i].nombre%></li>
                                     <li>AR$ <%=products[i].precio%></li>
                                     <li>Talle: <%=products[i].talle.descripcion%></li>
