@@ -20,6 +20,7 @@ const productController = {
       });
     });
   },
+  
   list: (req, res) => {
     db.Products.findAll({
       include: [
@@ -34,6 +35,7 @@ const productController = {
       });
     });
   },
+
   add: (req, res) => {
     db.Colores.findAll().then(function (colores) {
       db.Talles.findAll().then(function (talles) {
@@ -47,38 +49,6 @@ const productController = {
       });
     });
   },
-
-  //store: (req, res) => {
-    //const errors = validationResult(req);
-    //res.send(errors)
-    /* if (!errors.isEmpty()) {
-      return res.render("productCreate", { errors: errors.mapped() });
-    } else {
-      let productoNuevo = {
-        nombre: req.body.productName,
-        descripcion: req.body.productDescription,
-        precio: req.body.productPrice,
-        id_color: req.body.color,
-        id_talle: req.body.talle,
-      };
-      db.Products.create(productoNuevo).then(function (producto) {
-        for (let i = 0; i < req.files.length; i++) {
-          let objeto = { id_Producto: producto.id, nombreArchivo: req.files[i].filename };
-          db.imagenProducto.create(objeto);
-        }
-        for (let i = 0; i < req.body.categorias.length; i++) {
-          let objeto2 = { id_Producto: producto.id, id_Categoria: req.body.categorias[i] };
-          db.Producto_Categoria.create(objeto2);
-        }
-        res.redirect("/products");
-      }
-      );
-    } */
- // },
-
-  
-
-
 
   store: async (req, res) => {
    const errors = validationResult(req);   

@@ -1,10 +1,10 @@
 const path = require("path");
 
 
-window.addEventListener('load', function() {
+window.addEventListener('load', ()  => {
     let productForm = document.querySelector('form');
-
-    productForm.addEventListener('submit', function(e) {
+    
+    productForm.addEventListener('submit', (e) => {
         let productName = document.querySelector('#productName');
         let productDescription = document.querySelector('#productDescription');
         let productCategory = document.querySelector('#categorias');
@@ -17,22 +17,22 @@ window.addEventListener('load', function() {
             let prodNameError = document.querySelector("#prodNameError")
             prodNameError.innerHTML = "* Debes completar el nombre del producto y este debe tener más de 5 caracteres";   
             }
-        if(productDescription.length < 20){
+        else if(productDescription.length < 20){
             e.preventDefault();
             let prodDescError = document.querySelector("#prodDescError")
             prodDescError.innerHTML = "* Debes completar la descripción del producto y este debe tener más de 20 caracteres";
             }
-        if(productCategory.value == ""){
+        else if(productCategory.value == ""){
             e.preventDefault();
             let prodCatError = document.querySelector("#prodCatError")
             prodCatError.innerHTML = "* Debes elegir AL MENOS UNA categoría para el producto";
             }
-        if(productImage.value == null || !acceptedExtensions.includes(path.extname(file.originalname))){
+        else if(productImage.value == null || !acceptedExtensions.includes(path.extname(file.originalname))){
             e.preventDefault();
             let prodImgError = document.querySelector("#prodImgError")
             prodImgError.innerHTML = "* Debes subir al menos una imagen (maximo 4) con extensiones .jpg, .jpeg, .png, .gif";
             }
-        if(productPrice.value == ""){
+        else if(productPrice.value == ""){
             e.preventDefault();
             let prodPriceError = document.querySelector("#prodPriceError")
             prodPriceError.innerHTML = "* Debes ingresar el precio del producto";
