@@ -10,18 +10,26 @@
   <%- include('./partials/header') %>
   <main class="form-signin">
     <h1 class="form-title h3 mb-3 fw-normal">Bienvenido/a!<br>Por favor ingresar nuevo producto:</h1>
-    <div class="errorBox">
-      <ul class="errorList">
-      </ul>
-    </div>
     <form method="post" action="/products/create" enctype="multipart/form-data" class="productCreateForm">
       <div class="form-group">
         <label for="productName">Nombre de producto</label>
-        <input type="text" class="form-control" id="productName" name="productName">
-      </div>
+        <input
+         type="text"
+         class="form-control" 
+         id="productName"
+         name="productName">
+         <p id="prodNameError" class="errorTextProd"></p>
+        </div>
+      
       <div class="form-group">
         <label for="productDescription">Descripción del producto</label>
-        <input type="textarea" class="form-control" id="productDescription" name="productDescription" rows="3"></input>
+        <input 
+        type="textarea" 
+        class="form-control" 
+        id="productDescription" 
+        name="productDescription" 
+        rows="3">
+        <p id="prodDescError" class="errorTextProd"></p>
       </div>
       <div class="form-group">
         <label for="categorias">Categorías de productos</label>
@@ -30,6 +38,7 @@
             <option value="<%= categorias[i].id %>"><%= categorias[i].descripcion %></option>
           <% } %>
         </select>
+        <p id="prodCatError" class="errorTextProd"></p>
       </div>
       <div class="form-group">
         <label for="talle">Seleccionar Talle</label>
@@ -47,17 +56,27 @@
           <% } %>
         </select>
       </div>
-      <!-- <div class="form-group">
-        <label for="productStock">Stock disponible (unidades)</label>
-        <input type="number" class="form-control" id="productStock" name="productStock" >
-      </div> -->
       <div class="form-group">
         <label for="productPrice">Precio de venta $</label>
-        <input type="number" class="form-control" id="productPrice" name="productPrice" >
+        <input
+        type="number" 
+        class="form-control" 
+        id="productPrice" 
+        name="productPrice" >
+        <p id="prodPriceError" class="errorTextProd"></p>
       </div>
       <div class="form-group">
         <label for="productImage">Imagen Principal</label>
-        <input type="file" class="form-control-file" id="productImage" name="productImage" accept="image/*" multiple>
+        <input 
+        type="file" 
+        class="form-control-file" 
+        id="productImage" 
+        name="productImage" 
+        accept="image/*" multiple>
+        <p id="prodImgError" class="errorTextProd"></p>
+        
+        
+        
         <!-- <label for="productImage2">Imagen Complementaria</label>
         <input type="file" class="form-control-file" id="productImage2" name="productImage2"> -->
         <!-- <label for="productImage3">Imagen Complementaria</label>

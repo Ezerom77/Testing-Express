@@ -357,6 +357,11 @@ div .errorBox {
   color: red;
 }
 
+.errorTextProd {
+  color: red;
+  margin-top: 0.1em;
+}
+
 main div a.logo:hover {
   color: #d65780;
 }
