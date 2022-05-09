@@ -26,7 +26,7 @@ const productValidations = [
         .notEmpty().withMessage("Debes completar el nombre del producto").bail()
         .isLength({min: 5}).withMessage("El nombre del producto debe tener al menos 5 caracteres"),
     body('productDescription').isLength({min: 20}).withMessage("La descripción del producto debe tener al menos 20 caracteres"),
-//  body('categorias').notEmpty().withMessage("Debes seleccionar al menos una categoría"),
+    body('categorias').notEmpty().withMessage("Debes seleccionar al menos una categoría"),
     body('talle').notEmpty().withMessage("Debes seleccionar un talle"),
     body('color').notEmpty().withMessage('Debes seleccionar un color'),
     body('productPrice').notEmpty().withMessage("Debes ingresar el precio del producto"),
