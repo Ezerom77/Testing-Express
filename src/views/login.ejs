@@ -39,8 +39,9 @@
           <p class="errortext"> <%= errors.password.msg %> </p>
         <% } %>
         <% if (locals.errorPassword) { %>
-          <p id="passError" class="errortext"></p>
+          <p class="errortext"> <%= errorPassword %> </p>
         <% } %>
+          <p id="passError" class="errortext"></p>
       </div>
       <br>
       <div class="checkbox mb-3">
