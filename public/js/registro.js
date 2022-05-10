@@ -11,6 +11,7 @@ window.addEventListener('load', function() {
 
     
     formulario.addEventListener('submit', function(e){
+
             campoName.classList.remove('is-invalid');
             nameError.innerHTML = "";
             campoApellido.classList.remove('is-invalid');
