@@ -1,46 +1,46 @@
-const path = require("path");
-
 
 window.addEventListener('load', ()  => {
     let productForm = document.querySelector('form');
-    
-    productForm.addEventListener('submit', (e) => {
-        let productName = document.querySelector('#productName');
-        let productDescription = document.querySelector('#productDescription');
-        let productCategory = document.querySelector('#categorias');
-        let productPrice = document.querySelector('#productPrice');
-        let productImage = document.querySelector('#productImage');
-        let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+    let productName = document.getElementById('productName');
+    let productDescription = document.getElementById('productDescription');
+    let productCategory = document.getElementById('categorias');
+    let productPrice = document.getElementById('productPrice');
+    let productImage = document.getElementById('productImage');
+    let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
 
-        if(productName.value == "" || productName.value.length < 5){
+    productForm.addEventListener("submit", (e) => {
+        if (productName.value == "" || productName.value.length < 5) {
             e.preventDefault();
-            let prodNameError = document.querySelector("#prodNameError")
-            prodNameError.innerHTML = "* Debes completar el nombre del producto y este debe tener más de 5 caracteres";   
-            }
-        else if(productDescription.length < 20){
+            productName.classList.add('is-invalid');
+            productName.nextElementSibling.innerHTML = "* Debes completar el nombre del producto y este tiene que tener más de 5 caracteres";
+        }
+        if (productDescription.value.length < 20) {
             e.preventDefault();
-            let prodDescError = document.querySelector("#prodDescError")
-            prodDescError.innerHTML = "* Debes completar la descripción del producto y este debe tener más de 20 caracteres";
-            }
-        else if(productCategory.value == ""){
+            productDescription.classList.add('is-invalid');
+            productDescription.nextElementSibling.innerHTML = "* La descripción del producto debe tener al menos 20 caracteres";
+        }
+        if (productCategory.value == "") {
             e.preventDefault();
-            let prodCatError = document.querySelector("#prodCatError")
-            prodCatError.innerHTML = "* Debes elegir AL MENOS UNA categoría para el producto";
-            }
-        else if(productImage.value == null || !acceptedExtensions.includes(path.extname(file.originalname))){
+            productCategory.classList.add('is-invalid');
+            productCategory.nextElementSibling.innerHTML = "* Debes seleccionar al menos una categoría";
+        }
+        if (productPrice.value == "") {
             e.preventDefault();
-            let prodImgError = document.querySelector("#prodImgError")
-            prodImgError.innerHTML = "* Debes subir al menos una imagen (maximo 4) con extensiones .jpg, .jpeg, .png, .gif";
-            }
-        else if(productPrice.value == ""){
+            productPrice.classList.add('is-invalid');
+            productPrice.nextElementSibling.innerHTML = "* Debes ingresar el precio del producto";
+        }
+        if (productImage.value == "") {
             e.preventDefault();
-            let prodPriceError = document.querySelector("#prodPriceError")
-            prodPriceError.innerHTML = "* Debes ingresar el precio del producto";
-            }
-        })
-    })
-
-
-
-            
-
+            productImage.classList.add('is-invalid');
+            productImage.nextElementSibling.innerHTML = "* Debes subir una imagen";
+        }
+        if (!acceptedExtensions.includes(path.extname(productImage.files[0].name))) {
+            e.preventDefault();
+            productImage.classList.add('is-invalid');
+            productImage.nextElementSibling.innerHTML = "* Debes subir una imagen con una de las siguientes extensiones: " + acceptedExtensions.join(', ');
+        }
+         else {
+            productForm.submit();
+        }
+    });
+});
