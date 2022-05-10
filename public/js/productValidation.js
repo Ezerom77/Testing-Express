@@ -9,6 +9,17 @@ window.addEventListener('load', ()  => {
     let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
 
     productForm.addEventListener("submit", (e) => {
+        productName.classList.remove('is-invalid');
+        productDescription.classList.remove('is-invalid');
+        productCategory.classList.remove('is-invalid');
+        productPrice.classList.remove('is-invalid');
+        productImage.classList.remove('is-invalid');
+        productName.nextElementSibling.innerHTML = "";
+        productDescription.nextElementSibling.innerHTML = "";
+        productCategory.nextElementSibling.innerHTML = "";
+        productPrice.nextElementSibling.innerHTML = "";
+        productImage.nextElementSibling.innerHTML = "";
+         
         if (productName.value == "" || productName.value.length < 5) {
             e.preventDefault();
             productName.classList.add('is-invalid');
