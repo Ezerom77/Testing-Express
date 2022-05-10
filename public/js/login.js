@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
     let passError = document.querySelector("#passError")
 
     loginForm.addEventListener("submit", (e) => {
-        
+
             email.classList.remove('is-invalid');
             emailError.innerHTML = "";
             password.classList.remove('is-invalid');
@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
             email.classList.add('is-invalid');
             emailError.innerHTML = "* Debes completar el email de usuario para ingresar";
         }
-        else if (password.value == "") {
+        if (password.value == "") {
             e.preventDefault();
             password.classList.add('is-invalid');
             passError.innerHTML = "* No has ingresado una contraseña";

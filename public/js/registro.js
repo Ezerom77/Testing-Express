@@ -29,30 +29,30 @@ window.addEventListener('load', function() {
             campoName.classList.add('is-invalid');
             nameError.innerHTML = "* Debes completar tu nombre";
         }    
-        else if(campoApellido.value == ""){
+        if(campoApellido.value == ""){
             e.preventDefault();
             let apellidoError = document.querySelector("#apellidoError")
             campoApellido.classList.add('is-invalid');
-            apellidoError.innerHTML = "* Debes completar tu apellido JS";
+            apellidoError.innerHTML = "* Debes completar tu apellido";
         }
-        else if(!emailRegex.test(campoEmail.value)) {
+        if(!emailRegex.test(campoEmail.value)) {
             e.preventDefault();
             let emailError = document.querySelector("#emailError")
             campoEmail.classList.add('is-invalid');
             emailError.innerHTML = "* Por favor ingresa un email válido";
         }
-        else if(campoContrasena.value.length < 10){
+        if(campoContrasena.value.length < 10){
             e.preventDefault();
             let contrasenaError = document.querySelector("#contrasenaError")
             campoContrasena.classList.add('is-invalid');
             contrasenaError.innerHTML = "* La contraseña debe tener al menos 10 caracteres";
         }
-        else if(campoImg.value == ""){
+        if(campoImg.value == ""){
             e.preventDefault();
             let imgError = document.querySelector("#imgError")
             imgError.innerHTML = "* Debes elegir una foto de perfil";            
         }
-        else if (campoTerms.checked == false){
+        if (campoTerms.checked == false){
             e.preventDefault();
             let termsError = document.querySelector("#termsError")
             termsError.innerHTML = "* Debes aceptar los términos y condiciones para continuar";

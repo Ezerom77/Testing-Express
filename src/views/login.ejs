@@ -18,12 +18,15 @@
         <input
         type="email"
         class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>
-        <%= locals.errorUser ? 'is-invalid' : null %>"
+        <%= locals.error ? 'is-invalid' : null %>"
          id="email" name="email" placeholder="name@example.com"
          value="<%= locals.oldData ? oldData.email : null %>">
         <label for="email">Correo electrónico</label>
         <% if (locals.errors && errors.email) { %>
           <p class="errortext"> <%= errors.email.msg %> </p>
+        <% } %>
+        <% if (locals.error) { %>
+          <p class="errortext"> <%= error %> </p>
         <% } %>
         <p id="emailError" class="errortext"></p>
         
@@ -32,14 +35,14 @@
         <input
         type="password"
         class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>
-        <%= locals.errorPassword ? 'is-invalid' : null %>"
+        <%= locals.error ? 'is-invalid' : null %>"
         id="password" name="password" placeholder="Password">
         <label for="password">Contraseña</label>
         <% if (locals.errors && errors.password) { %>
           <p class="errortext"> <%= errors.password.msg %> </p>
         <% } %>
-        <% if (locals.errorPassword) { %>
-          <p class="errortext"> <%= errorPassword %> </p>
+        <% if (locals.error) { %>
+          <p class="errortext"> <%= error %> </p>
         <% } %>
           <p id="passError" class="errortext"></p>
       </div>

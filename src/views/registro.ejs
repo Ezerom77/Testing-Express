@@ -47,11 +47,10 @@
           <p id="nameError" class="errortext"></p>
           
         </div>
-        <div class="form-floating <%= locals.errors && errors.userLastName ? 'is-invalid' : null %>" 
-        id="surnameInput">
+        <div class="form-floating" id="surnameInput">
           <input
             type="text"
-            class="form-control"
+            class="form-control <%= locals.errors && errors.userLastName ? 'is-invalid' : null %>"
             id="apellido"
             name="userLastName"
             placeholder="Perez"

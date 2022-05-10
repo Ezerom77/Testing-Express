@@ -61,7 +61,7 @@ let userController = {
             }
             res.redirect("/users/perfil");
           } else {
-            res.render("login" , { errorPassword : "* Contraseña incorrecta" , oldData: req.body });
+            res.render("login" , { error : "* Credenciales invalidas" });
           }
         }
         else {
