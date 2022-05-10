@@ -33,7 +33,7 @@ window.addEventListener('load', function() {
             e.preventDefault();
             let apellidoError = document.querySelector("#apellidoError")
             campoApellido.classList.add('is-invalid');
-            apellidoError.innerHTML = "* Debes completar tu apellido";
+            apellidoError.innerHTML = "* Debes completar tu apellido JS";
         }
         else if(!emailRegex.test(campoEmail.value)) {
             e.preventDefault();
