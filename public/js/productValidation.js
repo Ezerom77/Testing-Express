@@ -46,36 +46,33 @@ window.addEventListener('load', ()  => {
         if (productName.value == "" || productName.value.length < 5) {
             productName.classList.add('is-invalid');
             productName.nextElementSibling.innerHTML = "* Debes completar el nombre del producto y este tiene que tener más de 5 caracteres";
-            return backendErrors.push("El nombre del producto debe tener al menos 5 caracteres");
         }
     });
     productDescription.addEventListener("blur", (e) => {
         if (productDescription.value.length < 20) {
             productDescription.classList.add('is-invalid');
             productDescription.nextElementSibling.innerHTML = "* La descripción del producto debe tener al menos 20 caracteres";
-            return backendErrors.push("La descripción del producto debe tener al menos 20 caracteres");
         }
     });
     productCategory.addEventListener("blur", (e) => {
         if (productCategory.value == "") {
             productCategory.classList.add('is-invalid');
             productCategory.nextElementSibling.innerHTML = "* Debes seleccionar al menos una categoría";
-            return backendErrors.push("Debes seleccionar al menos una categoría");
         }
     });
     productPrice.addEventListener("blur", (e) => {
         if (productPrice.value == "") {
             productPrice.classList.add('is-invalid');
             productPrice.nextElementSibling.innerHTML = "* Debes ingresar el precio del producto";
-            return backendErrors.push("Debes ingresar el precio del producto");
         }
     });
     productImage.addEventListener("blur", (e) => {
         if (productImage.value == "") {
             productImage.classList.add('is-invalid');
             productImage.nextElementSibling.innerHTML = "* Debes subir al menos una imagen";
-            return backendErrors.push("Debes subir al menos una imagen");
         }
+        });
+
     });
 
     productForm.addEventListener("submit", (e) => {
@@ -90,5 +87,4 @@ window.addEventListener('load', ()  => {
         }   else {  
             e.submit()       
     }   
-});
 });
