@@ -7,8 +7,13 @@ const cartController = {
       })
   },
   add: (req,res) => {
-    res.send('Agregar producto al carrito')
+    let cart = req.session.cart;
+    let prod = req.params.id;
+    console.log(cart,prod)
+    db.Products.findByPk(prod).then(function(product){
+        cart.push(product);
+        req.session.cart = cart;
+        res.render('cartDetail',{cart: cart});
+    })}
   }
-}
-
-module.exports = cartController;
+    module.exports = cartController;

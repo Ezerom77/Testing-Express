@@ -7,6 +7,7 @@ const { validationResult } = require("express-validator");
 // Controllers
 const productController = {
   slider: (req, res) => {
+
     db.Products.findAll({
       include: [
         { association: "color" },
@@ -14,6 +15,8 @@ const productController = {
         { association: "imagenes" },
       ],
     }).then(function (products) {
+      if(req.session.cart === undefined){
+        req.session.cart = [];}
       res.render("productListSlider", {
         title: "Todos los productos",
         products: products,
