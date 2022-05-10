@@ -22,7 +22,6 @@
          >
          <p id="prodNameError" class="errorTextProd"></p>
         </div>
-      
       <div class="form-group">
         <label for="productDescription">Descripción del producto</label>
         <input 
@@ -33,7 +32,6 @@
         rows="3"
         value= '<%= locals.oldData ? oldData.productDescription : null %>'
         >
-        
         <p id="prodDescError" class="errorTextProd"></p>
       </div>
       <div class="form-group">
@@ -60,7 +58,10 @@
           <% for( let i = 0; i < talles.length; i++ ) { %>
             <option value="<%= talles[i].id %>"><%= talles[i].descripcion %></option>
           <% } %>
-          
+          <!-- 
+            lineas en blanco para seguir la 
+            numeracion de ProductEdit.ejs
+           -->
         </select>
       </div>
       <div class="form-group">
@@ -74,6 +75,10 @@
           <% for( let i = 0; i < colores.length; i++ ) { %>
             <option value="<%= colores[i].id %>"><%= colores[i].descripcion   %></option>
           <% } %>
+          <!-- 
+            lineas en blanco para seguir la 
+            numeracion de ProductEdit.ejs
+           -->
         </select>
       </div>
       <div class="form-group">
@@ -94,8 +99,10 @@
         class="form-control-file" <%= locals.errors && errors.productImage ? 'is-invalid' : null %> 
         id="productImage" 
         name="productImage" 
-        accept=".jpeg, .jpg, .pdf,.png" multiple
-        value= '<%= locals.oldData ? oldData.productImage : null %>'>
+        accept=".jpeg, .jpg, .pdf,.png" 
+        multiple
+        value= '<%= locals.oldData ? oldData.productImage : null %>'
+        >
         <p id="prodImgError" class="errorTextProd"></p>
 
         <!-- <label for="productImage2">Imagen Complementaria</label>
@@ -108,6 +115,9 @@
       <br>
       <button class="btn-enviar w-100 " type="submit" id="submit">Crear Producto</button>
     </form>
+      <!-- 
+        lineas en blanco para seguir la numeracion de ProductEdit.ejs
+       -->
   </main>
 
 <%- include('./partials/footer') %>

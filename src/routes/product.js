@@ -35,7 +35,8 @@ const validations = [
         .notEmpty().withMessage('Debes seleccionar al menos un color'),
     body('productPrice')
         .notEmpty().withMessage('Debes ingresar el precio del producto'),
-    /* body('productImage')
+    body('productImage')
+        .notEmpty().withMessage('Debes ingresar al menos una imagen del producto')
         .custom((value, {req}) => {
             let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
             if(acceptedExtensions.includes(path.extname(file.originalname))){
@@ -43,11 +44,9 @@ const validations = [
             }else{
             return false; // return "falsy" value to indicate invalid data
             }
-        })
-        .withMessage('Solo se aceptan archivos jpeg, jpg, png y pdf.'), // custom error message that will be send back if the file in not a pdf. 
- */
+        }).withMessage('Solo se aceptan archivos jpeg, jpg, png y pdf'),
+
 ];
- 
 
 // Routes
 // Get all products

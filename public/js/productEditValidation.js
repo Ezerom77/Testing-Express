@@ -1,6 +1,6 @@
 
 window.addEventListener('load', ()  => {
-    let productForm = document.querySelector('form');
+    let productEditForm = document.querySelector('form');
     let productName = document.getElementById('productName');
     let productDescription = document.getElementById('productDescription');
     let productCategory = document.getElementById('categorias');
@@ -75,7 +75,7 @@ window.addEventListener('load', ()  => {
 
     });
 
-    productForm.addEventListener("submit", (e) => {
+    productEditForm.addEventListener("submit", (e) => {
         if (productName.value == "" || productName.value.length < 5
             || productDescription.value.length < 20
             || productCategory.value == ""

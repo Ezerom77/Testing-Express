@@ -118,6 +118,7 @@ const productController = {
         talles: talles,
         colores: colores,
         categorias: categorias,
+        
       });
     });
   },

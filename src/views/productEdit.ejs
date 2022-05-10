@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <%- include('./partials/head') %>
+  <script src="/js/productEditValidation.js"></script>
   <title>Editar producto</title>
 </head>
-
+          
 <body>
   <%- include('./partials/header') %>
   <main class="form-signin">
@@ -12,24 +13,48 @@
     <form method="post" action="/products/edit/<%=ProductoaEditar.id%>?_method=PUT" >
       <div class="form-group">
         <label for="productName">Nombre de producto</label>
-        <input value="<%=ProductoaEditar.nombre%>" type="text" class="form-control" id="productName" name="productName" >
+        <input  
+        type="text" 
+        class="form-control" 
+        id="productName" 
+        name="productName"
+        value="<%=ProductoaEditar.nombre%>"
+        >
+        <p id="prodNameError" class="errorTextProd"></p>
       </div>
       <div class="form-group">
         <label for="productDescription">Descripción del producto</label>
-        <input type="textarea" value="<%=ProductoaEditar.descripcion %>" class="form-control" id="productDescription" name="productDescription" rows="3"></input>
+        <input
+        type="textarea"    
+        class="form-control" 
+        id="productDescription" 
+        name="productDescription" 
+        rows="3"
+        value="<%=ProductoaEditar.descripcion %>"
+        >
+        <p id="prodDescError" class="errorTextProd"></p>
       </div>
       <div class="form-group">
         <label for="Categorias">Categorías de productos</label>
-        <select multiple class="form-control" id="categorias" name="categorias">
+        <select
+        multiple 
+        class="form-control" 
+        id="categorias" 
+        name="categorias">
           <% for( let i = 0; i < categorias.length; i++ ) { %>
             <option value="<%= categorias[i].id %>"><%= categorias[i].descripcion   %></option>
           <% } %>
         </select>
+        <p id="prodCatError" class="errorTextProd"></p>
       </div>
-
       <div class="form-group">
         <label for="talle">Seleccionar Talle</label>
-        <select class="form-select" name="talle" id="talle">
+        <select 
+        class="form-select" 
+        name="talle" 
+        id="talle"
+
+        >
           <% for( let i = 0; i < talles.length; i++ ) { %>
             <%if ( talles[i].id == ProductoaEditar.id_talle) { %>
               <option value="<%= talles[i].id %>" selected><%= talles[i].descripcion %></option>
@@ -41,7 +66,12 @@
       </div>
       <div class="form-group">
         <label for="color">Colores disponibles</label>
-        <select class="form-select" id="color" name="color">
+        <select 
+        class="form-select" 
+        id="color" 
+        name="color"
+        
+        >
           <%for ( let i = 0; i < colores.length; i++ ) { %>
             <%if ( colores[i].id == ProductoaEditar.id_color) { %>
               <option value="<%= colores[i].id %>" selected><%= colores[i].descripcion   %></option>
@@ -51,14 +81,36 @@
           <% } %>
           </select>
       </div>
-
       <div class="form-group">
         <label for="productPrice">Precio de venta $</label>
-        <input value="<%=ProductoaEditar.precio %>" type="number" class="form-control" id="productPrice" name="productPrice" >
+        <input 
+        type="number" 
+        class="form-control" 
+        id="productPrice" 
+        name="productPrice"
+        value="<%=ProductoaEditar.precio %>"
+        >
+        <p id="prodPriceError" class="errorTextProd"></p> 
       </div>
        <div class="form-group">
         <label for="productImage">Imagen del producto</label>
-        <input type="file" class="form-control-file" id="productImage" name="productImage">
+        <input 
+        type="file" 
+        class="form-control-file" 
+        id="productImage" 
+        name="productImage"
+        accept=".jpeg, .jpg, .pdf, .png"
+        multiple
+
+        >
+        <p id="prodImageError" class="errorTextProd"></p>
+
+        <!-- <label for="productImage2">Imagen Complementaria</label>
+        <input type="file" class="form-control-file" id="productImage2" name="productImage2"> -->
+        <!-- <label for="productImage3">Imagen Complementaria</label>
+        <input type="file" class="form-control-file" id="productImage3" name="productImage3">
+        <label for="productImage4">Imagen Complementaria</label>
+        <input type="file" class="form-control-file" id="productImage4" name="productImage4">  -->
       </div>
       <br>
       <button class="btn-enviar w-100 " type="submit">Actualizar</button>
