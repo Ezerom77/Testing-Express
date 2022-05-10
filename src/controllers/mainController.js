@@ -1,6 +1,5 @@
 const mainController = {
     index: (req,res) => {
-        // res.render('index');
         res.redirect('/products/slider')
     }
 }

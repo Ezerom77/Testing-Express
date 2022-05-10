@@ -20,7 +20,6 @@ const productController = {
       });
     });
   },
-  
   list: (req, res) => {
     db.Products.findAll({
       include: [
@@ -35,7 +34,6 @@ const productController = {
       });
     });
   },
-
   add: (req, res) => {
     db.Colores.findAll().then(function (colores) {
       db.Talles.findAll().then(function (talles) {
@@ -49,9 +47,8 @@ const productController = {
       });
     });
   },
-
   store: async (req, res) => {
-   const errors = validationResult(req);   
+   const errors = validationResult(req);
     if (!errors.isEmpty()) {
       db.Colores.findAll().then(function (colores) {
         db.Talles.findAll().then(function (talles) {
@@ -102,7 +99,6 @@ const productController = {
     }
     );
   },
-
   edit: (req, res) => {
     let pedidoProducto = db.Products.findByPk(req.params.id);
     let pedidoTalles = db.Talles.findAll();
@@ -123,7 +119,6 @@ const productController = {
       });
     });
   },
-
   update: async (req, res) => {
     let productoAEditar = {
       nombre: req.body.productName,
@@ -133,7 +128,6 @@ const productController = {
       id_talle: req.body.talle,
 
     };
-
     await db.Products.update(productoAEditar, { where: { id: req.params.id } });
     await db.Producto_Categoria.destroy({
       where: { id_Producto: req.params.id },
@@ -148,12 +142,12 @@ const productController = {
 
     res.redirect("/products/detail/" + req.params.id);
   },
-
   delete: (req, res) => {
     db.imagenProducto
       .findAll({ where: { id_Producto: req.params.id } })
       .then(function (imagenes) {
         for (let i = 0; i < imagenes.length; i++) {
+          console.log("esta imagen hay que borrar" + imagenes[i].nombreArchivo);
         fs.unlinkSync(
           path.join(
             __dirname,
@@ -170,22 +164,5 @@ const productController = {
         res.redirect("/products");
       });
   }
-  // delete: (req, res) => {
-  //   db.Products.findByPk(req.params.id)
-  //     .then(function (producto) {
-  //       fs.unlinkSync(
-  //         path.join(__dirname, "../../public/images/products/", producto.imagen)
-  //       );
-  //     })
-
-  //     .then(
-  //       db.Products.destroy({
-  //         where: { id: req.params.id },
-  //       })
-  //     )
-  //     .then(function () {
-  //       res.redirect("/products");
-  //     });
-  // },
 };
 module.exports = productController;
