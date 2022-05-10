@@ -23,40 +23,33 @@ const uploadFile = multer ({storage: storage});
 // Form validations
 const validations = [
     body('productName')
-    .not().isEmpty(),
-    body('productDescription').not().isEmpty(),
-    body('productPrice').not().isEmpty()
-]
+        .notEmpty().withMessage('El nombre del producto es obligatorio').bail()
+        .isLength({min: 5}).withMessage('El nombre del producto debe tener al menos 5 caracteres'),
+    body('productDescription')
+        .isLength({min: 20}).withMessage('La descripción del producto debe tener al menos 20 caracteres'),
+    body('categorias')
+        .notEmpty().withMessage('Debes seleccionar al menos una categoría'),
+    body('talle')
+        .notEmpty().withMessage('Debes seleccionar al menos un talle'),
+    body('color')
+        .notEmpty().withMessage('Debes seleccionar al menos un color'),
+    body('productPrice')
+        .notEmpty().withMessage('Debes ingresar el precio del producto'),
+    /* body('productImage')
+        .custom((value, {req}) => {
+            let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+            if(acceptedExtensions.includes(path.extname(file.originalname))){
+            return 'true'; // return "non-falsy" value to indicate valid data"
+            }else{
+            return false; // return "falsy" value to indicate invalid data
+            }
+        })
+        .withMessage('Solo se aceptan archivos jpeg, jpg, png y pdf.'), // custom error message that will be send back if the file in not a pdf. 
+ */
+];
+ 
 
-
-
-// Form validations
-//const productValidations = [
-//    body('productName')
-//        .notEmpty().withMessage("Debes completar el nombre del producto").bail()
-//        .isLength({min: 5}).withMessage("El nombre del producto debe tener al menos 5 caracteres"),
-//    body('productDescription').isLength({min: 20}).withMessage("La descripción del producto debe tener al menos 20 caracteres"),
-//    body('categorias').notEmpty().withMessage("Debes seleccionar al menos una categoría"),
-//    body('talle').notEmpty().withMessage("Debes seleccionar un talle"),
-//    body('color').notEmpty().withMessage('Debes seleccionar un color'),
-//    body('productPrice').notEmpty().withMessage("Debes ingresar el precio del producto"),
-//    body('productImage').custom((value, {req}) => {
-//        let file = req.file
-//        let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
-//        if (!file) {
-//            throw new Error('Debes subir una imagen');
-//        } else {
-//            if (!acceptedExtensions.includes(path.extname(file.originalname))) {
-//            throw new Error('Solo se permiten imagenes con extensiones ${acceptedExtensions.join(', ')}');
-//            }
-//        }
-//        return true;
-
-//        })
-//]; 
-
-
-
+// Routes
 // Get all products
 router.get("/", productController.list);
 router.get("/slider", productController.slider);

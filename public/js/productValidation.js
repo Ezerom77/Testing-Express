@@ -46,7 +46,7 @@ window.addEventListener('load', ()  => {
             productImage.nextElementSibling.innerHTML = "* Debes subir una imagen";
         }
          else {
-            e.submit();
+            return true;
         }
     });
 });   

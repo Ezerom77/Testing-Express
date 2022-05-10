@@ -49,6 +49,7 @@ const productController = {
   },
   store: async (req, res) => {
    const errors = validationResult(req);
+   console.log(errors)
     if (!errors.isEmpty()) {
       db.Colores.findAll().then(function (colores) {
         db.Talles.findAll().then(function (talles) {
@@ -58,6 +59,7 @@ const productController = {
               talles: talles,
               categorias: categorias,
               errors: errors.mapped(),
+              oldData: req.body,
             });
           });
         });
@@ -81,7 +83,7 @@ const productController = {
           await db.Producto_Categoria.create(objeto2)
        }
         res.redirect("/products")
-      }
+       }
   },
 
   detail: (req, res) => {
