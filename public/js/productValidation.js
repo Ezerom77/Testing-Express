@@ -19,7 +19,7 @@ window.addEventListener('load', ()  => {
         productCategory.nextElementSibling.innerHTML = "";
         productPrice.nextElementSibling.innerHTML = "";
         productImage.nextElementSibling.innerHTML = "";
-         
+    
         if (productName.value == "" || productName.value.length < 5) {
             e.preventDefault();
             productName.classList.add('is-invalid');
@@ -45,13 +45,8 @@ window.addEventListener('load', ()  => {
             productImage.classList.add('is-invalid');
             productImage.nextElementSibling.innerHTML = "* Debes subir una imagen";
         }
-        if (!acceptedExtensions.includes(path.extname(productImage.files[0].name))) {
-            e.preventDefault();
-            productImage.classList.add('is-invalid');
-            productImage.nextElementSibling.innerHTML = "* Debes subir una imagen con una de las siguientes extensiones: " + acceptedExtensions.join(', ');
-        }
          else {
-            productForm.submit();
+            e.submit();
         }
     });
-});
+});   

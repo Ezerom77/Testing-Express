@@ -22,7 +22,8 @@ const uploadFile = multer ({storage: storage});
 
 // Form validations
 const validations = [
-    body('productName').not().isEmpty(),
+    body('productName')
+    .not().isEmpty(),
     body('productDescription').not().isEmpty(),
     body('productPrice').not().isEmpty()
 ]
