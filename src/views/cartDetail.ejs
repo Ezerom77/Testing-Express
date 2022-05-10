@@ -11,17 +11,17 @@
         <h4 class="subTitle">PRODUCTOS</h4>
            <div class="carrito">
                <article class="contenido">
-                 <!-- <span class="productPix"><img src= "/images/products/Remera.jpg" id="fotoProductomin"></img></span> -->
+                 <span class="productPix"><img src= "/images/products/<%=cart[0].imagenes[0].nombreArchivo%>" id="fotoProductomin"></img></span>
                     <div class="descripcion">
                         <div class="productName">
                         <a href="/products/detail/<%=cart[0].id%>"id="nombreProducto"><%=cart[0].nombre%>></a>
                     </div>
-                    <!-- <div class="details">
+                    <div class="details">
                         <ul class="detalles">
-                            <li id="talle"> TALLE: <strong>2</strong></li>
-                            <li id="color">COLOR:  <strong>Red</strong></li>
+                            <li id="talle"> TALLE: <strong><%=cart[0].talle.descripcion%></strong></li>
+                            <li id="color">COLOR:  <strong><%=cart[0].color.descripcion%></strong></li>
                         </ul>
-                    </div> -->
+                    </div>
                     <div class="price">
                         <p id="precio">AR$: <%=cart[0].precio%></p>
                     </div>
@@ -63,7 +63,7 @@
                    </div> -->
                 <div class="total">
                     <h3>Total</h3>
-                    <p>$3400</p>
+                    <p>AR$: <%=cart[0].precio%></p>
                 </div>
                 <br>
                 <div class="final">
