@@ -49,9 +49,5 @@ router.get('/edit',loggedMiddleware, userController.edit)
 router.post('/edit',loggedMiddleware, userController.update)
 
 
-//Carrito
-router.get('/carrito', userController.carrito);
-
-
 // Module export
 module.exports = router;

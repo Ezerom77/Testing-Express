@@ -97,11 +97,6 @@ let userController = {
     res.clearCookie("recordame");
     res.redirect("/users/login");
   },
-
-  // este metodo vamos a tener que moverlo a otro lado...
-  carrito: (req, res) => {
-    res.render("carrito");
-  },
 };
 
 // Exportar modulo
