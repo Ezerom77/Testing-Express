@@ -40,7 +40,8 @@
         multiple 
         class="form-control" 
         id="categorias" 
-        name="categorias">
+        name="categorias"
+        required>
           <% for( let i = 0; i < categorias.length; i++ ) { %>
             <option value="<%= categorias[i].id %>"><%= categorias[i].descripcion   %></option>
           <% } %>

@@ -88,11 +88,6 @@ const cartController = {
             title: "Compra en Clessidra",
             unit_price: parseInt(cartValue),
             quantity: 1,
-          },
-          {
-            title: "Clessidra",
-            unit_price: cartValue,
-            quantity: 1,
           }
         ],
         back_urls: {
