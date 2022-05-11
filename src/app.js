@@ -36,7 +36,7 @@ app.use(
 
 //Esto debería estar en una variable de entorno y no hardcoded
 mercadopago.configure({
-  access_token: process.env.MP_ACCESS_TOKEN,
+  access_token: process.env.MP_ACCESS_TOKEN || 'TEST-4230970286841296-042219-b17a89983b74b8eaf51141f53ed1de6b-59181451',
 });
 
 
