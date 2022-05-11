@@ -13,16 +13,18 @@ const verificar = (lista, id) => {
 const cartController = {
   index: (req, res) => {
     let cart = req.session.cart;
+    let cartValue = req.session.cartValue;
     let n = cart.length;
     if (n <= 0) {
       res.render('cartError');
     } else {
-      res.render("cartDetail", { cart: cart });
+      res.render("cartDetail", { cart: cart, cartValue: cartValue });
     }
   },
   add: (req, res) => {
     let cart = req.session.cart;
     let prod = req.params.id;
+    let cartValue = req.session.cartValue;
     db.Products.findByPk(prod, {
       include: [
         { association: "color" },
@@ -40,27 +42,32 @@ const cartController = {
           talle: product.talle.descripcion,
           imagen: product.imagenes[0].nombreArchivo,
         };
+        cartValue = cartValue + Number(product.precio);
+        req.session.cartValue = cartValue;
         cart.push(datos);
       } else {
         // res.redirect('/cart/add/'+prod)
-        res.render("cartDetail", { cart: cart });
+        res.render("cartDetail", { cart: cart, cartValue: cartValue });
       }
       req.session.cart = cart;
-      res.render("cartDetail", { cart: cart });
+      res.render("cartDetail", { cart: cart, cartValue: cartValue });
     });
   },
   remove: (req, res) => {
     let cart = req.session.cart;
     let prod = req.params.id;
+    let newValue = 0
     let aux = []; //este arreglo auxiliar es para filtrar los elementos que deben quedar en el carrito de prod
     for (let i = 0; i < cart.length; i++) {
       let item = cart[i];
       if (item.id != prod) {
         aux.push(item);
+        newValue = newValue + Number(item.precio);
       }
     }
     req.session.cart = aux;
-    res.render("cartDetail", { cart: aux });
+    req.session.cartValue = newValue;
+    res.render("cartDetail", { cart: aux, cartValue: newValue  });
   },
 };
 module.exports = cartController;

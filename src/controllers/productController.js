@@ -2,6 +2,7 @@ const db = require("../../models");
 const fs = require("fs");
 const path = require("path");
 const { validationResult } = require("express-validator");
+const { info } = require("console");
 
 
 // Controllers
@@ -17,6 +18,8 @@ const productController = {
     }).then(function (products) {
       if(req.session.cart === undefined){
         req.session.cart = [];}
+      if(req.session.cartValue === undefined){
+        req.session.cartValue = 0;};
       res.render("productListSlider", {
         title: "Todos los productos",
         products: products,
