@@ -6,6 +6,7 @@ var router = express.Router();
 
 /* Main routes */
 router.get('/add/:id',cartController.add);
+router.get('/remove/:id',cartController.remove);
 router.get('/',cartController.index);
 
 module.exports = router;

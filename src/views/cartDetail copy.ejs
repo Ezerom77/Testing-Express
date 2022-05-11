@@ -14,7 +14,7 @@
                 <div class="carrito">
                 <article class="contenido">
                     <div class="imgCart">
-                    <span class="productPix"><img src= "/images/products/<%=cart[i].imagen%>" id="fotoProductomin"></img></span>
+                    <span class="productPix"><img src= "/images/products/<%=cart[i].imagenes[0].nombreArchivo%>" id="fotoProductomin"></img></span>
                     </div>
                 
                        <div class="descripcion">
@@ -23,8 +23,8 @@
                            </div>
                        <div class="details">
                            <ul class="detalles">
-                               <li id="talle"> TALLE: <strong><%=cart[i].talle%></strong></li>
-                               <li id="color">COLOR:  <strong><%=cart[i].color%></strong></li>
+                               <li id="talle"> TALLE: <strong><%=cart[i].talle.descripcion%></strong></li>
+                               <li id="color">COLOR:  <strong><%=cart[i].color.descripcion%></strong></li>
                            </ul>
                        </div>
                        <div class="price">
@@ -32,7 +32,7 @@
                        </div>
                        </div>
                           <div class="removeA">
-                          <a href="/cart/remove/<%=cart[i].id%>" id="eliminar">Eliminar artículo</a>
+                          <a href="/index" id="eliminar">Eliminar artículo</a>
                           </div>
                   </article>
                 </div>
