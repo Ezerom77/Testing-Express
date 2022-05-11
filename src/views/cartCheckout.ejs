@@ -29,9 +29,6 @@
                            <p id="precio">AR$: <%=cart[i].precio%></p>
                        </div>
                        </div>
-                          <div class="removeA">
-                          <a href="/cart/remove/<%=cart[i].id%>" id="eliminar">Eliminar artículo</a>
-                          </div>
                   </article>
                 </div>
                     <% } %>
@@ -42,11 +39,12 @@
                     <h3>Total</h3>
                     <p>AR$: <%=cartValue%></p>
                 </div>
-                <br><div class="final">
-                    <button type="submit"><a href="/cart/removeAll">Vaciar carrito</a></button>
+                <br>
+                <div class="final">
+                    <button type="submit"><a href="/cart">Volver al carrito</a></button>
                 </div>
                 <div class="final">
-                    <button type="submit"><a href="/cart/checkout">Finalizar compra</a></button>
+                    <button type="submit"><a href="/cart/payout">Confirmar compra</a></button>
                 </div>
                </article>
            </div>

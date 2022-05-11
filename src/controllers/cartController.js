@@ -16,7 +16,7 @@ const cartController = {
     let cartValue = req.session.cartValue;
     let n = cart.length;
     if (n <= 0) {
-      res.render('cartError');
+      res.render("cartError");
     } else {
       res.render("cartDetail", { cart: cart, cartValue: cartValue });
     }
@@ -56,8 +56,8 @@ const cartController = {
   remove: (req, res) => {
     let cart = req.session.cart;
     let prod = req.params.id;
-    let newValue = 0
-    let aux = []; //este arreglo auxiliar es para filtrar los elementos que deben quedar en el carrito de prod
+    let newValue = 0;
+    let aux = []; //este arreglo auxiliar es para filtrar los elementos que deben quedar en el carrito de prod, mejorable con filter probablemente.
     for (let i = 0; i < cart.length; i++) {
       let item = cart[i];
       if (item.id != prod) {
@@ -67,7 +67,20 @@ const cartController = {
     }
     req.session.cart = aux;
     req.session.cartValue = newValue;
-    res.render("cartDetail", { cart: aux, cartValue: newValue  });
+    res.render("cartDetail", { cart: aux, cartValue: newValue });
   },
+  removeAll: (req, res) => {
+    req.session.cart = [];
+    req.session.cartValue = 0;
+    res.render("cartError");
+  },
+  checkout: (req, res) => {
+    let cart = req.session.cart;
+    let cartValue = req.session.cartValue;
+    res.render("cartCheckout", { cart: cart, cartValue: cartValue });
+  },
+  payout: (req, res) => {
+    res.render('cartEnd');
+  }
 };
 module.exports = cartController;
