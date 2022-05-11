@@ -1120,6 +1120,13 @@ input[type="text"] {
   opacity: 0.8;
   text-align: center;
 }
+.carritoVacio{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
 .carrito{
   width: 100%;
   /* height: 35vh; */

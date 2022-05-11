@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Carrito</title>
+  </head>
+  <body>
+    <%- include('./partials/header') %>
+    <main class="main">
+      <section class="shoppingBagManagement">
+        <h4 class="subTitle">PRODUCTOS</h4>
+        <div class="carrito">
+          <h3 class="carritoVacio">El carrito se encuentra vacio</h3>
+        </div>
+        <div>
+          <h4 class="subTitle">RESUMEN DE COMPRA</h4>
+          <article class="resumenDeCompra">
+            <div class="total">
+              <h3>Total</h3>
+              <p>AR$: 0</p>
+            </div>
+            <br />
+            <div class="final">
+              <button type="submit">
+                <a href="/products">Listar productos</a>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <%- include('./partials/footer') %>
+  </body>
+</html>

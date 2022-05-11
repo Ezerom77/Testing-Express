@@ -12,7 +12,15 @@ const verificar = (lista, id) => {
 
 const cartController = {
   index: (req, res) => {
-    res.send("todavia no esta definida esta vista");
+    let cart = req.session.cart;
+    let n = cart.length;
+    if (n <= 0) {
+      res.render('cartError');
+      console.log("entro por TRUE y n es: " + n);
+    } else {
+      res.render("cartDetail", { cart: cart });
+      console.log("entro por FALSE y n es: " + n);
+    }
   },
   add: (req, res) => {
     let cart = req.session.cart;
@@ -46,8 +54,6 @@ const cartController = {
   remove: (req, res) => {
     let cart = req.session.cart;
     let prod = req.params.id;
-    let pos = verificar(cart, prod);
-    let dato = cart[pos];
     let aux = []; //este arreglo auxiliar es para filtrar los elementos que deben quedar en el carrito de prod
     for (let i = 0; i < cart.length; i++) {
       let item = cart[i];
@@ -60,20 +66,3 @@ const cartController = {
   },
 };
 module.exports = cartController;
-
-//Metodo anterior donde duplicaba el producto en el carrito
-// add: (req, res) => {
-//   let cart = req.session.cart;
-//   let prod = req.params.id;
-//   db.Products.findByPk(prod, {
-//     include: [
-//       { association: "color" },
-//       { association: "talle" },
-//       { association: "imagenes" },
-//     ],
-//   }).then(function (product) {
-//     cart.push(product);
-//     req.session.cart = cart;
-//     res.render("cartDetail", { cart: cart });
-//   });
-// },
