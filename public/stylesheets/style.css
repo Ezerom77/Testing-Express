@@ -873,6 +873,7 @@ input[type="text"] {
 
 .options {
   display: flex;
+  justify-content: space-between;
   gap: 15px;
   margin-top: 20px;
 }
@@ -920,8 +921,8 @@ input[type="text"] {
 .options button:hover {
   background-color: #212121;
 }
-.options button#edit {
-  width: 70px;
+.options button#edit,button#toCart {
+  width: 90px;
   height: 40px;
   border: 1px solid #ee964b;
   font-size: 13px;
@@ -931,8 +932,19 @@ input[type="text"] {
   background-color: #d65780;
   padding: 3px;
 }
+/* .options button#toCart {
+  width: 90px;
+  height: 40px;
+  border: 1px solid #ee964b;
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: #d65780;
+  padding: 3px;
+} */
 
-.options button#edit:hover {
+.options button#edit:hover,button#toCart:hover {
   background-color: #212121;
 }
 

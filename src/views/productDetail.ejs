@@ -73,13 +73,10 @@
                     </option>
                   </select>
                 </div>
-                <div class="quantity">
-                  <i class="fa fa-minus"></i> <span class="qty">1</span>
-                  <i class="fa fa-plus"></i>
-                </div>
-                <button><a href="/cart/add/<%= productDetail.id %>"
-                  >Agregar al carrito</a
-                ></button>
+
+                <a href="/cart/add/<%= productDetail.id %>"
+                  ><button id="toCart">Agregar al carrito</button></a
+                >
                 <a href="/products/edit/<%= productDetail.id %>"
                   ><button id="edit">Editar Producto</button></a
                 >
