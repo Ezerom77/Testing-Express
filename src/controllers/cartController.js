@@ -16,10 +16,8 @@ const cartController = {
     let n = cart.length;
     if (n <= 0) {
       res.render('cartError');
-      console.log("entro por TRUE y n es: " + n);
     } else {
       res.render("cartDetail", { cart: cart });
-      console.log("entro por FALSE y n es: " + n);
     }
   },
   add: (req, res) => {
