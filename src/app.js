@@ -5,6 +5,9 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var session = require("express-session");
 const cookieAuthMiddleware = require("./middlewares/cookieAuthMiddleware");
+const mercadopago = require('mercadopago');
+require('dotenv').config();
+
 
 var app = express();
 
@@ -30,6 +33,11 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+//Esto debería estar en una variable de entorno y no hardcoded
+mercadopago.configure({
+  access_token: process.env.MP_ACCESS_TOKEN,
+});
 
 
 app.use(express.urlencoded({ extended: false }));

@@ -1,4 +1,5 @@
 const db = require("../../models");
+const mercadopago = require('mercadopago');
 const verificar = (lista, id) => {
   let pos = -1;
   for (let i = 0; i < lista.length; i++) {
@@ -80,6 +81,34 @@ const cartController = {
     res.render("cartCheckout", { cart: cart, cartValue: cartValue });
   },
   payout: (req, res) => {
+    let cartValue = req.session.cartValue;
+    let preference = {
+        items: [
+          {
+            title: "Compra en Clessidra",
+            unit_price: parseInt(cartValue),
+            quantity: 1,
+          },
+          {
+            title: "Clessidra",
+            unit_price: cartValue,
+            quantity: 1,
+          }
+        ],
+        back_urls: {
+          success: "http://localhost:3000/cart/end",
+          failure: "http://localhost:3000/cart/end",
+          pending: "http://localhost:3000/cart/end"
+        }
+      };
+      mercadopago.preferences.create(preference)
+        .then(function (response) {
+          res.redirect(response.body.init_point);
+        }).catch(function (error) {
+          console.log(error);
+        });
+  },
+  end: (req, res) => {
     res.render('cartEnd');
   }
 };

@@ -10,6 +10,7 @@ router.get('/remove/:id',cartController.remove);
 router.get('/removeAll',cartController.removeAll);
 router.get('/checkout',cartController.checkout);
 router.get('/payout',cartController.payout)
+router.get('/end',cartController.end)
 router.get('/',cartController.index);
 
 module.exports = router;
