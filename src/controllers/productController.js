@@ -16,10 +16,10 @@ const productController = {
         { association: "imagenes" },
       ],
     }).then(function (products) {
-      if(req.session.cart === undefined){
-        req.session.cart = [];}
-      if(req.session.cartValue === undefined){
-        req.session.cartValue = 0;};
+      // if(req.session.cart === undefined){
+      //   req.session.cart = [];}
+      // if(req.session.cartValue === undefined){
+      //   req.session.cartValue = 0;};
       res.render("productListSlider", {
         title: "Todos los productos",
         products: products,

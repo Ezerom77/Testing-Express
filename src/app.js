@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var session = require("express-session");
 const cookieAuthMiddleware = require("./middlewares/cookieAuthMiddleware");
+const cartMiddleware = require("./middlewares/cartMiddleware")
 const mercadopago = require('mercadopago');
 require('dotenv').config();
 
@@ -46,6 +47,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "./../public")));
 app.use(cookieAuthMiddleware);
+app.use(cartMiddleware)
 
 // Requerir Ruteadores //
 const productRoutes = require("./routes/product");
