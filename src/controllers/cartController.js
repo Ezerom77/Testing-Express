@@ -48,7 +48,7 @@ const cartController = {
         cart.push(datos);
       } else {
         // res.redirect('/cart/add/'+prod)
-        res.render("cartDetail", { cart: cart, cartValue: cartValue });
+        return res.render("cartDetail", { cart: cart, cartValue: cartValue });
       }
       req.session.cart = cart;
       res.render("cartDetail", { cart: cart, cartValue: cartValue });

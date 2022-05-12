@@ -73,7 +73,7 @@ window.addEventListener('load', ()  => {
         }
         });
 
-    });
+    
 
     productForm.addEventListener("submit", (e) => {
         if (productName.value == "" || productName.value.length < 5
@@ -87,4 +87,5 @@ window.addEventListener('load', ()  => {
         }   else {  
             e.submit()       
     }   
+});
 });

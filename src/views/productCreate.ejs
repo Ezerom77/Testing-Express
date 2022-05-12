@@ -41,7 +41,7 @@
         class="form-control" <%= locals.errors && errors.productCategory ? 'is-invalid' : null %> 
         id="categorias" 
         name="categorias"
-        required>
+        >
           <% for( let i = 0; i < categorias.length; i++ ) { %>
             <option value="<%= categorias[i].id %>"><%= categorias[i].descripcion %></option>
           <% } %>

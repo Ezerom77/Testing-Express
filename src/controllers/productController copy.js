@@ -54,23 +54,23 @@ const productController = {
     });
   },
   store: async (req, res) => {
-  //  const errors = validationResult(req);
-  //  console.log(errors)
-  //   if (!errors.isEmpty()) {
-  //     db.Colores.findAll().then(function (colores) {
-  //       db.Talles.findAll().then(function (talles) {
-  //         db.Categorias.findAll().then(function (categorias) {
-  //           res.render("productCreate", {
-  //             colores: colores,
-  //             talles: talles,
-  //             categorias: categorias,
-  //             errors: errors.mapped(),
-  //             oldData: req.body,
-  //           });
-  //         });
-  //       });
-  //     });
-  //     } else {
+   const errors = validationResult(req);
+   console.log(errors)
+    if (!errors.isEmpty()) {
+      db.Colores.findAll().then(function (colores) {
+        db.Talles.findAll().then(function (talles) {
+          db.Categorias.findAll().then(function (categorias) {
+            res.render("productCreate", {
+              colores: colores,
+              talles: talles,
+              categorias: categorias,
+              errors: errors.mapped(),
+              oldData: req.body,
+            });
+          });
+        });
+      });
+      } else {
       let productoNuevo = {
         nombre: req.body.productName,
         descripcion: req.body.productDescription,
@@ -87,7 +87,7 @@ const productController = {
         for (let i = 0; i < req.body.categorias.length; i++) {
           let objeto2 = { id_Producto: idP, id_Categoria: req.body.categorias[i] };
           await db.Producto_Categoria.create(objeto2)
-      //  }
+       }
         res.redirect("/products")
        }
   },
