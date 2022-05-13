@@ -26,6 +26,7 @@ const validations = [
         .notEmpty().withMessage('El nombre del producto es obligatorio (Backend)').bail()
         .isLength({min: 5}).withMessage('El nombre del producto debe tener al menos 5 caracteres (Backend)'),
     body('productDescription')
+        .notEmpty().withMessage('La descripción del producto es obligatoria (Backend)').bail()
         .isLength({min: 20}).withMessage('La descripción del producto debe tener al menos 20 caracteres (Backend)'),
     body('categorias')
         .notEmpty().withMessage('Debes seleccionar al menos una categoría (Backend)'),
