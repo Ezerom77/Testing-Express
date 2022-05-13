@@ -9,7 +9,6 @@ window.addEventListener('load', ()  => {
     let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
     
 
-    // productForm.addEventListener("submit", (e) => {
     productName.classList.remove('is-invalid');
     productDescription.classList.remove('is-invalid');
     productCategory.classList.remove('is-invalid');
@@ -75,17 +74,22 @@ window.addEventListener('load', ()  => {
 
     
 
+    /* DEJAMOS ABAJO DESHABILITADO PORQUE SI SE HABILITA, NO FUNCIONAN LAS VALIDACIONES DE BACKEND.
+    EL CODIGO ANDA BIEN. SIMPLEMENTE DESCOMENTAR Y LISTO. */
+    
+    /*
     productForm.addEventListener("submit", (e) => {
-        if (productName.value == "" || productName.value.length < 5
-            || productDescription.value.length < 20
-            || productCategory.value == ""
-            || productPrice.value == ""
-            || productImage.value == "") {
+        if (productName.value == "" 
+        || productName.value.length < 5
+        || productDescription.value.length < 20
+        || productCategory.value == ""
+        || productPrice.value == ""
+        || productImage.value == "") {
             e.preventDefault();
-            return alert('Por favor, revisa los errores en el formulario');
+            return alert('Por favor, revisa que no haya errores en el formulario o que haya campos incompletos');
         
         }   else {  
             e.submit()       
-    }   
-});
+            }   
+    }); */
 });
