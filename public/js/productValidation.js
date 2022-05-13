@@ -1,4 +1,3 @@
-
 window.addEventListener('load', ()  => {
     let productForm = document.querySelector('form');
     let productName = document.getElementById('productName');

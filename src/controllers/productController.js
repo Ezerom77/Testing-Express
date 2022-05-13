@@ -123,7 +123,24 @@ const productController = {
     });
   },
   update: async (req, res) => {
-    let productoAEditar = {
+    const errors = validationResult(req);
+    console.log(errors)
+    if (!errors.isEmpty()) {
+      db.Colores.findAll().then(function (colores) {
+        db.Talles.findAll().then(function (talles) {
+          db.Categorias.findAll().then(function (categorias) {
+            res.render("productCreate", {
+              colores: colores,
+              talles: talles,
+              categorias: categorias,
+              errors: errors.mapped(),
+              oldData: req.body,
+            });
+          });
+        });
+      });    
+      } else {
+      let productoAEditar = {
       nombre: req.body.productName,
       descripcion: req.body.productDescription,
       precio: req.body.productPrice,
@@ -144,6 +161,7 @@ const productController = {
     }
 
     res.redirect("/products/detail/" + req.params.id);
+  }
   },
   delete: (req, res) => {
     db.imagenProducto

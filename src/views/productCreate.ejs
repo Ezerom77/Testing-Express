@@ -63,17 +63,17 @@
         class="form-select" <%= locals.errors && errors.talle ? 'is-invalid' : null %> 
         name="talle" 
         id="talle"
-        value= '<%= locals.oldData ? oldData.productDescription : null %>'
+        value= '<%= locals.oldData ? oldData.talle : null %>'
         >
         <% if (locals.errors && errors.talle) { %>
           <p class="errortext"> <%= errors.talle.msg %> </p>
         <% } %>
           <% for( let i = 0; i < talles.length; i++ ) { %>
+            
             <option value="<%= talles[i].id %>"><%= talles[i].descripcion %></option>
           <% } %>
           <!-- 
-            lineas en blanco para seguir la 
-            numeracion de ProductEdit.ejs
+            lineas en blanco para seguir la numeracion de ProductEdit.ejs
            -->
         </select>
       </div>
