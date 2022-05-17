@@ -8,15 +8,14 @@
   </head>
 
   <body>
-   
+
     <%- include('./partials/header') %>
-   
+
     <main class="form-signin">
         <div>
           <a class="logo" href="/">CLESSIDRA</a>
         </div>
- 
-        
+
       <form
         method="post"
         action="/users/registro"
@@ -26,16 +25,16 @@
         <h1 class="form-title h3 mb-3 fw-normal">
           Bienvenido/a!<br />Por favor registrate con tus datos:
         </h1>
-       
+
         <div class="errorBox">
           <ul class="errorList">
-         
-              
+
+
           </ul></div>
         <div class="form-floating" id="nameInput">
           <input
             type="text"
-            class="form-control <%= locals.errors && errors.userName ? 'is-invalid' : null %>" 
+            class="form-control <%= locals.errors && errors.userName ? 'is-invalid' : null %>"
             id="nombre"
             name="userName"
             placeholder="Juan"
@@ -45,7 +44,7 @@
             <p class="errortext"> <%= errors.userName.msg %> </p>
           <% } %>
           <p id="nameError" class="errortext"></p>
-          
+
         </div>
         <div class="form-floating" id="surnameInput">
           <input
@@ -60,7 +59,7 @@
             <p class="errortext"> <%= errors.userLastName.msg %> </p>
           <% } %>
           <p id="apellidoError" class="errortext"></p>
-          
+
         </div>
         <div class="form-floating" id="emailInput">
           <input
@@ -75,9 +74,9 @@
             <p class="errortext"> <%= errors.userEmail.msg %> </p>
           <% } %>
           <p id="emailError" class="errortext"></p>
-         
+
         </div>
-        
+
         <div class="form-floating" id="passwordInput">
           <input
             type="password"
@@ -91,17 +90,17 @@
             <p class="errortext"> <%= errors.userPassword.msg %> </p>
           <% } %>
           <p id="contrasenaError" class="errortext"></p>
-         
+
         </div>
-        <br> 
+        <br>
         <div class="form-floating-img" id="imageInput">
-         <label class="uploadFile <%= locals.errors && errors.profilePic ? 'is-invalid' : null %>" 
-         for="profilePic">Elegir foto de perfil *</label> 
+         <label class="uploadFile <%= locals.errors && errors.profilePic ? 'is-invalid' : null %>"
+         for="profilePic">Elegir foto de perfil *</label>
           <input
-            type="file" name="profilePic" id="profilePic"  accept=".jpg, .jpeg, .png" 
+            type="file" name="profilePic" id="profilePic"  accept=".jpg, .jpeg, .png"
             value="<%= locals.oldData ? oldData.profilePic : null %>">
             <p id="imgError" class="errortext"></p>
-          
+
         </div>
         <br />
         <div class="checkbox mb-3">
@@ -115,7 +114,7 @@
           <p id="termsError" class="errortext"></p>
         </div>
         <button class="btn-enviar w-100" type="submit" id="submit">Registrarme</button>
-     
+
       </form>
     </main>
 

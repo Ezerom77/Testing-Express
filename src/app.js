@@ -54,11 +54,13 @@ const productRoutes = require("./routes/product");
 const mainRoutes = require("./routes/main");
 const usersRouter = require("./routes/users");
 const cartRouter = require("./routes/cart");
+const apiRouter = require("./routes/api");
 
 // Rutas //
 app.use("/users", usersRouter);
 app.use("/products", productRoutes);
 app.use("/cart", cartRouter);
+app.use("/api", apiRouter)
 app.use("/", mainRoutes);
 
 

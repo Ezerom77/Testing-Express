@@ -139,7 +139,7 @@ const productController = {
             });
           });
         });
-      });    
+      });
       } else {
       let productoAEditar = {
       nombre: req.body.productName,
