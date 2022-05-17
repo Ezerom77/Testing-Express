@@ -113,9 +113,9 @@ const productController = {
       pedidoTalles,
       pedidoColores,
       pedidoCategorias,
-    ]).then(function ([ProductoaEditar, talles, colores, categorias]) {
+    ]).then(function ([ProductoAEditar, talles, colores, categorias]) {
       res.render("productEdit", {
-        ProductoaEditar: ProductoaEditar,
+        ProductoAEditar: ProductoAEditar,
         talles: talles,
         colores: colores,
         categorias: categorias,
@@ -129,7 +129,7 @@ const productController = {
       db.Colores.findAll().then(function (colores) {
         db.Talles.findAll().then(function (talles) {
           db.Categorias.findAll().then(function (categorias) {
-            res.render("productCreate", {
+            res.render("productEdit", {
               colores: colores,
               talles: talles,
               categorias: categorias,

@@ -75,7 +75,7 @@ router.get("/detail/:id", productController.detail);
 
 // Edit an existing product
 router.get("/edit/:id", productController.edit);
-router.put('/edit/:id', productController.update);
+router.put('/edit/:id', validations, productController.update);
 
 //Delete an existing product
 router.delete("/edit/:id", productController.delete);

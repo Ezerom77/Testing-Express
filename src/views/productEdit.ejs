@@ -9,8 +9,8 @@
 <body>
   <%- include('./partials/header') %>
   <main class="form-signin">
-    <h1 class="form-title h3 mb-3 fw-normal">Estás editando:<br><i><%=ProductoaEditar.nombre %></i></h1>
-    <form method="post" action="/products/edit/<%=ProductoaEditar.id%>?_method=PUT" >
+    <h1 class="form-title h3 mb-3 fw-normal">Estás editando:<br><i><%=ProductoAEditar.nombre %></i></h1>
+    <form method="post" action="/products/edit/<%=ProductoAEditar.id%>?_method=PUT" >
       <div class="form-group">
         <label for="productName">Nombre de producto</label>
         <input  
@@ -18,7 +18,7 @@
         class="form-control" 
         id="productName" 
         name="productName"
-        value= '<%= locals.oldData ? oldData.productName : ProductoaEditar.nombre%>'
+        value= '<%= locals.oldData ? oldData.productName : ProductoAEditar.nombre%>'
         >
         <p id="prodNameError" class="errorTextProd"></p>
         <% if (locals.errors && errors.productName) { %>
@@ -33,7 +33,7 @@
         id="productDescription"
         name="productDescription"
         rows="3"
-        value="<%= locals.oldData ? oldData.productDescription : ProductoaEditar.descripcion %>"
+        value="<%= locals.oldData ? oldData.productDescription : ProductoAEditar.descripcion %>"
         >
         <p id="prodDescError" class="errorTextProd"></p>
         <% if (locals.errors && errors.productDescription) { %>
@@ -63,13 +63,13 @@
         class="form-select" 
         name="talle" 
         id="talle"
-        value= '<%= locals.oldData ? oldData.talle : ProductoaEditar.talle %>'
+        value= '<%= locals.oldData ? oldData.talle : ProductoAEditar.talle %>'
         >
         <% if (locals.errors && errors.talle) { %>
           <p class="errortext"> <%= errors.talle.msg %> </p>
         <% } %>
           <% for( let i = 0; i < talles.length; i++ ) { %>
-            <%if ( talles[i].id == ProductoaEditar.id_talle) { %>
+            <%if ( talles[i].id == ProductoAEditar.id_talle) { %>
               <option value="<%= talles[i].id %>" selected><%= talles[i].descripcion %></option>
               <% } else { %>
                 <option value="<%= talles[i].id %>"><%= talles[i].descripcion %></option>
@@ -83,13 +83,13 @@
         class="form-select" 
         id="color" 
         name="color"
-        value= '<%= locals.oldData ? oldData.color : ProductoaEditar.color %>'
+        value= '<%= locals.oldData ? oldData.color : ProductoAEditar.color %>'
         >
         <% if (locals.errors && errors.color) { %>
           <p class="errortext"> <%= errors.color.msg %> </p>
         <% } %>
         <%for ( let i = 0; i < colores.length; i++ ) { %>
-            <%if ( colores[i].id == ProductoaEditar.id_color) { %>
+            <%if ( colores[i].id == ProductoAEditar.id_color) { %>
               <option value="<%= colores[i].id %>" selected><%= colores[i].descripcion   %></option>
               <% } else { %>
                 <option value="<%= colores[i].id %>"><%= colores[i].descripcion   %></option>
@@ -104,7 +104,7 @@
         class="form-control" 
         id="productPrice" 
         name="productPrice"
-        value= '<%= locals.oldData ? oldData.productPrice : ProductoaEditar.precio %>''
+        value= '<%= locals.oldData ? oldData.productPrice : ProductoAEditar.precio %>''
         >
         <p id="prodPriceError" class="errorTextProd"></p> 
         <% if (locals.errors && errors.productPrice) { %>
@@ -120,7 +120,7 @@
         name="productImage"
         accept=".jpeg, .jpg, .pdf, .png"
         multiple
-        value= '<%= locals.oldData ? oldData.productImage : ProductoaEditar.Imagen %>'
+        value= '<%= locals.oldData ? oldData.productImage : ProductoAEditar.Imagen %>'
         >
         <p id="prodImageError" class="errorTextProd"></p>
         <% if (locals.errors && errors.productImage) { %>
@@ -137,7 +137,7 @@
       <br>
       <button class="btn-enviar w-100 " type="submit">Actualizar</button>
     </form>
-    <form method="post" action="/products/edit/<%=ProductoaEditar.id%>?_method=DELETE" >
+    <form method="post" action="/products/edit/<%=ProductoAEditar.id%>?_method=DELETE" >
     <button class="btn-borrar w-100 " type="submit">Eliminar</button>
     </form>
   </main>
