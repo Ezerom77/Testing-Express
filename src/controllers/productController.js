@@ -135,6 +135,7 @@ const productController = {
               categorias: categorias,
               errors: errors.mapped(),
               oldData: req.body,
+              productoAEditar: db.Products.findByPk(req.params.id),
             });
           });
         });
