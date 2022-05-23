@@ -5,7 +5,7 @@
   <script src="/js/productValidation.js"></script>
   <title>Editar producto</title>
 </head>
-          
+
 <body>
   <%- include('./partials/header') %>
   <main class="form-signin">
@@ -13,10 +13,10 @@
     <form method="post" action="/products/edit/<%=ProductoAEditar.id%>?_method=PUT" >
       <div class="form-group">
         <label for="productName">Nombre de producto</label>
-        <input  
-        type="text" 
-        class="form-control" 
-        id="productName" 
+        <input
+        type="text"
+        class="form-control"
+        id="productName"
         name="productName"
         value= '<%= locals.oldData ? oldData.productName : ProductoAEditar.nombre%>'
         >
@@ -43,9 +43,9 @@
       <div class="form-group">
         <label for="Categorias">Categorías de productos</label>
         <select
-        multiple 
-        class="form-control" 
-        id="categorias" 
+        multiple
+        class="form-control"
+        id="categorias"
         name="categorias"
         required>
           <% for( let i = 0; i < categorias.length; i++ ) { %>
@@ -59,9 +59,9 @@
       </div>
       <div class="form-group">
         <label for="talle">Seleccionar Talle</label>
-        <select 
-        class="form-select" 
-        name="talle" 
+        <select
+        class="form-select"
+        name="talle"
         id="talle"
         value= '<%= locals.oldData ? oldData.talle : ProductoAEditar.talle %>'
         >
@@ -79,9 +79,9 @@
       </div>
       <div class="form-group">
         <label for="color">Colores disponibles</label>
-        <select 
-        class="form-select" 
-        id="color" 
+        <select
+        class="form-select"
+        id="color"
         name="color"
         value= '<%= locals.oldData ? oldData.color : ProductoAEditar.color %>'
         >
@@ -99,24 +99,24 @@
       </div>
       <div class="form-group">
         <label for="productPrice">Precio de venta $</label>
-        <input 
-        type="number" 
-        class="form-control" 
-        id="productPrice" 
+        <input
+        type="number"
+        class="form-control"
+        id="productPrice"
         name="productPrice"
-        value= '<%= locals.oldData ? oldData.productPrice : ProductoAEditar.precio %>''
+        value= '<%= locals.oldData ? oldData.productPrice : ProductoAEditar.precio %>'
         >
-        <p id="prodPriceError" class="errorTextProd"></p> 
+        <p id="prodPriceError" class="errorTextProd"></p>
         <% if (locals.errors && errors.productPrice) { %>
           <p class="errortext"> <%= errors.productPrice.msg %> </p>
         <% } %>
       </div>
        <div class="form-group">
         <label for="productImage">Imagen del producto</label>
-        <input 
-        type="file" 
-        class="form-control-file" 
-        id="productImage" 
+        <input
+        type="file"
+        class="form-control-file"
+        id="productImage"
         name="productImage"
         accept=".jpeg, .jpg, .pdf, .png"
         multiple

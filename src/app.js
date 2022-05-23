@@ -8,13 +8,14 @@ const cookieAuthMiddleware = require("./middlewares/cookieAuthMiddleware");
 const cartMiddleware = require("./middlewares/cartMiddleware")
 const mercadopago = require('mercadopago');
 require('dotenv').config();
+const cors = require('cors'); // modulo para poder hacer peticiones al backend desde el frontend sin conflictos
 
 
 var app = express();
 
 // activacion del sever en port 3000 y configurando opciones de Heroku
-app.listen(process.env.PORT || 3000, () =>
-  console.log("servidor corriendo en puerto 3000")
+app.listen(process.env.PORT || 3050, () =>
+  console.log("servidor corriendo en puerto 3050")
 );
 
 // view engine setup
@@ -26,7 +27,7 @@ const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
 app.use(logger("dev"));
-
+app.use(cors()); // eliminar para produccion.
 app.use(
   session({
     secret: "ClessidraSecret!",
