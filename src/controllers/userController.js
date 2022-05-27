@@ -66,7 +66,7 @@ let userController = {
         }
         else {
           res.render("login" , { errorUser : "* Usuario inexistente" , oldData: req.body });
-        } 
+        }
       });
     } else {
       res.render("login", { errors: errors.mapped() , oldData: req.body }); // Error hay campos vacíos

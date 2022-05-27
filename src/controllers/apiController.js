@@ -35,8 +35,7 @@ const apiController = {
     db.Products.findOne({
       attributes: [[sequelize.fn("COUNT", sequelize.col("id")), "count"]],
       raw: true,
-    })
-    .then((products) => {
+    }).then((products) => {
       res.status(200).json({
         status: 200,
         message: "Products count",
@@ -55,6 +54,85 @@ const apiController = {
       });
     });
   },
+  //estas son los servicios que pide el Sprint
+  users: (req, res) => {
+    db.Users.findAll().then((users) => {
+      res.status(200).json({
+        status: 200,
+        message: "Users",
+        url: "api/users",
+        count: users.length,
+        users: users,
+      });
+    });
+  },
+  products: (req, res) => {
+    db.Products.findAll({
+      include: [
+        { association: "color" },
+        { association: "talle" },
+        { association: "imagenes" },
+      ],
+    }).then((products) => {
+      res.status(200).json({
+        status: 200,
+        message: "Products",
+        url: "api/products",
+        count: products.length,
+        products: products,
+      });
+    });
+  },
+  categorias: (req, res) => {
+    db.Categorias.findAll().then((categorias) => {
+      res.status(200).json({
+        status: 200,
+        message: "Categorias",
+        url: "api/categorias",
+        count: categorias.length,
+        categorias: categorias,
+      });
+    });
+  },
+  product: (req, res) => {
+    db.Products.findOne({
+      where: { id: req.params.id },
+      include: [
+        { association: "color" },
+        { association: "talle" },
+        { association: "imagenes" },
+      ],
+    }).then((product) => {
+      res.status(200).json({
+        status: 200,
+        message: "Product detail",
+        url: "api/detail",
+        product: product,
+      });
+    });
+  },
+  user: (req, res) => {
+    db.Users.findOne({
+      where: { id: req.params.id },
+    }).then((user) => {
+      res.status(200).json({
+        status: 200,
+        message: "User detail",
+        url: "api/user",
+        user: {
+          id: user.id,
+          nombre: user.nombre,
+          apellido: user.apellido,
+          email: user.email,
+          avatar: user.avatar,
+          admin: user.admin,
+          fecha_creacion: user.fecha_creacion,
+          ultima_edicion: user.ultima_edicion,
+          fecha_baja: user.fecha_baja,
+        }
+      });
+    });
+  }
 };
 
 module.exports = apiController;
