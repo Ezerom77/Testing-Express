@@ -101,6 +101,7 @@ const apiController = {
       include: [
         { association: "color" },
         { association: "talle" },
+        { association: "categorias" },
         { association: "imagenes" },
       ],
     }).then((product) => {
