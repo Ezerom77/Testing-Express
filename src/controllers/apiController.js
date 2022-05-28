@@ -71,6 +71,7 @@ const apiController = {
       include: [
         { association: "color" },
         { association: "talle" },
+        { association: "categorias" },
         { association: "imagenes" },
       ],
     }).then((products) => {
@@ -100,6 +101,7 @@ const apiController = {
       include: [
         { association: "color" },
         { association: "talle" },
+        { association: "categorias" },
         { association: "imagenes" },
       ],
     }).then((product) => {
@@ -129,10 +131,25 @@ const apiController = {
           fecha_creacion: user.fecha_creacion,
           ultima_edicion: user.ultima_edicion,
           fecha_baja: user.fecha_baja,
-        }
+        },
       });
     });
-  }
+  },
+  test: (req, res) => {
+    db.Producto_Categoria.findAll({
+      include: [{ association: "categorias" }],
+      group: ['id_Categoria'],
+      attributes: [[sequelize.fn('COUNT', 'id_Producto'), 'sumaProductos']],
+    }).then((producto_categoria) => {
+      console.log("primeravez"+producto_categoria[0].sumaProductos);
+      res.status(200).json({
+        status: 200,
+        message: "ProductosPorCategoria",
+        url: "api/test",
+        producto_categoria: producto_categoria,
+      });
+    });
+  },
 };
 
 module.exports = apiController;
