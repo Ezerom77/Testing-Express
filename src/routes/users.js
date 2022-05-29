@@ -23,18 +23,18 @@ const uploadFile = multer({storage});
 //validaciones de formulario de Registro
 
 const validations = [
-    body('userName').notEmpty().withMessage("Debes completar tu nombre"),
-    body('userLastName').notEmpty().withMessage("Debes completar tu apellido"),
-    body('userEmail').isEmail().withMessage("Debes ingresar un email válido"),
-    body('userPassword').isLength({min: 10}).withMessage('La contraseña debe tener al menos 10 caracteres'),
-    body('userTermsAccept').notEmpty().withMessage("Debes aceptar los términos y condiciones para continuar")
+    body('userName').notEmpty().withMessage("Debes completar tu nombre (Backend)"),
+    body('userLastName').notEmpty().withMessage("Debes completar tu apellido (Backend)"),
+    body('userEmail').isEmail().withMessage("Debes ingresar un email válido (Backend)"),
+    body('userPassword').isLength({min: 10}).withMessage('La contraseña debe tener al menos 10 caracteres (Backend)'),
+    body('userTermsAccept').notEmpty().withMessage("Debes aceptar los términos y condiciones para continuar (Backend)")
 ] ;
 
 const loginValidations = [
     body('email')
-        .notEmpty().withMessage("* Por favor ingresa tu correo electrónico").bail()
-        .isEmail().withMessage("* No es un formato de email válido"),
-    body('password').notEmpty().withMessage("* Por favor ingresa tu contraseña")
+        .notEmpty().withMessage("* Por favor ingresa tu correo electrónico (Backend)").bail()
+        .isEmail().withMessage("* No es un formato de email válido (Backend)"),
+    body('password').notEmpty().withMessage("* Por favor ingresa tu contraseña (Backend)")
 ]
 
 // Routes

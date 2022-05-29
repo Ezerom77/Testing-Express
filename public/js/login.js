@@ -16,12 +16,12 @@ window.addEventListener('load', () => {
         if (email.value == "") {
             e.preventDefault();
             email.classList.add('is-invalid');
-            emailError.innerHTML = "* Debes completar el email de usuario para ingresar";
+            emailError.innerHTML = "* Debes completar el email de usuario para ingresar (Frontend)";
         }
         if (password.value == "") {
             e.preventDefault();
             password.classList.add('is-invalid');
-            passError.innerHTML = "* No has ingresado una contraseña";
+            passError.innerHTML = "* No has ingresado una contraseña (Frontend)";
         }  
     })
 
