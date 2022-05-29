@@ -135,7 +135,7 @@ const apiController = {
       });
     });
   },
-  test: (req, res) => {
+  productosPorCategoria: (req, res) => {
     db.Producto_Categoria.findAll({
       include: [{ association: "categorias" }],
       group: ['id_Categoria'],
