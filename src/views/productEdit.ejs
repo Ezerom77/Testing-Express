@@ -111,29 +111,8 @@
           <p class="errortext"> <%= errors.productPrice.msg %> </p>
         <% } %>
       </div>
-       <div class="form-group">
-        <label for="productImage">Imagen del producto</label>
-        <input
-        type="file"
-        class="form-control-file"
-        id="productImage"
-        name="productImage"
-        accept=".jpeg, .jpg, .pdf, .png"
-        multiple
-        value= '<%= locals.oldData ? oldData.productImage : ProductoAEditar.Imagen %>'
-        >
-        <p id="prodImageError" class="errorTextProd"></p>
-        <% if (locals.errors && errors.productImage) { %>
-          <p class="errortext"> <%= errors.productImage.msg %> </p>
-        <% } %>
-
-        <!-- <label for="productImage2">Imagen Complementaria</label>
-        <input type="file" class="form-control-file" id="productImage2" name="productImage2"> -->
-        <!-- <label for="productImage3">Imagen Complementaria</label>
-        <input type="file" class="form-control-file" id="productImage3" name="productImage3">
-        <label for="productImage4">Imagen Complementaria</label>
-        <input type="file" class="form-control-file" id="productImage4" name="productImage4">  -->
-      </div>
+       
+      
       <br>
       <button class="btn-enviar w-100 " type="submit">Actualizar</button>
     </form>
