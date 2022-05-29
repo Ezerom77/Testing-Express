@@ -108,7 +108,7 @@ const apiController = {
       res.status(200).json({
         status: 200,
         message: "Product detail",
-        url: "api/detail",
+        url: "api/product/:id",
         product: product,
       });
     });
@@ -120,7 +120,7 @@ const apiController = {
       res.status(200).json({
         status: 200,
         message: "User detail",
-        url: "api/user",
+        url: "api/user/:id",
         user: {
           id: user.id,
           nombre: user.nombre,
@@ -135,7 +135,7 @@ const apiController = {
       });
     });
   },
-  productosPorCategoria: (req, res) => {
+  prodXCat: (req, res) => {
     db.Producto_Categoria.findAll({
       include: [{ association: "categorias" }],
       group: ['id_Categoria'],
@@ -145,7 +145,7 @@ const apiController = {
       res.status(200).json({
         status: 200,
         message: "ProductosPorCategoria",
-        url: "api/test",
+        url: "api/prodXCat",
         producto_categoria: producto_categoria,
       });
     });

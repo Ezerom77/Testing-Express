@@ -13,6 +13,6 @@ router.get('/products',apiController.products);
 router.get('/categorias',apiController.categorias)
 router.get('/product/:id',apiController.product)
 router.get('/user/:id',apiController.user)
-router.get('/productosPorCategoria',apiController.productosPorCategoria)
+router.get('/prodXCat',apiController.prodXCat)
 
 module.exports = router;
