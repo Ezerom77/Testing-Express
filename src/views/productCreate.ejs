@@ -117,7 +117,8 @@
         type="file" 
         class="form-control-file" <%= locals.errors && errors.productImage ? 'is-invalid' : null %> 
         id="productImage" 
-        name="productImage" 
+        name="productImage"
+        alt="Imagenes del producto" 
         accept=".jpeg, .jpg, .pdf,.png" 
         multiple
         value= '<%= locals.oldData ? oldData.productImage : null %>'

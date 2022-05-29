@@ -36,8 +36,8 @@ const validations = [
         .notEmpty().withMessage('Debes seleccionar al menos un color (Backend)'),
     body('productPrice')
         .notEmpty().withMessage('Debes ingresar el precio del producto (Backend)'),
-    body('productImage')
-        .notEmpty().withMessage('Debes seleccionar una imagen (Backend)')
+    //body('productImage')
+      //  .notEmpty().withMessage('Debes seleccionar una imagen (Backend)')
 ];
 
 

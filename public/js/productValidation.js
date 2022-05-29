@@ -76,19 +76,22 @@ window.addEventListener('load', ()  => {
     /* DEJAMOS ABAJO DESHABILITADO PORQUE SI SE HABILITA, NO FUNCIONAN LAS VALIDACIONES DE BACKEND.
     EL CODIGO ANDA BIEN. SIMPLEMENTE DESCOMENTAR Y LISTO. */
     
-    /*
+    
     productForm.addEventListener("submit", (e) => {
-        if (productName.value == "" 
-        || productName.value.length < 5
-        || productDescription.value.length < 20
-        || productCategory.value == ""
-        || productPrice.value == ""
-        || productImage.value == "") {
+        if (productImage.value == ""
+            || productImage.value.length < 5
+ /*           || productName.value == ""
+            || productName.value.length < 5
+            || productDescription.value.length < 20
+            || productCategory.value == ""
+            || productPrice.value == ""
+*/
+                ) {
             e.preventDefault();
-            return alert('Por favor, revisa que no haya errores en el formulario o que haya campos incompletos');
+            return alert('Por favor, subir entre 1 y 4 imagenes (frontend validation)');
         
         }   else {  
             e.submit()       
             }   
-    }); */
+    }); 
 });
