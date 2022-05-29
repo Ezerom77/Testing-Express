@@ -125,20 +125,24 @@ const productController = {
   update: async (req, res) => {
     const errors = validationResult(req);
     console.log(errors)
+    console.log(req.body)
+    console.log(req.params.id)
     if (!errors.isEmpty()) {
       db.Colores.findAll().then(function (colores) {
         db.Talles.findAll().then(function (talles) {
           db.Categorias.findAll().then(function (categorias) {
+            db.Products.findByPk(req.params.id).then(function (ProductoAEditar) {
             res.render("productEdit", {
               colores: colores,
               talles: talles,
               categorias: categorias,
               errors: errors.mapped(),
               oldData: req.body,
-              productoAEditar: db.Products.findByPk(req.params.id),
+              ProductoAEditar: ProductoAEditar
             });
           });
         });
+      });
       });
       } else {
       let productoAEditar = {

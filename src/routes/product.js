@@ -37,19 +37,7 @@ const validations = [
     body('productPrice')
         .notEmpty().withMessage('Debes ingresar el precio del producto (Backend)'),
     body('productImage')
-        .custom((value, {req}) => {
-            if (req.files.length == 0) {
-                throw new Error('Debes subir una imagen (Backend)');
-            }
-            return true;
-        })
-        .custom((value, {req}) => {
-            if (req.files.length > 4) {
-                throw new Error('Solo se puede subir un máximo de 4 imágenes (Backend)');
-            }
-            return true;
-        }
-        )
+        .notEmpty().withMessage('Debes seleccionar una imagen (Backend)')
 ];
 
 
@@ -75,7 +63,7 @@ router.get("/detail/:id", productController.detail);
 
 // Edit an existing product
 router.get("/edit/:id", productController.edit);
-router.put('/edit/:id', validations, productController.update);
+router.put("/edit/:id", validations, productController.update);
 
 //Delete an existing product
 router.delete("/edit/:id", productController.delete);
