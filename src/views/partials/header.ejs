@@ -1,37 +1,61 @@
-<header class="header">
-
-    <div class="header-top">
-        <div class="top-left">
+<link rel="stylesheet" href="/stylesheets/header.css">
+<header class="topheader">
+    <div class="containerheader">
+        <div class="topbar">
             <div class="logo">
-                <a href="/"><h3>CLESSIDRA</h3></a>
+                <a href="/" title="Home">
+                    <h1 class="logo">
+                    CLESSIDRA
+                    </h1>
+                </a>
             </div>
-
-            <div class="searchbox">
-                <i class="fa fa-search"></i>  
-                <input type="text" placeholder="Buscar prendas" />
-            </div>
+            <div class="search">
+                <form action="/search" method="GET">
+                    <input class="searchinput" type="text" name="q" placeholder="Buscar...">
+                    <button class="searchbutton" type="submit"><i class="fa-search fas"></i></button>
+                </form>
+            </div>  
         </div>
-        <nav class="top-right">
+    <div class="bottombar">
+        <nav class="navbarmain">
             <ul class="nav-links">
-                <li><a href="/users/registro">Registro<i class="fas fa-user-circle"></i></a></li>
-                <li><a href="/users/login">Log in<i class="fas fa-sign-in-alt"></i></a></li>
-                <li><a href="/users/perfil">Perfil<i class="fas fa-user-circle"></i></a></li>
+                <li>
+                    <a href="/products">Productos</a>
+                </li>
+                <li>
+                    <a href="/products/create">Agregar Producto</a>
+                </li>
+                <li>
+                    <a href="/cart">Carrito</a>
+                </li>
             </ul>
-        </nav>
-    </div>
-
-    <div class="header-bottom">
-        <nav class="site-nav">
-            <ul class="nav-links">
-                <li><a href="/products">Productos</a></li>
-                <li><a href="/products/create">Agregar producto</a></li>
-                <li><a href="#">Wishlist</a></li>
-                <li><a href="/cart">Carrito</a></li>
-            </ul>
-            <div class="burger-menu">
-                <i class="fas fa-bars"></i>
+            <script>
+                const navbar = document.querySelector(".navbarmain");
+                const links = document.querySelectorAll(".nav-links li a");
+                const path = window.location.pathname;
+                links.forEach(link => {
+                    if(link.getAttribute("href") == path){
+                        link.classList.add("active");
+                    }
+                });
+            </script>
+            <div class="burgermenu">
+                <i class="fa-bars fas"></i>
             </div>
         </nav>
+        <div class="navbar-right">
+            <ul class="user-links">
+                <li>
+                    <a href="/login">Login <i class="fas fa-sign-in-alt"></i></a>
+                </li>
+                <li>
+                    <a href="/registro">Registrarse <i class="fas fa-user-circle"></i></a>
+                </li>
+                <li>
+                    <a href="/perfil">Perfil <i class="fas fa-user"></i></a>
+                </li>
+            </ul>
     </div>
+
 
 </header>

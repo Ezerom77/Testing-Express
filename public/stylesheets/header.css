@@ -1,0 +1,246 @@
+/*///////////////// Fonts ////////////////*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+/*///////////////// GENERAL STYLES ////////////////*/
+:root {
+  --yellow: #EAC926;
+  --dark-blue: #03264C;
+  --light-blue: #1259c3;
+  --gray: #666666;
+  --light-gray: #ebebeb;
+  --green: #39b54a;
+  --clessidra: #D54780;
+  --base-font-family: 'Lato', sans-serif
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0px;
+  font: 14px "Lato", Helvetica, Arial, sans-serif;
+  background-color: #fbfbff;
+  margin: auto;
+}
+
+
+/*//////////////////   HEADER   ///////////////////////*/
+.topheader{
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.3);
+    background-color: var(--clessidra);
+    
+}
+
+.containerheader{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.topbar{
+    background-color: var(--clessidra);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.logo {
+    color: white;
+    font-size: x-large;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.logo a {
+    text-decoration: none;
+    align-self: center;
+    color: #6c6161;
+}
+
+.logo a h1 {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.logo:hover a {
+    color: var(--clessidra);
+}
+
+.search{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-direction: row;
+}
+
+.searchinput{
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ebebeb;
+    padding: 0px 10px;
+    margin-right: 0px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    color: #6c6161;
+}
+
+.searchbutton{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ebebeb;
+    background-color: var(--clessidra);
+    color: white;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    padding: 0px;  
+}
+
+.bottombar{
+    background-color: var(--clessidra);
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.navbarmain{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    padding: 0px;
+    flex-direction: row;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+ul.nav-links {
+    margin-bottom: 5px;
+    height: 20px;
+}
+.nav-links li{
+    list-style: none;
+}
+
+.nav-links a {
+    list-style: none;
+    margin-right: 20px;
+    font-size: 14px;
+    width: 150px;
+    display: flex;
+    background-color: black;
+    padding: 15px;
+    height: 30px;
+    border-radius: 10px 10px 0px 0px;
+    align-items: center;
+
+}
+
+ul li a.active {
+    background-color: #d8ae14; 
+
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: white;
+}
+  
+.burger-menu {
+    background: #ee964b;
+    border: #D54780 solid 1px;
+    font-size: 20px;
+    color: #ffffff;
+    height: 40px;
+    width: 40px;
+    border-radius: 4px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+  
+
+.navbar-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.user-links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+ul.user-links {
+    margin-bottom: 5px;
+    height: 10px;
+}
+.user-links li{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.user-links a{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    width: 120px;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 10px;
+
+}
+
+.user-links i{
+    margin-right: 10px;
+}
+
+.user-links a:hover{
+    color: var(--clessidra);
+    background-color: #ebebeb;
+    
+    
+    
+}
+
+
+
+  
+  /*/////////////////   MEDIA QUERIES   /////////////////////*/
+  
+  /*TABLET AND BIGGER*/
+  @media (min-width: 361px){
+    
+    
+    .burgermenu {
+        display: none;
+    }
+  
+  
+    }
+  
