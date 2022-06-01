@@ -27,15 +27,20 @@
                 <div class="cart-box-item-price">
                     <h3>$ <%= cart[i].precio %></h3>
                 </div>
+                <div class="cart-box-item-remove">
+                    <button class="btn-borrar w-10 item-remove " type="submit"><a href="/cart/remove/<%=cart[i].id%>" id="eliminar">Eliminar artículo</a></button>
+                </div>
+                    
             </div>
-                <% } %>
+            <% } %>
+            
         </div>
         <div class="cart-box-item-total">
         <h3>Precio total: $ <%= cartValue %></h3>
         </div>
         <div class="checkout-buttons">
-            <button class="btn-enviar w-25 " type="submit"><a href="/cart/removeAll">Vaciar carrito</a></button>
-            <button class="btn-borrar w-25 " type="submit"><a href="/cart/checkout">Finalizar compra</a></button>
+            <button class="btn-borrar w-25 " type="submit"><a href="/cart/removeAll">Vaciar carrito</a></button>
+            <button class="btn-enviar w-25 " type="submit"><a href="/cart/checkout">Finalizar compra</a></button>
         </div>
     </div>
     </main>
@@ -43,15 +48,3 @@
     <%- include('./partials/footer') %>
 </body>
 </html>
-    
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
