@@ -11,7 +11,7 @@
 <body>
   <%- include('./partials/header') %>
   <main class="form-create">
-    <h1 class="form-create-title h4 mb-3 fw-normal">Estás editando:<br><i><%=ProductoAEditar.nombre %></i></h1>
+    <h1 class="form-create-title h5 mb-3 fw-bold">Estás editando:<br><i><%=ProductoAEditar.nombre %></i></h1>
     <form method="post" action="/products/edit/<%=ProductoAEditar.id%>?_method=PUT" >
       <div class="form-group">
         <label for="productName">Nombre de producto</label>
