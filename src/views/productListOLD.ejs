@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head') %>
+        <title>Productos</title>
+    </head>
+    <body>
+    <%- include('./partials/header') %>
+        <main class="main">
+            <h3 class="title"><%= title %></h3>
+            <% for(i=0;i<products.length;i++) { %>
+                <div class="carousel">
+                    <div class="carousel__track-container">
+                        <ul class="carousel__track">
+                            <li class="carousel__slide">
+                                <a href="/products/detail/<%=products[i].id%>">
+
+                                    <img class="carousel__image" src="/images/products/<%=products[i].imagenes[0].nombreArchivo%>" alt="">
+
+                                    <ul class="product-detail">
+                                    <li><%=products[i].nombre%></li>
+                                    <li>AR$ <%=products[i].precio%></li>
+                                    <li>Talle: <%=products[i].talle.descripcion%></li>
+                                    <li>Color: <%=products[i].color.descripcion%></li>
+                                    <li>Descripción: <%=products[i].descripcion%></li>
+                                </ul>
+                                </a>
+                                <a href="/users/carrito"><i class="far fa-thumbs-up"></i></a>
+                                <i class="far fa-thumbs-down"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            <% } %>
+
+        </main>
+
+        <%- include('./partials/footer') %>
+
+    </body>
+</html>
+
