@@ -27,24 +27,30 @@ let userController = {
   },
 
   update: (req, res) => {
-    db.Users.update(
-      {
-        nombre: req.body.userName,
-        apellido: req.body.userLastName,
-        email: req.body.userEmail,
-        // userPassword: req.body.userPassword,
-      },
-      { where: { id: req.session.user.id } }
-    ).then(() => {
-      db.Users.findOne({
-        where: { email: req.body.userEmail },
-      }).then((users) => {
-            req.session.user = users;
-            res.cookie("recordame", users.email, { maxAge: 6000000  });
-            res.redirect("/users/perfil");
-      });
-    })
-  },
+    let errors = validationResult(req);
+    if (errors.isEmpty()) {
+        db.Users.update(
+          {
+            nombre: req.body.userName,
+            apellido: req.body.userLastName,
+            email: req.body.userEmail,
+            // userPassword: req.body.userPassword,
+          },
+          { where: { id: req.session.user.id } }
+        ).then(() => {
+          db.Users.findOne({
+            where: { email: req.body.userEmail },
+          }).then((users) => {
+                req.session.user = users;
+                res.cookie("recordame", users.email, { maxAge: 6000000  });
+                res.redirect("/users/perfil");
+          });
+        })
+    } else {
+      res.render("usersEdit", {errors: errors.mapped() , user: req.session.user });
+    }
+
+},
 
   logged: (req, res) => {
     let errors = validationResult(req);
@@ -57,7 +63,7 @@ let userController = {
             req.session.user = users;
             // cookies
             if (req.body.recordame != undefined) {
-              res.cookie("recordame", users.email, { maxAge: 6000000  });
+              res.cookie("recordame", users.email, { maxAge: 100000000  });
             }
             res.redirect("/users/perfil");
           } else {
@@ -65,7 +71,7 @@ let userController = {
           }
         }
         else {
-          res.render("usersLogin" , { errorUser : "* Usuario inexistente" , oldData: req.body });
+          res.render("login" , { error : "* Credenciales invalidas" , oldData: req.body });
         }
       });
     } else {
