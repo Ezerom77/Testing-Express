@@ -2,49 +2,52 @@
 <html lang="en">
 <head>
   <%- include('./partials/head') %>
+  <link rel="stylesheet" href="/stylesheets/products.css">
+  <link rel="stylesheet" href="/stylesheets/general.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="/js/productValidation.js"></script>
   <title>Crear producto</title>
 </head>
 
 <body>
   <%- include('./partials/header') %>
-  <main class="form-signin">
-    <h1 class="form-title h3 mb-3 fw-normal">Bienvenido/a!<br>Por favor ingresar nuevo producto:</h1>
+  <main class="form-product">
+    <h1 class="form-product-title h5 mb-3 fw-bold">Bienvenido/a!<br>Por favor ingresar nuevo producto:</h1>
     <form method="post" action="/products/create" enctype="multipart/form-data" class="productCreateForm">
       <div class="form-group">
         <label for="productName">Nombre de producto</label>
         <input
         type="text"
-        class="form-control" <%= locals.errors && errors.productName ? 'is-invalid' : null %>
+        class="form-control <%= locals.errors && errors.productName ? 'is-invalid' : null %>"
         id="productName"
         name="productName"
         value= '<%= locals.oldData ? oldData.productName : null %>'
         >
-        <p id="prodNameError" class="errorTextProd"></p>
+        <p id="prodNameError" class="errorTextFront"></p>
         <% if (locals.errors && errors.productName) { %>
-          <p class="errortext"> <%= errors.productName.msg %> </p>
+          <p class="errorTextBack"> <%= errors.productName.msg %> </p>
         <% } %>
         </div>
       <div class="form-group">
         <label for="productDescription">Descripción del producto</label>
         <input 
         type="textarea" 
-        class="form-control"  <%= locals.errors && errors.productDescription ? 'is-invalid' : null %>
+        class="form-control  <%= locals.errors && errors.productDescription ? 'is-invalid' : null %>"
         id="productDescription" 
         name="productDescription" 
         rows="3"
         value= '<%= locals.oldData ? oldData.productDescription : null %>'
         >
-        <p id="prodDescError" class="errorTextProd"></p>
+        <p id="prodDescError" class="errorTextFront"></p>
         <% if (locals.errors && errors.productDescription) { %>
-          <p class="errortext"> <%= errors.productDescription.msg %> </p>
+          <p class="errorTextBack"> <%= errors.productDescription.msg %> </p>
         <% } %>
       </div>
       <div class="form-group">
         <label for="categorias">Categorías de productos</label>
         <select 
         multiple
-        class="form-control" <%= locals.errors && errors.productCategory ? 'is-invalid' : null %> 
+        class="form-control <%= locals.errors && errors.productCategory ? 'is-invalid' : null %>" 
         id="categorias" 
         name="categorias"
         >
@@ -52,21 +55,21 @@
             <option value="<%= categorias[i].id %>"><%= categorias[i].descripcion %></option>
           <% } %>
         </select>
-        <p id="prodCatError" class="errorTextProd"></p>
+        <p id="prodCatError" class="errorTextFront"></p>
         <% if (locals.errors && errors.categorias) { %>
-          <p class="errortext"> <%= errors.categorias.msg %> </p>
+          <p class="errorTextBack"> <%= errors.categorias.msg %> </p>
         <% } %>
       </div>
       <div class="form-group">
         <label for="talle">Seleccionar Talle</label>
         <select 
-        class="form-select" <%= locals.errors && errors.talle ? 'is-invalid' : null %> 
+        class="form-select <%= locals.errors && errors.talle ? 'is-invalid' : null %>" 
         name="talle" 
         id="talle"
         value= '<%= locals.oldData ? oldData.talle : null %>'
         >
         <% if (locals.errors && errors.talle) { %>
-          <p class="errortext"> <%= errors.talle.msg %> </p>
+          <p class="errorTextBack"> <%= errors.talle.msg %> </p>
         <% } %>
           <% for( let i = 0; i < talles.length; i++ ) { %>
             
@@ -80,13 +83,13 @@
       <div class="form-group">
         <label for="color">Colores disponibles</label>
         <select 
-        class="form-select" <%= locals.errors && errors.color ? 'is-invalid' : null %> 
+        class="form-select <%= locals.errors && errors.color ? 'is-invalid' : null %>" 
         name="color" 
         id="color"
         value= '<%= locals.oldData ? oldData.color : null %>'
         >
         <% if (locals.errors && errors.color) { %>
-          <p class="errortext"> <%= errors.color.msg %> </p>
+          <p class="errorTextBack"> <%= errors.color.msg %> </p>
         <% } %>
           <% for( let i = 0; i < colores.length; i++ ) { %>
             <option value="<%= colores[i].id %>"><%= colores[i].descripcion   %></option>
@@ -101,31 +104,31 @@
         <label for="productPrice">Precio de venta $</label>
         <input
         type="number" 
-        class="form-control" <%= locals.errors && errors.productPrice ? 'is-invalid' : null %>
+        class="form-control <%= locals.errors && errors.productPrice ? 'is-invalid' : null %>"
         id="productPrice" 
         name="productPrice"
         value= '<%= locals.oldData ? oldData.productPrice : null %>'
         >
-        <p id="prodPriceError" class="errorTextProd"></p>
+        <p id="prodPriceError" class="errorTextFront"></p>
         <% if (locals.errors && errors.productPrice) { %>
-          <p class="errortext"> <%= errors.productPrice.msg %> </p>
+          <p class="errorTextBack"> <%= errors.productPrice.msg %> </p>
         <% } %>
       </div>
       <div class="form-group">
         <label for="productImage">Imagenes (hasta 4)</label>
         <input 
         type="file" 
-        class="form-control-file" <%= locals.errors && errors.productImage ? 'is-invalid' : null %> 
+        class="form-control-file <%= locals.errors && errors.productImage ? 'is-invalid' : null %>" 
         id="productImage" 
         name="productImage"
         alt="Imagenes del producto" 
-        accept=".jpeg, .jpg, .pdf,.png" 
+        accept=".jpeg, .jpg, .pdf,.png"
         multiple
         value= '<%= locals.oldData ? oldData.productImage : null %>'
         >
-        <p id="prodImgError" class="errorTextProd"></p>
+        <p id="prodImgError" class="errorTextFront"></p>
         <% if (locals.errors && errors.productImage) { %>
-          <p class="errortext"> <%= errors.productImage.msg %> </p>
+          <p class="errorTextBack"> <%= errors.productImage.msg %> </p>
         <% } %>
 
         <!-- <label for="productImage2">Imagen Complementaria</label>

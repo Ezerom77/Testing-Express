@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Carrito</title>
+</head>
+<body>
+    <%- include('./partials/header') %>
+    <main class="main">
+        <section class="shoppingBagManagement">
+        <h4 class="subTitle">PRODUCTOS</h4>
+               <% for ( let i = 0; i < cart.length; i++ ) { %>
+                <div class="carrito">
+                <article class="contenido">
+                    <div class="imgCart">
+                    <span class="productPix"><img src= "/images/products/<%=cart[i].imagen%>" id="fotoProductomin"></img></span>
+                    </div>
+                       <div class="descripcion">
+                           <div class="productName">
+                           <a href="/products/detail/<%=cart[i].id%>"id="nombreProducto"><%=cart[i].nombre%>></a>
+                           </div>
+                       <div class="details">
+                           <ul class="detalles">
+                               <li id="talle"> TALLE: <strong><%=cart[i].talle%></strong></li>
+                               <li id="color">COLOR:  <strong><%=cart[i].color%></strong></li>
+                           </ul>
+                       </div>
+                       <div class="price">
+                           <p id="precio">AR$: <%=cart[i].precio%></p>
+                       </div>
+                       </div>
+                  </article>
+                </div>
+                    <% } %>
+           <div>
+            <h4 class="subTitle">RESUMEN DE COMPRA</h4>
+               <article class="resumenDeCompra">
+                <div class="total">
+                    <h3>Total</h3>
+                    <p>AR$: <%=cartValue%></p>
+                </div>
+                <br>
+                <div class="final">
+                    <button type="submit"><a href="/cart">Volver al carrito</a></button>
+                </div>
+                <div class="final">
+                    <button type="submit"><a href="/cart/payout">Confirmar compra</a></button>
+                </div>
+               </article>
+           </div>
+        </section>
+    </main>
+    <%- include('./partials/footer') %>
+</body>
+</html>

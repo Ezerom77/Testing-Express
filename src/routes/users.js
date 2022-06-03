@@ -22,7 +22,7 @@ const uploadFile = multer({storage});
 
 //validaciones de formulario de Registro
 
-const validations = [
+const registerValidations = [
     body('userName').notEmpty().withMessage("Debes completar tu nombre (Backend)"),
     body('userLastName').notEmpty().withMessage("Debes completar tu apellido (Backend)"),
     body('userEmail').isEmail().withMessage("Debes ingresar un email válido (Backend)"),
@@ -30,11 +30,21 @@ const validations = [
     body('userTermsAccept').notEmpty().withMessage("Debes aceptar los términos y condiciones para continuar (Backend)")
 ] ;
 
+//validaciones de formulario de Login
 const loginValidations = [
     body('email')
         .notEmpty().withMessage("* Por favor ingresa tu correo electrónico (Backend)").bail()
         .isEmail().withMessage("* No es un formato de email válido (Backend)"),
     body('password').notEmpty().withMessage("* Por favor ingresa tu contraseña (Backend)")
+]
+
+//validaciones de formulario de Edit Usuario
+const editValidations = [
+    body('userName').notEmpty().withMessage("* Este campo no puede estar vacío (Backend)"),
+    body('userLastName').notEmpty().withMessage("* Este campo no puede estar vacío (Backend)"),
+    body('userEmail')
+        .notEmpty().withMessage("* Este campo no puede estar vacío (Backend)").bail()
+        .isEmail().withMessage("* No es un formato de email válido (Backend)")
 ]
 
 // Routes
@@ -43,10 +53,10 @@ router.get('/perfil', loggedMiddleware, userController.perfil);
 router.get('/login', guestMiddleware, userController.login);
 router.post('/login', loginValidations, userController.logged);
 router.get('/registro', guestMiddleware, userController.registro);
-router.post('/registro', uploadFile.single('profilePic'), validations , userController.store);
+router.post('/registro', uploadFile.single('profilePic'), registerValidations , userController.store);
 router.post('/logout', userController.logout);
 router.get('/edit',loggedMiddleware, userController.edit)
-router.post('/edit',loggedMiddleware, userController.update)
+router.post('/edit',loggedMiddleware, editValidations, userController.update)
 
 
 // Module export

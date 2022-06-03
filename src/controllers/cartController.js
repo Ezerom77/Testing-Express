@@ -38,6 +38,7 @@ const cartController = {
         let datos = {
           id: product.id,
           nombre: product.nombre,
+          descripcion: product.descripcion,
           precio: product.precio,
           color: product.color.descripcion,
           talle: product.talle.descripcion,
