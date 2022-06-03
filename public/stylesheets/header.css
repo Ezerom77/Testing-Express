@@ -11,9 +11,9 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding: 10px 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 .topheader-container-left{
     flex: 2;
@@ -43,6 +43,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+
 }
 
 .mainheader-logo a {
@@ -71,7 +72,6 @@
     align-items: center;
     flex-direction: row;
     max-width: 250px;
-    margin: 0px;
 }
 
 .searchinput{
@@ -81,7 +81,7 @@
     border-radius: 5px;
     border: 1px solid #ebebeb;
     padding: 0px 5px;
-    margin-right: 0px;
+
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     color: #6c6161;
@@ -104,7 +104,7 @@
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
-    margin: 4px;
+    margin-left: 4px;
     
 }
 
@@ -142,7 +142,6 @@
     color: whitesmoke;
     font-size: 12px;
     width: 120px;
-    padding: 3px 10px;
     border-radius: 10px;
     justify-content: right;
 
@@ -157,10 +156,14 @@
 .user-links{
     display: flex;
     flex-direction: column;
-    
     font-size: 14px;
     align-items: flex-end;
     justify-content: space-between;
+}
+
+.user-links span{
+    margin-top:10px
+    margin-bottom: 5px;
 }
 
 
