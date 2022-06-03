@@ -92,9 +92,9 @@ const cartController = {
           }
         ],
         back_urls: {
-          success: "http://localhost:3000/cart/end",
-          failure: "http://localhost:3000/cart/end",
-          pending: "http://localhost:3000/cart/end"
+          success: "http://dh-g9-clessidra.herokuapp.com/cart/end",
+          failure: "http://dh-g9-clessidra.herokuapp.com/cart/end",
+          pending: "http://dh-g9-clessidra.herokuapp.com/cart/end"
         }
       };
       mercadopago.preferences.create(preference)

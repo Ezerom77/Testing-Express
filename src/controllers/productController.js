@@ -2,8 +2,9 @@ const db = require("../../models");
 const fs = require("fs");
 const path = require("path");
 const { validationResult } = require("express-validator");
-// const { info } = require("console");
-
+//buscador
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 // Controllers
 const productController = {
@@ -189,6 +190,26 @@ const productController = {
       .then(function () {
         res.redirect("/products");
       });
-  }
+  },
+  search: (req, res) => {
+    db.Products.findAll({
+      where: {
+        nombre: {
+          [Op.like]: "%" + req.query.q + "%",
+        }
+      },
+      include: [
+        { association: "color" },
+        { association: "talle" },
+        { association: "categorias" },
+        { association: "imagenes" },
+      ],
+    }).then(function (products) {
+      res.render("productList", {
+        title: "Todos los productos",
+        products: products,
+      });
+    });
+  },
 };
 module.exports = productController;
