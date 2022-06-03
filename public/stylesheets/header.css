@@ -84,7 +84,7 @@
     border-radius: 5px;
     border: 1px solid #ebebeb;
     padding: 0px 5px;
-
+    background-color: whitesmoke;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     color: #6c6161;
@@ -103,7 +103,7 @@
     border-radius: 5px;
     border: 1px solid #ebebeb;
     background-color: var(--clessidra);
-    color: white;
+    color: whitesmoke;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
@@ -146,7 +146,7 @@
     font-size: 12px;
     width: 120px;
     border-radius: 10px;
-    justify-content: right;
+    
 
 }
 
@@ -164,10 +164,19 @@
     justify-content: space-between;
 }
 
-.user-links span{
-    margin-top:10px;
-    margin-bottom: 5px;
+.user-links a{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 5px;
+
 }
+
+
+
+
+
+
 /* DROP DOWN MENUS PARA RESPOSIVE SCREEN */
 /* NO BORRAR LA BARRA DE ACA ABAJO. POR ALGUN MOTIVO, NO FUNCIONAN LOS DROPDOWNS SI LA BORRAMOS. COSA DE MANDINGA. */
 /
