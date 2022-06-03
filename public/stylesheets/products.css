@@ -34,7 +34,7 @@
   position: relative;
   margin: 0 auto;
   height: 300px;
-  width: 40%;
+  width: 250px;
   margin: 10px;
   background-color: #ffffff;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
@@ -218,17 +218,14 @@ background-color: #000000;
 
 
 .slider-main {
-    margin-top: 15px;
-    margin-bottom: 80px;
-    
+    margin: 20px 0px;    
 }
     
 .slider-container {
-    
     display: flex;
     justify-content: center;
     background-color: #fbfbff;
-    margin: 15px 15px 60px 15px;
+    margin: 15px 15px 15px 15px;
     padding: 20px;
 
 }
@@ -247,16 +244,9 @@ h4, h2,small,a{
   a{
     text-decoration: none;
   }
-  .slider{
-    width: 100%;
-    /* margin: 0px 60px; */
-    margin-bottom: 15px;
-    padding-top: 10px;
-  }
+ 
   .slider h2{
     font-size: 26px;
-    line-height: 38px;
-    padding-bottom: 24px;
     opacity: .9;
     text-transform: uppercase;
     letter-spacing: 10px;
@@ -271,7 +261,7 @@ h4, h2,small,a{
     align-items: center;
     width: fit-content;
     height: 500px;
-    padding: 10px 0px;
+    padding: 0px 0px;
     margin: 0px auto;
     max-width: 90vw;
     overflow: hidden;
@@ -286,7 +276,7 @@ h4, h2,small,a{
   }
   .slick{
     position: relative;
-    width: 275px;
+    width: 300px;
     padding: 0 18px;
     float: left;
     box-sizing: border-box;
@@ -308,7 +298,7 @@ h4, h2,small,a{
   .slick a img{
     object-fit: cover;
     height: 400px;
-    width: 100%;
+    width: auto;
     border-radius: 4px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.5);
     transition: .3s ease-in-out;
