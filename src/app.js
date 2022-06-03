@@ -14,8 +14,8 @@ const cors = require('cors'); // modulo para poder hacer peticiones al backend d
 var app = express();
 
 // activacion del sever en port 3000 y configurando opciones de Heroku
-app.listen(process.env.PORT || 3055, () =>
-  console.log("servidor corriendo en puerto 3055")
+app.listen(process.env.PORT || 3050, () =>
+  console.log("servidor corriendo en puerto 3050")
 );
 
 // view engine setup
