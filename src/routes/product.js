@@ -68,6 +68,8 @@ router.put("/edit/:id", validations, productController.update);
 //Delete an existing product
 router.delete("/edit/:id", productController.delete);
 
+router.get('/search', productController.search);
+
 
 
 module.exports = router;
