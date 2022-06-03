@@ -165,19 +165,18 @@
 }
 
 .user-links span{
-    margin-top:10px
+    margin-top:10px;
     margin-bottom: 5px;
 }
+/* DROP DOWN MENUS PARA RESPOSIVE SCREEN */
+/* NO BORRAR LA BARRA DE ACA ABAJO. POR ALGUN MOTIVO, NO FUNCIONAN LOS DROPDOWNS SI LA BORRAMOS. COSA DE MANDINGA. */
+/
 
-
-
-*//*//////////////////   PRUEBA    ///////////////////////*/
-
-  .dropdown {
+.dropdown {
     overflow: hidden;
     margin-right: 40;
 
-  }
+  } 
 
   @media (min-width: 361px) {
     .dropdown {
@@ -186,13 +185,14 @@
   }
   
   .dropdown .dropbtn {
-    font-size: 16px;  
+    font-size: 14px;  
     border: none;
     outline: none;
     color: white;
-    padding: 14px 16px;
+    padding: 12px 16px;
     background-color: inherit;
     font-family: inherit;
+    border-radius: 10px 10px 0px 0px;
   }
   
   .dropdown:hover .dropbtn {
@@ -203,7 +203,7 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 
@@ -224,20 +224,10 @@
   
   .dropdown:hover .dropdown-content {
     display: block;
-    margin-right: 40px;
   }
 
 
-
-
-
-
-
-
-
-
-
-
+/*//////////////////   BOTTOM HEADER   ///////////////////////*/
 
 .bottomheader-container-main{
     display: flex;
@@ -291,6 +281,7 @@ ul.nav-links {
     padding: 0px;
     
 }
+
 .nav-links li{
     list-style: none;
     margin: 0px;
@@ -298,7 +289,7 @@ ul.nav-links {
 
 .nav-links a {
     list-style: none;
-    font-size: 12px;
+    font-size: 15px;
     width: 80px;
     border-bottom: none;
     background-color: black;
@@ -310,8 +301,15 @@ ul.nav-links {
 
 }
 
+    @media (min-width: 601px) {
+        .nav-links a {
+            font-size: 18px;
+            width: 100px;
+        }
+    }
+
 ul li a.active {
-    background-color: #d8ae14; 
+    background-color:red; 
 
 }
 
