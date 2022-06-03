@@ -26,6 +26,7 @@
           Bienvenido/a!<br />Por favor registrate con tus datos:
           </h1>
           <div class="form-floating" id="nameInput">
+            <label for="nombre">Nombre *</label>
             <input
             type="text"
             class="form-control <%= locals.errors && errors.userName ? 'is-invalid' : null %>"
@@ -33,14 +34,14 @@
             name="userName"
             placeholder="Juan"
             value="<%= locals.oldData ? oldData.userName : null %>">
-            <label for="nombre">Nombre *</label>
+            <p id="nameError" class="errorTextFront"></p>
             <% if (locals.errors && errors.userName) { %>
               <p class="errorTextBack"> <%= errors.userName.msg %> </p>
               <% } %>
-              <p id="nameError" class="errorTextFront"></p>
-
+              
           </div>
           <div class="form-floating" id="surnameInput">
+            <label for="apellido">Apellido *</label>
             <input
               type="text"
               class="form-control <%= locals.errors && errors.userLastName ? 'is-invalid' : null %>"
@@ -48,14 +49,14 @@
               name="userLastName"
               placeholder="Perez"
               value="<%= locals.oldData ? oldData.userLastName : null %>">
-            <label for="apellido">Apellido *</label>
+              <p id="apellidoError" class="errorTextFront"></p>
             <% if (locals.errors && errors.userLastName) { %>
               <p class="errorTextBack"> <%= errors.userLastName.msg %> </p>
             <% } %>
-            <p id="apellidoError" class="errorTextFront"></p>
 
           </div>
           <div class="form-floating" id="emailInput">
+            <label for="email">Correo electrónico *</label>
             <input
               type="email"
               class="form-control <%= locals.errors && errors.userEmail ? 'is-invalid' : null %>"
@@ -63,15 +64,15 @@
               name="userEmail"
               placeholder="name@example.com"
               value="<%= locals.oldData ? oldData.userEmail : null %>">
-            <label for="email">Correo electrónico *</label>
+              <p id="emailError" class="errorTextFront"></p>
             <% if (locals.errors && errors.userEmail) { %>
               <p class="errorTextBack"> <%= errors.userEmail.msg %> </p>
             <% } %>
-            <p id="emailError" class="errorTextFront"></p>
 
           </div>
 
           <div class="form-floating" id="passwordInput">
+            <label for="password">Elegir contraseña *</label>
             <input
               type="password"
               class="form-control <%= locals.errors && errors.userPassword ? 'is-invalid' : null %>"
@@ -79,11 +80,10 @@
               name="userPassword"
               placeholder="Contraseña"
             />
-            <label for="password">Elegir contraseña *</label>
+            <p id="contrasenaError" class="errorTextFront"></p>
             <% if (locals.errors && errors.userPassword) { %>
               <p class="errorTextBack"> <%= errors.userPassword.msg %> </p>
             <% } %>
-            <p id="contrasenaError" class="errorTextFront"></p>
 
           </div>
           <br>
@@ -98,15 +98,15 @@
           </div>
           <br />
           <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" name="userTermsAccept" id="terminosCondiciones"/>
-              Acepto los <a href="#!">Términos y Condiciones *</a>
-            </label>
+            <input type="checkbox" name="userTermsAccept" id="terminosCondiciones"/>
+            <p id="termsError" class="errorTextFront"></p>
             <% if (locals.errors && errors.userTermsAccept) { %>
               <p class="errorTextBack"> <%= errors.userTermsAccept.msg %> </p>
-            <% } %>
-            <p id="termsError" class="errorTextFront"></p>
-          </div>
+              <% } %>
+              <label for="terminosCondiciones">
+                Acepto los <a href="#!">Términos y Condiciones *</a>
+              </label>
+            </div>
           <button class="btn-enviar w-100" type="submit" id="submit">Registrarme</button>
 
       </form>
