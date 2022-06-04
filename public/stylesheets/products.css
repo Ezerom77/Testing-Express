@@ -843,7 +843,7 @@ color: #000;
 
 /*//////// NEW STYLES QUERIES /////////*/
 
-@media (min-width: 361px){
+@media (min-width: 401px){
 
   .products-viewcontainer {
   width: 250px;

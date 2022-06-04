@@ -27,7 +27,7 @@
     flex-direction: column;
 }
 /*TABLET*/
-    @media (min-width: 361px) {
+    @media (min-width: 401px) {
         .topheader-container-left{
             align-items: flex-start;
 
@@ -123,7 +123,7 @@
     display: none;
 }
 /*TABLET*/
-@media (min-width: 361px) {
+@media (min-width: 401px) {
     .topheader-container-right{
         display: flex;
         flex-direction: column;
@@ -187,7 +187,7 @@
 
   } 
 
-  @media (min-width: 361px) {
+  @media (min-width: 401px) {
     .dropdown {
       display: none;
     }
@@ -252,7 +252,7 @@
 }
 
 /*TABLET*/
-@media (min-width: 361px) {
+@media (min-width: 401px) {
     .navbarmain{
         display: flex;
         flex-direction: row;
@@ -351,7 +351,7 @@ ul li a.active {
 }
 
 /*TABLET*/
-    @media (min-width: 361px) {
+    @media (min-width: 401px) {
     .burgermenu{
         display: none;
     };
