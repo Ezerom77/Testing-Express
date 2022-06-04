@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <link rel="stylesheet" href="/stylesheets/products.css">
+    <link rel="stylesheet" href="/stylesheets/general.css">
+    <title>Detalle de producto</title>
+  </head>
+  <body>
+    <%- include('./partials/header') %>
+    <main class="products-maincontainer">
+      <h1 class="form-create-title h5 mb-3 fw-bold"><%=productDetail.nombre%></h1>
+      <div class="products-box">
+        <div class="products-viewcontainer">
+          <div class="products-trackcontainer">
+            <ul class="products-track">
+              <li class="products-trackslide">
+                <a href="/products/detail/<%=productDetail.id%>">
+                  <img class="products-track-slide-image" src="/images/products/<%=productDetail.imagenes[0].nombreArchivo%>" alt="">
+                  <ul class="products-detail">
+                    <li><%=productDetail.nombre%></li>
+                    <li>AR$ <%=productDetail.precio%></li>
+                    <li>Talle: <%=productDetail.talle.descripcion%></li>
+                    <li>Color: <%=productDetail.color.descripcion%></li>
+                    <li>Descripción: <%=productDetail.descripcion%></li>
+                  </ul>
+                </a>
+                <a href="/users/carrito"><i class="far fa-thumbs-up"></i></a>
+                <i class="far fa-thumbs-down"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('./partials/footer') %>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
