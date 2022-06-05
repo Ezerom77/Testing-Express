@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
   <head>
     <%- include('./partials/head') %>
@@ -21,7 +21,7 @@
               </div>
               <div class="images">
                 <div class="img_girl_left">
-              <!-- Imagenes secundarias -->
+                  <!-- Imagenes secundarias -->
                   <% for( let i = 1; i < productDetail.imagenes.length; i++ ) {
                   %>
                   <span
@@ -46,12 +46,13 @@
               <h3><%=productDetail.nombre%></h3>
               <h4>AR$ <%=productDetail.precio%></h4>
               <div class="designer">
-                <h5>Color:<%=productDetail.color.descripcion%></h5>
+                <h5>Color: <%=productDetail.color.descripcion%></h5>
               </div>
               <div class="designer">
                 <h5>
                   Categorias:
                   <div>
+                    <br />
                     <ul>
                       <% for( let i = 0; i < productDetail.categorias.length;
                       i++ ) { %>
@@ -61,11 +62,19 @@
                   </div>
                 </h5>
               </div>
-              <div class="designer">
-                <h5>Talle: <%=productDetail.talle.descripcion%></h5>
-              </div>
+              <!-- <div class="color">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div> -->
               <div class="options">
-                
+                <div class="size">
+                  <select>
+                    <option>
+                      <%="Talle: "+productDetail.talle.descripcion%>
+                    </option>
+                  </select>
+                </div>
 
                 <a href="/cart/add/<%= productDetail.id %>"
                   ><button id="toCart">Agregar al carrito</button></a

@@ -11,7 +11,7 @@
     <main class="detail-main">
       <div class="detail-container">
         <div class="detail-heading">
-          <h1 class="form-create-title h5 mb-3 fw-bold"><%=productDetail.nombre%></h1>
+          <h1 class="form-create-title h3 mb-3 fw-bold"><%=productDetail.nombre%></h1>
           <div class="detail-heading-bottom">
             <!-- breadcrums -->
             <div class="breadcrumb">
@@ -34,66 +34,63 @@
             <div class="detail-main-image">
               <img src="/images/products/<%=productDetail.imagenes[0].nombreArchivo%>"/>
             </div>
-          </div>
             <!-- Imagenes secundarias -->
-          <div class="detail-secondary-image">
-            <% for( let i = 1; i < productDetail.imagenes.length; i++ ) {%>
+            <div class="detail-secondary-image">
+              <% for( let i = 1; i < productDetail.imagenes.length; i++ ) {%>
               <img src="/images/products/<%=productDetail.imagenes[i].nombreArchivo%>"/>
                   <% } %>
+            </div>
+          </div>
+          <div class="detail-footer">
+            <div class="detail-description">
+              <h4>Descripción:</h4>
+              <p><%=productDetail.descripcion%></p>
+            </div>
+            <div class="detail-description">
+              <h4>Precio AR$</h4>
+              <p><%=productDetail.precio%></p>
+            </div>
+            <div class="detail-description">
+              <h4>Color:</h4>
+              <p><%=productDetail.color.descripcion%></p>
+            </div>
+            <div class="detail-description">
+              <h4>Talle:</h4>
+              <p><%=productDetail.talle.descripcion%></p>
+            </div>
+            <div class="detail-description">
+              <h4>Categorias:</h4>
+                <ul>
+                  <% for( let i = 0; i < productDetail.categorias.length; i++ ) { %>
+                  <li><%=productDetail.categorias[i].descripcion %>
+                  </li>
+                  <% } %>
+                </ul>
+            </div>
+            <div class="options">
+              <a href="/cart/add/<%= productDetail.id %>">
+                <button id="toCart">Agregar al carrito</button>
+              </a>
+              <a href="/products/edit/<%= productDetail.id %>">
+                <button id="edit">Editar Producto</button>
+              </a>
+            </div>
+            <div class="open_wish">
+              <a href="#">Abrir guía de talles</a>
+              <a href="#"><i id="cora" class="far fa-heart"></i> Agregar a preferidos
+              </a>
+            </div>
+            <div class="detail-description">
+              <h4>Compartir</h4>
+              <div class="social">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-google-plus-g"></i>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="detail-footer">
-          <div class="detail-description">
-            <h4>Descripción:</h4>
-            <p><%=productDetail.descripcion%></p>
-          </div>
-          <div class="detail-description">
-            <h4>Precio AR$</h4>
-            <p><%=productDetail.precio%></p>
-          </div>
-          <div class="detail-description">
-            <h4>Color:</h4>
-            <p><%=productDetail.color.descripcion%></p>
-          </div>
-          <div class="detail-description">
-            <h4>Talle:</h4>
-            <p><%=productDetail.talle.descripcion%></p>
-          </div>
-          <div class="detail-description">
-            <h4>Categorias:</h4>
-              <ul>
-                <% for( let i = 0; i < productDetail.categorias.length; i++ ) { %>
-                <li><%=productDetail.categorias[i].descripcion %>
-                </li>
-                <% } %>
-              </ul>
-          </div>
-        </div>  
-        <div class="options">
-          <a href="/cart/add/<%= productDetail.id %>">
-            <button id="toCart">Agregar al carrito</button>
-          </a>
-          <a href="/products/edit/<%= productDetail.id %>">
-            <button id="edit">Editar Producto</button>
-          </a>
-        </div>
-        <div class="open_wish">
-          <a href="#">Abrir guía de talles</a>
-        </div>
-        <div class="wishlist">
-          <a href="#"><i id="cora" class="far fa-heart"></i> Agregar a preferidos
-          </a>
-        </div>
-        <div class="share">
-          <h4>Compartir</h4>
-          <div class="social">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-google-plus-g"></i>
-          </div>
-        </div>
-      </div>
       <script src="/js/productDetail.js"></script>
     </main>
     <%- include('./partials/footer') %>
