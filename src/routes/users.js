@@ -27,7 +27,8 @@ const registerValidations = [
     body('userLastName').notEmpty().withMessage("Debes completar tu apellido (Backend)"),
     body('userEmail').isEmail().withMessage("Debes ingresar un email válido (Backend)"),
     body('userPassword').isLength({min: 10}).withMessage('La contraseña debe tener al menos 10 caracteres (Backend)'),
-    body('userTermsAccept').notEmpty().withMessage("Debes aceptar los términos y condiciones para continuar (Backend)")
+    body('userTermsAccept').notEmpty().withMessage("Debes aceptar los términos y condiciones para continuar (Backend)"),
+    body('profilePic').notEmpty().withMessage("Debes cargar una imagen de perfil (Backend)")
 ] ;
 
 //validaciones de formulario de Login
