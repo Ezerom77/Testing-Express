@@ -28,10 +28,10 @@
          value="<%= locals.oldData ? oldData.email : null %>">
         <label for="email">Correo electrónico</label>
         <% if (locals.errors && errors.email) { %>
-          <p class="errortext"> <%= errors.email.msg %> </p>
+          <p class="errorTextBack"> <%= errors.email.msg %> </p>
         <% } %>
         <% if (locals.error) { %>
-          <p class="errortext"> <%= error %> </p>
+          <p class="errorTextBack"> <%= error %> </p>
         <% } %>
         <p id="emailError" class="errorTextFront"></p>
         
@@ -44,10 +44,10 @@
         id="password" name="password" placeholder="Password">
         <label for="password">Contraseña</label>
         <% if (locals.errors && errors.password) { %>
-          <p class="errortext"> <%= errors.password.msg %> </p>
+          <p class="errorTextBack"> <%= errors.password.msg %> </p>
         <% } %>
         <% if (locals.error) { %>
-          <p class="errortext"> <%= error %> </p>
+          <p class="errorTextBack"> <%= error %> </p>
         <% } %>
           <p id="passError" class="errorTextFront"></p>
       </div>
