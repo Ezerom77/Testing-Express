@@ -6,6 +6,18 @@ const apiController = {
     res.status(200).json({
       status: 200,
       message: "API funcionando correctamente",
+      servicios: {
+        "api/usersCount": "Total de usuarios",
+        "api/lastUser": "Ultimo usuario creado",
+        "api/productCount": "Total de productos",
+        "api/lastProduct": "Ultimo producto creado",
+        "api/users": "Arreglo de usuarios",
+        "api/products": "Arreglo de productos",
+        "api/categorias": "Detalle categorias",
+        "api/product/:id": "Detalle un producto por ID",
+        "api/user/:id": "Detalle de un usuario por ID sin datos privados",
+        "api/prodXCat": "Cantidad de productos por categoria",
+      },
     });
   },
   usersCount: (req, res) => {
@@ -45,7 +57,14 @@ const apiController = {
     });
   },
   lastProduct: (req, res) => {
-    db.Products.findOne({ order: [["id", "DESC"]] }).then((products) => {
+    db.Products.findOne({
+      include: [
+        { association: "color" },
+        { association: "talle" },
+        { association: "categorias" },
+        { association: "imagenes" },
+      ],
+       order: [["id", "DESC"]] }).then((products) => {
       res.status(200).json({
         status: 200,
         message: "Last product",
@@ -138,10 +157,10 @@ const apiController = {
   prodXCat: (req, res) => {
     db.Producto_Categoria.findAll({
       include: [{ association: "categorias" }],
-      group: ['id_Categoria'],
-      attributes: [[sequelize.fn('COUNT', 'id_Producto'), 'sumaProductos']],
+      group: ["id_Categoria"],
+      attributes: [[sequelize.fn("COUNT", "id_Producto"), "sumaProductos"]],
     }).then((producto_categoria) => {
-      console.log("primeravez"+producto_categoria[0].sumaProductos);
+      console.log("primeravez" + producto_categoria[0].sumaProductos);
       res.status(200).json({
         status: 200,
         message: "ProductosPorCategoria",
