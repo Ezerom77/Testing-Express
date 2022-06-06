@@ -79,13 +79,6 @@ window.addEventListener('load', function() {
         }
     }
     );
-    campoImg.addEventListener("blur", (e) => {
-        if(campoImg.value == ""){
-            campoImg.classList.add('is-invalid');
-            campoImg.nextElementSibling.innerHTML = "El campo no puede estar vacio (Frontend)";
-        }
-    }
-    );
     campoTerms.addEventListener("blur", (e) => {
         if(!campoTerms.checked){
             campoTerms.classList.add('is-invalid');
@@ -94,12 +87,7 @@ window.addEventListener('load', function() {
     }
     );
 
-    // formulario.addEventListener("submit", (e) => {
-    //     if(campoImg.value == "") {
-    //     e.preventDefault();
-    //     campoImg.classList.add('is-invalid');
-    //     campoImg.nextElementSibling.innerHTML = "Debes cargar una imagen de perfil";
-    // }});
+    
 
 /*ESTO EVITA EL ENVIO DEL FORM. ESTA DESACTIVADO PARA PODER MOSTRAR LAS VALIDACIONES DE BACKEND
     formulario.addEventListener("submit", (e) => {
