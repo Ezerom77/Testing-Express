@@ -35,10 +35,10 @@ window.addEventListener('load', ()  => {
         productPrice.classList.remove('is-invalid');
         productPrice.nextElementSibling.innerHTML = "";
     });
-    productImage.addEventListener("focus", (e) => {
-        productImage.classList.remove('is-invalid');
-        productImage.nextElementSibling.innerHTML = "";
-    });
+    // productImage.addEventListener("focus", (e) => {
+    //     productImage.classList.remove('is-invalid');
+    //     productImage.nextElementSibling.innerHTML = "";
+    // });
   
     productName.addEventListener("blur", (e) => {
         if (productName.value == "" || productName.value.length < 5) {
@@ -64,12 +64,12 @@ window.addEventListener('load', ()  => {
             productPrice.nextElementSibling.innerHTML = "* Debes ingresar el precio del producto";
         }
     });
-    productImage.addEventListener("blur", (e) => {
-        if (productImage.value == "") {
-            productImage.classList.add('is-invalid');
-            productImage.nextElementSibling.innerHTML = "* Debes subir al menos una imagen";
-        }
-        });
+    // productImage.addEventListener("blur", (e) => {
+    //     if (productImage.value == "") {
+    //         productImage.classList.add('is-invalid');
+    //         productImage.nextElementSibling.innerHTML = "* Debes subir al menos una imagen";
+    //     }
+    //     });
 
     
 

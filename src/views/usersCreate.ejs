@@ -94,6 +94,9 @@
               type="file" name="profilePic" id="profilePic"  accept=".jpg, .jpeg, .png"
               value="<%= locals.oldData ? oldData.profilePic : null %>">
               <p id="imgError" class="errorTextFront"></p>
+              <% if (locals.errors && errors.profilePic) { %>
+                <p class="errorTextBack"> <%= errors.profilePic.msg %> </p>
+              <% } %>
 
           </div>
           <br />
